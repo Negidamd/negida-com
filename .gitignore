@@ -1,3 +1,4 @@
 _source/
+.gstack/
 .DS_Store
 *.log
