@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Negida, MD, PhD | Physician-Scientist · Educator · Founder</title>
+    <meta name="description" content="Ahmed Negida — physician-scientist at Virginia Commonwealth University. Translational research in Parkinson's disease, Lewy body dementia, and Alzheimer's. Founder of Negida Academy and DataCliNiX. Educator, mentor, and entrepreneur.">
+    <meta name="keywords" content="Ahmed Negida, Parkinson's, Lewy Body Dementia, Neuroimaging, Negida Academy, DataCliNiX, Clinical Research, VCU, Physician-Scientist">
+    <meta name="author" content="Ahmed Negida">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ahmed Negida, MD, PhD — Physician-Scientist · Educator · Founder">
+    <meta property="og:description" content="Translational research in neurodegenerative diseases. Founder of Negida Academy (30,000+ trainees) and DataCliNiX. Book a consultation, explore my work, or join my courses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://negida.com/">
+    <meta property="og:image" content="https://negida.com/photo.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ahmed Negida, MD, PhD">
+    <meta name="twitter:description" content="Physician-scientist · Educator · Founder. VCU Department of Neurology.">
+    <meta name="twitter:image" content="https://negida.com/photo.jpg">
+
+    <meta name="theme-color" content="#162e51">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ahmed Negida",
+      "jobTitle": "Physician-Scientist",
+      "honorificSuffix": "MD, PhD",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Virginia Commonwealth University",
+        "department": "Department of Neurology, Parkinson's and Movement Disorders Center"
+      },
+      "url": "https://negida.com/",
+      "image": "https://negida.com/photo.jpg",
+      "sameAs": [
+        "https://negidamd.github.io/",
+        "https://scholar.google.com/citations?user=HURlCI8AAAAJ",
+        "https://github.com/negidamd",
+        "https://www.researchgate.net/profile/Ahmed-Negida",
+        "https://orcid.org/0000-0001-5363-6369"
+      ],
+      "email": "ahmed.said.negida@gmail.com"
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-light: #f0f0f0;
+            --bg-lighter: #f5f6fa;
+            --text-primary: #1b1b1b;
+            --text-secondary: #3d4551;
+            --text-muted: #71767a;
+            --accent: #005ea2;
+            --accent-light: #73b3e7;
+            --accent-dark: #1a4480;
+            --accent-darker: #162e51;
+            --border: #c6cace;
+            --border-light: #dfe1e2;
+            --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --max-width: 1000px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 17px; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+
+        a { color: var(--accent); text-decoration: underline; }
+        a:hover { color: var(--accent-dark); }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-light);
+            outline-offset: 2px;
+        }
+        .skip-link {
+            position: absolute; top: -3rem; left: 1rem;
+            background: var(--accent); color: #fff;
+            padding: 0.5rem 1rem; font-weight: 600;
+            z-index: 1001; text-decoration: none; border-radius: 0.25rem;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus { top: 0.5rem; }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: var(--accent-darker); z-index: 1000;
+        }
+        nav .nav-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.55rem 2rem;
+        }
+        nav .logo {
+            font-family: var(--font-sans); font-size: 1.05rem;
+            font-weight: 700; color: #ffffff; text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+        nav .logo span { color: var(--accent-light); }
+        nav .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+        nav .nav-links a {
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            font-size: 0.8rem; font-weight: 600;
+            padding: 0.45rem 0.7rem; letter-spacing: 0.01em;
+        }
+        nav .nav-links a:hover, nav .nav-links a.active {
+            color: #ffffff; background: rgba(255,255,255,0.1);
+        }
+        .mobile-menu {
+            display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
+        }
+        .mobile-menu span {
+            display: block; width: 22px; height: 2px;
+            background: #ffffff; margin: 5px 0;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 5rem 2rem 2rem;
+            border-bottom: 3px solid var(--accent);
+            background: var(--bg-primary);
+        }
+        .hero-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: start;
+        }
+        .profile-photo {
+            width: 160px; height: 200px;
+            overflow: hidden; border: 1px solid var(--border);
+        }
+        .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-content h1 {
+            font-family: var(--font-serif); font-size: 2rem;
+            font-weight: 900; line-height: 1.25; margin-bottom: 0.15rem;
+            color: var(--accent-darker);
+        }
+        .hero-content .credentials {
+            font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 0.4rem;
+        }
+        .hero-content .subtitle {
+            font-size: 1rem; color: var(--text-secondary);
+            margin-bottom: 0.6rem; font-style: italic;
+        }
+        .hero-content .affiliation {
+            color: var(--text-secondary); font-size: 0.92rem;
+            margin-bottom: 1rem; line-height: 1.55;
+        }
+        .professional-summary {
+            font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1.25rem; font-size: 0.82rem; font-weight: 700;
+            text-decoration: none; border: none; cursor: pointer;
+            border-radius: 0.25rem; letter-spacing: 0.02em;
+        }
+        .btn:hover { text-decoration: none; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-dark); color: white; }
+        .btn-secondary {
+            background: var(--bg-primary); color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-secondary:hover { background: var(--accent); color: white; }
+
+        /* ===== Metrics Bar ===== */
+        .metrics-bar {
+            padding: 1.2rem 2rem;
+            background: var(--accent-darker); color: #ffffff;
+        }
+        .metrics-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .metric-item { text-align: center; flex: 1; min-width: 90px; }
+        .metric-number {
+            font-size: 1.35rem; font-weight: 800; color: #ffffff; line-height: 1;
+        }
+        .metric-label {
+            font-size: 0.65rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem;
+            text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+        }
+
+        /* ===== Sections ===== */
+        section {
+            padding: 2.75rem 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        section:last-of-type { border-bottom: none; }
+        .section-inner { max-width: var(--max-width); margin: 0 auto; }
+        .section-header { margin-bottom: 1.5rem; }
+        .section-header h2 {
+            font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900;
+            color: var(--accent-darker);
+            padding-bottom: 0.5rem; border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .section-header p {
+            color: var(--text-muted); font-size: 0.95rem; margin-top: 0.7rem;
+            max-width: 720px;
+        }
+
+        /* ===== Service Directory (the hub heart) ===== */
+        .service-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+        }
+        .service-card {
+            border: 1px solid var(--border); padding: 1.5rem;
+            background: var(--bg-primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            display: flex; flex-direction: column;
+            text-decoration: none; color: inherit;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(22,46,81,0.12);
+            border-color: var(--accent);
+            text-decoration: none; color: inherit;
+        }
+        .service-card .label {
+            font-size: 0.65rem; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+        .service-card .label.label-academic { color: #1a4480; }
+        .service-card .label.label-business { color: #b54708; }
+        .service-card .label.label-direct { color: #2e7d32; }
+        .service-card .label.label-content { color: #6f42c1; }
+        .service-card h3 {
+            font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700;
+            color: var(--accent-darker); margin-bottom: 0.5rem; line-height: 1.35;
+        }
+        .service-card p {
+            color: var(--text-secondary); font-size: 0.88rem; line-height: 1.65;
+            margin-bottom: 1rem; flex: 1;
+        }
+        .service-card .arrow {
+            font-size: 0.82rem; font-weight: 700; color: var(--accent);
+            margin-top: auto;
+        }
+        .service-card:hover .arrow { color: var(--accent-dark); }
+
+        /* ===== Banner Strips (Academy / DataCliNiX) ===== */
+        .strip {
+            background: var(--bg-lighter);
+            border-left: 4px solid var(--accent);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;
+        }
+        .strip:last-child { margin-bottom: 0; }
+        .strip-dark {
+            background: var(--accent-darker); color: #fff;
+            border-left-color: var(--accent-light);
+        }
+        .strip-dark h3, .strip-dark p { color: #fff; }
+        .strip-dark .strip-tag { color: var(--accent-light); }
+        .strip-tag {
+            font-size: 0.7rem; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 0.3rem;
+        }
+        .strip h3 {
+            font-family: var(--font-serif); font-size: 1.2rem;
+            color: var(--accent-darker); margin-bottom: 0.4rem; font-weight: 900;
+        }
+        .strip p {
+            color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;
+            margin-bottom: 0; max-width: 560px;
+        }
+        .strip-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        /* ===== About Section ===== */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+        }
+        .about-text p {
+            color: var(--text-secondary); font-size: 0.95rem;
+            line-height: 1.8; margin-bottom: 0.9rem;
+        }
+        .about-stats {
+            background: var(--bg-lighter);
+            padding: 1.5rem; border-left: 3px solid var(--accent);
+        }
+        .about-stats h4 {
+            font-family: var(--font-serif); font-size: 1rem;
+            color: var(--accent-darker); margin-bottom: 0.75rem;
+        }
+        .about-stats ul { list-style: none; }
+        .about-stats ul li {
+            padding: 0.3rem 0; font-size: 0.9rem; color: var(--text-secondary);
+            padding-left: 1rem; position: relative;
+        }
+        .about-stats ul li::before {
+            content: '\2013'; color: var(--accent); position: absolute; left: 0;
+        }
+        .about-stats ul li strong { color: var(--text-primary); }
+
+        /* ===== Contact ===== */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .contact-block h3 {
+            font-family: var(--font-serif); font-size: 1.05rem;
+            font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-darker);
+        }
+        .contact-line {
+            color: var(--text-secondary); margin-bottom: 0.45rem; font-size: 0.92rem;
+        }
+        .contact-line a { font-weight: 500; }
+        .profile-links { margin-top: 1rem; }
+        .profile-links a {
+            display: inline; margin-right: 1.25rem; font-size: 0.85rem; font-weight: 600;
+        }
+
+        /* ===== Academy Course Grid ===== */
+        .academy-subhead {
+            font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700;
+            color: var(--accent-dark); margin-top: 2rem; margin-bottom: 1rem;
+            padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
+        }
+        .course-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;
+        }
+        .course-item {
+            display: grid; grid-template-columns: 48px 1fr; gap: 0.75rem;
+            padding: 0.75rem 0.9rem; border: 1px solid var(--border-light);
+            background: var(--bg-primary); align-items: center;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        .course-item:hover {
+            border-color: var(--accent); background: var(--bg-lighter);
+        }
+        .course-code {
+            font-family: var(--font-sans); font-size: 0.75rem; font-weight: 800;
+            color: #fff; background: var(--accent);
+            text-align: center; padding: 0.3rem 0; letter-spacing: 0.04em;
+        }
+        .course-title {
+            font-size: 0.88rem; color: var(--text-primary); line-height: 1.4;
+        }
+        .academy-cta {
+            margin-top: 1.5rem; text-align: center;
+        }
+
+        /* ===== Featured Research ===== */
+        .featured-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+        }
+        .featured-card {
+            border: 1px solid var(--border-light); padding: 1.25rem;
+        }
+        .featured-card .featured-label {
+            font-size: 0.65rem; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;
+        }
+        .featured-card h4 {
+            font-family: var(--font-serif); font-size: 0.98rem; font-weight: 700;
+            color: var(--accent-darker); margin-bottom: 0.4rem; line-height: 1.4;
+        }
+        .featured-card p {
+            color: var(--text-secondary); font-size: 0.85rem; line-height: 1.65;
+        }
+        .featured-cta {
+            margin-top: 1.5rem; text-align: center;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            color: rgba(255,255,255,0.8); background: var(--accent-darker);
+            text-align: center; padding: 2rem; font-size: 0.82rem;
+        }
+        footer a { color: var(--accent-light); margin: 0 0.5rem; }
+        footer .footer-links { margin-bottom: 0.6rem; }
+        footer .footer-meta { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+
+        /* ===== Fade-in ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .fade-in { opacity: 1; transform: none; transition: none; }
+            .service-card:hover { transform: none; }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .profile-photo { margin: 0 auto; }
+            .hero-links { justify-content: center; }
+            .professional-summary { text-align: left; }
+            .hero-content h1 { font-size: 1.6rem; }
+            .section-header h2 { font-size: 1.1rem; }
+            .metrics-inner { justify-content: center; }
+            .service-grid { grid-template-columns: 1fr; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .course-grid { grid-template-columns: 1fr; }
+            .strip { grid-template-columns: 1fr; }
+            .strip-actions { justify-content: flex-start; }
+            .about-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#services" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main">
+        <div class="nav-inner">
+            <a href="#" class="logo">Ahmed <span>Negida</span></a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="https://negidamd.github.io" target="_blank" rel="noopener">Academic</a></li>
+                <li><a href="#academy">Academy</a></li>
+                <li><a href="#dataclinix">DataCliNiX</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="profile-photo">
+                <img src="photo.jpg" alt="Ahmed Negida">
+            </div>
+            <div class="hero-content">
+                <h1>Ahmed Negida</h1>
+                <div class="credentials">MD, PhD</div>
+                <div class="subtitle">Physician-Scientist · Educator · Founder</div>
+                <div class="affiliation">
+                    Postdoctoral Scholar · Parkinson's &amp; Movement Disorders Center<br>
+                    Department of Neurology, Virginia Commonwealth University
+                </div>
+                <p class="professional-summary">
+                    Translational research scientist working on precision medicine in Parkinson's disease, Lewy body dementia, and Alzheimer's. Founder of Negida Academy &mdash; the largest clinical research training platform in MENA &mdash; and DataCliNiX, a clinical data science consultancy. I write, teach, and mentor.
+                </p>
+                <div class="hero-links">
+                    <a href="#consultation" class="btn btn-primary">Book a consultation</a>
+                    <a href="#services" class="btn btn-secondary">Explore my work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Metrics Bar ===== -->
+    <div class="metrics-bar">
+        <div class="metrics-inner">
+            <div class="metric-item">
+                <div class="metric-number">150+</div>
+                <div class="metric-label">Publications</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">8,300+</div>
+                <div class="metric-label">Citations</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">43</div>
+                <div class="metric-label">H-Index</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">30,000+</div>
+                <div class="metric-label">Trainees</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">1,200+</div>
+                <div class="metric-label">GNS Investigators</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">30+</div>
+                <div class="metric-label">Countries</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Services Directory (the hub heart) ===== -->
+    <section id="services" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>What I Do</h2>
+                <p>Six things you might be looking for. Pick whichever fits your need &mdash; each one links to the right place.</p>
+            </div>
+            <div class="service-grid">
+
+                <a href="https://negidamd.github.io" target="_blank" rel="noopener" class="service-card">
+                    <div class="label label-academic">Academic</div>
+                    <h3>Research &amp; Publications</h3>
+                    <p>Peer-reviewed work on Parkinson's, Lewy body dementia, and Alzheimer's. Multimodal imaging, machine learning, and biomarker discovery.</p>
+                    <div class="arrow">View academic profile &rarr;</div>
+                </a>
+
+                <a href="#academy" class="service-card">
+                    <div class="label label-business">Education</div>
+                    <h3>Negida Academy</h3>
+                    <p>Online training in clinical research, systematic reviews, and academic writing. Trusted by 30,000+ trainees across 30+ countries.</p>
+                    <div class="arrow">Browse courses &rarr;</div>
+                </a>
+
+                <a href="#dataclinix" class="service-card">
+                    <div class="label label-business">Services</div>
+                    <h3>DataCliNiX</h3>
+                    <p>Clinical data science for sponsors, CROs, and investigators. Statistical analysis, manuscript support, and study design consulting.</p>
+                    <div class="arrow">See offerings &rarr;</div>
+                </a>
+
+                <a href="#consultation" class="service-card">
+                    <div class="label label-direct">1:1</div>
+                    <h3>Book a Consultation</h3>
+                    <p>Direct mentorship on research design, manuscript review, grant writing, or career strategy in academic medicine and neuroscience.</p>
+                    <div class="arrow">Schedule a session &rarr;</div>
+                </a>
+
+                <a href="https://cv.negida.com" target="_blank" rel="noopener" class="service-card">
+                    <div class="label label-academic">Profile</div>
+                    <h3>Curriculum Vitae</h3>
+                    <p>Full academic CV: education, appointments, grants, publications, awards, teaching, and professional service.</p>
+                    <div class="arrow">View CV &rarr;</div>
+                </a>
+
+                <a href="https://substack.com/@ahmednegida" target="_blank" rel="noopener" class="service-card">
+                    <div class="label label-content">Writing</div>
+                    <h3>Newsletter &amp; Writing</h3>
+                    <p>Essays on academia, neurodegeneration research, productivity for scientists, and lessons from building Negida Academy. Free on Substack.</p>
+                    <div class="arrow">Read on Substack &rarr;</div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>About</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm a physician-scientist at Virginia Commonwealth University, where my research focuses on precision medicine for neurodegenerative diseases. I integrate multimodal brain imaging (structural, functional, and diffusion MRI; EEG), fluid biomarkers, and data-driven models to stratify patients with Parkinson's disease, Lewy body dementia, and Alzheimer's into biologically meaningful subtypes.
+                    </p>
+                    <p>
+                        Outside the lab, I founded <strong>Negida Academy</strong> in 2014 in Egypt &mdash; now the largest clinical research training platform in the Middle East and North Africa. I also run <strong>DataCliNiX</strong>, a consultancy serving pharmaceutical sponsors and academic investigators, and co-founded the <strong>Global Neurosciences (GNS)</strong> research collaborative hosted by OHSU Neurological Surgery.
+                    </p>
+                    <p>
+                        Trained in Egypt (MBBCh), the UK (PhD by Publication, Portsmouth), Turkey (Bahcesehir), and the US (Harvard, VCU, IMPACT-AD). I write, teach, and mentor early-career researchers, especially those from under-resourced settings.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <h4>At a glance</h4>
+                    <ul>
+                        <li><strong>Affiliation:</strong> VCU Department of Neurology</li>
+                        <li><strong>Research:</strong> Parkinson's, LBD, Alzheimer's</li>
+                        <li><strong>Methods:</strong> MRI, EEG, ML, biomarkers</li>
+                        <li><strong>Founded:</strong> Negida Academy (2014)</li>
+                        <li><strong>Co-founded:</strong> GNS Research Collaborative</li>
+                        <li><strong>Pharma consulting:</strong> Pfizer, Roche, AstraZeneca, J&amp;J</li>
+                        <li><strong>ORCID:</strong> 0000-0001-5363-6369</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Featured Research ===== -->
+    <section id="featured" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Research Themes</h2>
+                <p>Three converging directions in my current research program.</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-label">Theme 1</div>
+                    <h4>Cognitive Fluctuations &amp; Cholinergic Systems</h4>
+                    <p>EEG-based biomarkers for cognitive fluctuations in Lewy body disease using NASA's Psychomotor Vigilance Test. MRI-based PD-MCI subtyping via cholinergic nucleus 4 degeneration.</p>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-label">Theme 2</div>
+                    <h4>Pathology-Driven Patient Stratification</h4>
+                    <p>Frameworks for neurodegenerative disease stratification combining alpha-synuclein quantification, plasma biomarkers, and MRI vascular measures for trial enrichment.</p>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-label">Theme 3</div>
+                    <h4>Data-Driven PD Subtyping</h4>
+                    <p>Comprehensive PD progression analysis across clinical, pathological, and data-driven subtypes using 10-year PPMI data with longitudinal modeling.</p>
+                </div>
+            </div>
+            <div class="featured-cta">
+                <a href="https://negidamd.github.io" target="_blank" rel="noopener" class="btn btn-secondary">View full research program &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Negida Academy ===== -->
+    <section id="academy" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Negida Academy</h2>
+                <p>Clinical research training for medical students, trainees, and physicians worldwide. Founded 2014. The largest clinical research training platform in MENA &mdash; 30,000+ trainees across 30+ countries.</p>
+            </div>
+
+            <!-- Featured: The Bootcamp -->
+            <div class="strip strip-dark">
+                <div>
+                    <div class="strip-tag">⭐ Flagship · Winter 2026 cohort open</div>
+                    <h3>The Bootcamp &mdash; Live cohort, full curriculum</h3>
+                    <p>Full access to all 7 foundational courses plus live cohort sessions, mentor feedback, and a structured path from research question to published paper. Built for serious learners who want accountability, not just video access.</p>
+                </div>
+                <div class="strip-actions">
+                    <a href="https://courses.negida.com/store" target="_blank" rel="noopener" class="btn btn-primary">Join the Bootcamp &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Course catalog grid -->
+            <h3 class="academy-subhead">Foundational courses (Arabic + English)</h3>
+            <div class="course-grid">
+                <div class="course-item">
+                    <div class="course-code">C1</div>
+                    <div class="course-title">Basics of Clinical Research Methods</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C2</div>
+                    <div class="course-title">Basics of Biostatistics for Medical Research</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C3</div>
+                    <div class="course-title">Sample Size Calculation</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C4</div>
+                    <div class="course-title">How to Write and Publish Research</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C5</div>
+                    <div class="course-title">Systematic Review &amp; Meta-analysis</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C6</div>
+                    <div class="course-title">GRADE Framework: Certainty in Evidence</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">C7</div>
+                    <div class="course-title">Designing Scientific Illustrations</div>
+                </div>
+            </div>
+
+            <h3 class="academy-subhead">Advanced &amp; specialized</h3>
+            <div class="course-grid">
+                <div class="course-item">
+                    <div class="course-code">ADV</div>
+                    <div class="course-title">How to Peer Review a Research Paper</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">ADV</div>
+                    <div class="course-title">Master R in Biostatistics for Clinical Research</div>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">ADV</div>
+                    <div class="course-title">Neuroimaging Analysis of MRI using MATLAB</div>
+                </div>
+            </div>
+
+            <div class="academy-cta">
+                <a href="https://courses.negida.com/store" target="_blank" rel="noopener" class="btn btn-secondary">Browse the full catalog &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DataCliNiX Strip ===== -->
+    <section id="dataclinix" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>DataCliNiX</h2>
+                <p>Innovative solutions to advance health and sciences. Founded by Ahmed Negida; headquartered in Istanbul.</p>
+            </div>
+            <div class="strip">
+                <div>
+                    <div class="strip-tag">Research consultations · Data management · Medical writing · Regulatory affairs · Publishing support</div>
+                    <h3>End-to-end clinical research services</h3>
+                    <p>From study design and biostatistical analysis to manuscript preparation, regulatory submission, and publication support. We work with sponsors, CROs, and academic investigators across multiple regions.</p>
+                </div>
+                <div class="strip-actions">
+                    <a href="https://www.dataclinix.com" target="_blank" rel="noopener" class="btn btn-primary">Visit DataCliNiX &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Consultation ===== -->
+    <section id="consultation" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Book A Consultation</h2>
+                <p>1:1 mentorship for researchers, trainees, and clinicians.</p>
+            </div>
+            <div class="strip">
+                <div>
+                    <div class="strip-tag">Personal Mentorship · 1:1</div>
+                    <h3>Get expert guidance on your research</h3>
+                    <p>Book a personalized session for help with research design, data interpretation, manuscript review, grant writing, or career strategy in academic medicine and neuroscience. I block dedicated time each week for these calls.</p>
+                </div>
+                <div class="strip-actions">
+                    <a href="https://courses.negida.com/offers/TNLAyUBJ" target="_blank" rel="noopener" class="btn btn-primary">Book a consultation &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="fade-in">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Connect</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-block">
+                    <h3>Email</h3>
+                    <p class="contact-line"><a href="mailto:ahmed.negida@vcuhealth.org">ahmed.negida@vcuhealth.org</a> (institutional)</p>
+                    <p class="contact-line"><a href="mailto:ahmed.said.negida@gmail.com">ahmed.said.negida@gmail.com</a> (personal)</p>
+                    <h3 style="margin-top:1.25rem;">Address</h3>
+                    <p class="contact-line">Department of Neurology<br>Virginia Commonwealth University<br>417 N 11th St, Richmond, VA 23298</p>
+                </div>
+                <div class="contact-block">
+                    <h3>Profiles</h3>
+                    <div class="profile-links">
+                        <a href="https://negidamd.github.io" target="_blank" rel="noopener">Academic site</a>
+                        <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                        <a href="https://orcid.org/0000-0001-5363-6369" target="_blank" rel="noopener">ORCID</a>
+                        <a href="https://www.researchgate.net/profile/Ahmed-Negida" target="_blank" rel="noopener">ResearchGate</a>
+                        <a href="https://github.com/negidamd" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://www.linkedin.com/in/ahmed-negida" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://twitter.com/Negida" target="_blank" rel="noopener">X / Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-links">
+            <a href="#services">Services</a>·
+            <a href="#about">About</a>·
+            <a href="https://negidamd.github.io" target="_blank" rel="noopener">Academic</a>·
+            <a href="#academy">Academy</a>·
+            <a href="#dataclinix">DataCliNiX</a>·
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-meta">
+            &copy; <span id="year"></span> Ahmed Negida. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        const navLinks = document.querySelectorAll('nav .nav-links a[href^="#"]');
+        const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                if (sec && window.scrollY >= sec.offsetTop - 100) current = '#' + sec.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === current);
+            });
+        });
+    </script>
+</body>
+</html>
