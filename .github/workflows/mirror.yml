@@ -1,0 +1,50 @@
+name: Mirror negidamd.github.io
+
+# negida.com serves an exact copy of https://github.com/Negidamd/Negidamd.github.io.
+# This job pulls that repo, copies everything except its .git, .github and CNAME,
+# and commits here when anything changed. Edit the site in Negidamd.github.io only.
+
+on:
+  schedule:
+    - cron: '23 * * * *'   # hourly
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency: mirror
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: Negidamd/Negidamd.github.io
+          path: _upstream
+      - name: Copy site
+        run: |
+          rsync -a --delete \
+            --exclude '.git/' --exclude '.github/' --exclude 'CNAME' \
+            --exclude '.gitignore' --exclude '_upstream/' \
+            _upstream/ ./
+          echo "UPSTREAM_SHA=$(git -C _upstream rev-parse --short HEAD)" >> "$GITHUB_ENV"
+          rm -rf _upstream
+      - name: Commit if changed
+        id: commit
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Mirror negidamd.github.io @ ${UPSTREAM_SHA}"
+          git push
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.changed == '1'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

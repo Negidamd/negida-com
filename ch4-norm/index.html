@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch4 Normative Calculator — Cholinergic Nucleus 4 W-score</title>
+<style>
+  :root{
+    --ink:#1a1f2b; --muted:#5b667a; --line:#e6e9f0; --bg:#f5f7fb; --card:#ffffff;
+    --accent:#2171b5; --accent2:#08519c; --warn:#b45309; --warnbg:#fef3c7; --warnln:#f6d581;
+    --atrophy:#d94801; --ok:#1b7837;
+    --ctrl:#7f7f7f; --pd:#9ecae1; --pdmci:#4292c6; --pdd:#08519c;
+    --mcilb:#fdae6b; --dlb:#d94801; --mciad:#f7a8c4; --ad:#ae017e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 18px 60px}
+  header{background:linear-gradient(120deg,#0b3d91 0%,#2171b5 55%,#1b9e9e 100%);color:#fff;
+         padding:34px 0 30px;margin-bottom:20px;box-shadow:0 6px 24px rgba(11,61,145,.18)}
+  header .wrap{padding-bottom:0}
+  h1{margin:0 0 6px;font-size:26px;font-weight:750;letter-spacing:-.01em}
+  header p{margin:0;opacity:.92;font-size:15px;max-width:760px}
+  .pill{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+        border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;margin-top:12px}
+  .disclaimer{background:var(--warnbg);border:1px solid var(--warnln);color:#6b4a09;
+        border-radius:12px;padding:12px 15px;font-size:13px;margin-bottom:22px}
+  .disclaimer b{color:var(--warn)}
+  .grid{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
+        box-shadow:0 2px 10px rgba(20,30,60,.05)}
+  .card h2{margin:0 0 4px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  label{display:block;font-size:13px;font-weight:600;margin:16px 0 5px;color:var(--ink)}
+  .unit{color:var(--muted);font-weight:500}
+  input[type=number]{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;
+        font-size:16px;font-family:inherit;color:var(--ink);background:#fbfcfe;transition:border-color .15s}
+  input[type=number]:focus{outline:none;border-color:var(--accent)}
+  .seg{display:flex;gap:8px;margin-top:5px}
+  .seg button{flex:1;padding:11px;border:1.5px solid var(--line);background:#fbfcfe;border-radius:10px;
+        font-size:15px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s}
+  .seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  input[type=range].slider{width:100%;margin:9px 0 2px;height:6px;cursor:pointer;accent-color:var(--accent)}
+  .chartblock{margin:16px 0 8px}
+  .chartblock h3{margin:0 0 2px;font-size:15px;font-weight:700}
+  .chartblock .cap{font-size:12.5px;color:var(--muted);margin:0 0 8px}
+  .pipeline{margin-top:20px;border-left:4px solid var(--accent)}
+  .pipeline .cap{font-size:13px;color:var(--muted);margin:2px 0 4px}
+  .steps{margin:12px 0 4px;padding-left:22px}
+  .steps li{margin:0 0 10px;font-size:13.5px;color:#243b53;line-height:1.55}
+  .steps li b{color:var(--ink)}
+  .steps .tag{display:inline-block;background:#eef4fb;border:1px solid #d6e6f6;border-radius:6px;
+        padding:0 6px;font-size:12px;font-weight:600;color:var(--accent2)}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:5px}
+  .warnmsg{font-size:12px;color:var(--warn);margin-top:8px;display:none}
+  /* results */
+  .hero{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:2px}
+  .wnum{font-size:52px;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .badge{font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
+  .badge.atr{background:#fde3d3;color:#9a3412}
+  .badge.norm{background:#dcfce7;color:#166534}
+  .subline{color:var(--muted);font-size:14px;margin:6px 0 0}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  .stat{background:#f7f9fc;border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+  .stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
+  .stat .v{font-size:19px;font-weight:750;margin-top:2px}
+  .interp{margin-top:16px;padding:13px 15px;border-radius:11px;background:#eef4fb;border:1px solid #d6e6f6;
+        font-size:13.5px;color:#243b53}
+  .chartcard{margin-top:20px}
+  .chartcard h3{margin:0 0 2px;font-size:15px;font-weight:700}
+  .chartcard .cap{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+  svg{width:100%;height:auto;display:block}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:10px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:50%}
+  footer{margin-top:28px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+  footer b{color:var(--ink)}
+  code{background:#eef1f6;padding:1px 5px;border-radius:5px;font-size:12px}
+  a{color:var(--accent2)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Cholinergic Nucleus 4 (Ch4) Normative Calculator</h1>
+    <p>Convert an individual&rsquo;s Ch4 gray-matter volume into a normative <b>W-score</b> &mdash; how far it
+       deviates from the volume expected in cognitively healthy adults of the same age, sex, and head size &mdash;
+       and see where the individual falls within the clinically normal reference distribution.</p>
+    <span class="pill">Research demonstrator &middot; runs entirely in your browser</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="disclaimer">
+    <b>Research and educational use only.</b> This is a demonstration of a published normative model. It is
+    <b>not a medical device</b>, is not validated for clinical use, and must not be used for diagnosis or patient
+    management. A valid W-score requires Ch4 gray-matter volume measured with the <b>same imaging pipeline as the
+    study</b> (see <b>Required imaging pipeline</b> below). The model was calibrated by cross-validation and has not
+    yet been externally validated. All values are computed locally &mdash; no data is transmitted or stored.
+  </div>
+
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>Patient input</h2>
+      <label>Age <span class="unit">(years)</span></label>
+      <input id="age" type="number" value="72" min="30" max="110" step="1">
+      <input id="ageR" type="range" class="slider" min="40" max="95" step="1" value="72" aria-label="Age slider">
+      <label>Sex</label>
+      <div class="seg" id="sex">
+        <button data-v="F" class="on">Female</button>
+        <button data-v="M">Male</button>
+      </div>
+      <label>Total intracranial volume, TIV <span class="unit">(mL)</span></label>
+      <input id="tiv" type="number" value="1450" min="900" max="2100" step="1">
+      <input id="tivR" type="range" class="slider" min="1100" max="1900" step="5" value="1450" aria-label="TIV slider">
+      <label>Observed Ch4 gray-matter volume <span class="unit">(mL)</span></label>
+      <input id="ch4" type="number" value="0.215" min="0" max="0.6" step="0.001">
+      <input id="ch4R" type="range" class="slider" min="0.05" max="0.40" step="0.005" value="0.215" aria-label="Ch4 volume slider">
+      <div class="hint">Ch4 GMV is typically ~0.10&ndash;0.38 mL. Must be measured with the study pipeline.</div>
+      <div class="warnmsg" id="warn"></div>
+    </div>
+
+    <!-- RESULTS -->
+    <div>
+      <div class="card">
+        <h2>Result</h2>
+        <div class="hero">
+          <span class="wnum" id="wval">&mdash;</span>
+          <span class="badge" id="badge">&mdash;</span>
+        </div>
+        <p class="subline" id="subline"></p>
+        <div class="chartblock">
+          <h3>Position in the clinically normal reference distribution</h3>
+          <p class="cap">The bell curve is the calibrated normal reference (W ~ standard normal in controls). The
+             shaded tail is the atrophy zone (W &le; &minus;1.645, the 5th centile). The patient&rsquo;s value is marked.</p>
+          <svg id="bell" viewBox="0 0 520 230" role="img" aria-label="Normative distribution"></svg>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="k">Predicted Ch4</div><div class="v" id="pred">&mdash;</div></div>
+          <div class="stat"><div class="k">Percentile</div><div class="v" id="pct">&mdash;</div></div>
+          <div class="stat"><div class="k">Deviation</div><div class="v" id="dev">&mdash;</div></div>
+        </div>
+        <div class="interp" id="interp"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card pipeline">
+    <h2>Required imaging pipeline for a valid W-score</h2>
+    <p class="cap">The W-score is only meaningful if Ch4 gray-matter volume is measured <b>exactly as in the
+       study</b>. A value from a different atlas, threshold, or software package is not comparable and will give a
+       misleading result.</p>
+    <ol class="steps">
+      <li><b>Segmentation.</b> Segment the T1-weighted volumetric scan with <span class="tag">CAT12 v12.9
+          (r2577)</span> running under <span class="tag">SPM25</span> (MATLAB R2023b), using the default
+          preprocessing pipeline <b>including surface estimation</b>.</li>
+      <li><b>Ch4 localization.</b> Localize Ch4 with the histology-derived <b>JulichBrain magnocellular
+          basal-forebrain probabilistic atlas</b>, using its <b>maximum-probability map at a 50%
+          tissue-assignment probability threshold</b>.</li>
+      <li><b>Gray-matter volume.</b> Within the Ch4 region, compute gray-matter volume by <b>partial-volume
+          integration of the CAT12 gray-matter tissue-probability map</b> &mdash; each voxel contributes in
+          proportion to its estimated gray-matter content, not counted as all-or-nothing &mdash; reported in
+          <b>millilitres (mL)</b>. This is the value entered above.</li>
+      <li><b>Head size.</b> Take <b>total intracranial volume (TIV)</b> from the CAT12 subject measures, in mL.</li>
+      <li><b>Acquisition site.</b> The model carried a site random intercept; for a scan from a site not in the
+          training sample this intercept is set to zero &mdash; the calculator already does this, so no site input
+          is needed.</li>
+    </ol>
+    <p class="cap" style="margin-top:8px">Atlas: Zaborszky et al., <i>NeuroImage</i> 2008 (JulichBrain
+       magnocellular basal-forebrain maps). Full details are in the study Methods.</p>
+  </div>
+
+  <footer>
+    <p><b>Model.</b> Two-stage location&ndash;scale normative model of Ch4 gray-matter volume fitted in 5,501
+       clinically normal participants across 132 acquisition sites. Location: <code>predicted = 0.13987 + 0.00055331&middot;age &minus; 1.1925&times;10&#8315;&#8309;&middot;age&sup2;
+       + 0.0034362&middot;[male] + 9.5170&times;10&#8315;&#8309;&middot;TIV</code>. Scale:
+       <code>&sigma;(age, sex) = 1.88736 &middot; exp(&minus;4.85588 + 0.0060783&middot;age + 0.12570&middot;[male])</code>.
+       W = (observed &minus; predicted) / &sigma;(age, sex). For a scanner site not in the training sample, the site
+       random intercept is set to zero (as here) and the denominator is not widened to acknowledge that, so a
+       W-score computed for a scanner that contributed no reference participants should be treated as
+       provisional until that centre&rsquo;s own clinically normal participants have been scored. Holding out entire sites in
+       the study moved the proportion below the threshold from 5.56% to 6.54%. Coefficients are Supplementary
+       Table S3 of the study.</p>
+    <p><b>Citation.</b> Negida A. <i>A Normative Modeling Study of Cholinergic Nucleus 4 Atrophy Across the Lewy
+       Body and Alzheimer Disease Spectra.</i> (in preparation). &nbsp;
+       ORCID 0000-0001-5363-6369 &middot; <a href="https://negidamd.github.io/">negidamd.github.io</a></p>
+  </footer>
+</div>
+
+<script>
+/* ---------- normative model (Supplementary Table S3) ----------
+   Primary reference: 5,501 clinically normal participants across 132 sites.
+   Updated 2026-09-22 to the refitted model the manuscript reports (the earlier fit had not reached
+   the REML optimum; see the study's decision log, D-075). */
+const B={intercept:0.13987225699185307,age:0.0005533136779620059,age2:-1.192518199354653e-05,male:0.00343622838139071,tiv:9.516993462830892e-05};
+const S={intercept:-4.855876215776495,age:0.006078275871057767,male:0.12569706477190162,k:1.8873645212254033};
+const CUT=-1.645, CUT_EMP=-1.691;
+const predict=(age,male,tiv)=>B.intercept+B.age*age+B.age2*age*age+B.male*(male?1:0)+B.tiv*tiv;
+const sigma=(age,male)=>S.k*Math.exp(S.intercept+S.age*age+S.male*(male?1:0));
+const phi=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
+function Phi(x){const t=1/(1+0.2316419*Math.abs(x));const d=0.3989422804014327*Math.exp(-x*x/2);
+  let p=d*t*(0.319381530+t*(-0.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));return x>0?1-p:p;}
+
+const SVGNS="http://www.w3.org/2000/svg";
+const el=(t,a)=>{const e=document.createElementNS(SVGNS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+/* ---------- bell curve ---------- */
+function drawBell(w){
+  const svg=document.getElementById("bell");svg.innerHTML="";
+  const W=520,H=230,mL=18,mR=18,mT=14,mB=34, x0=-4,x1=4;
+  const X=v=>mL+(Math.max(x0,Math.min(x1,v))-x0)/(x1-x0)*(W-mL-mR);
+  const ymax=0.42, Y=v=>H-mB-v/ymax*(H-mT-mB);
+  // area under curve (full + atrophy tail) as paths
+  const pts=[];for(let i=0;i<=240;i++){const xv=x0+(x1-x0)*i/240;pts.push([xv,phi(xv)]);}
+  const line=pts.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)).join(" ");
+  // gradient
+  const defs=el("defs");const g=el("linearGradient",{id:"bg1",x1:0,y1:0,x2:0,y2:1});
+  g.appendChild(el("stop",{offset:0,"stop-color":"#4292c6","stop-opacity":.55}));
+  g.appendChild(el("stop",{offset:1,"stop-color":"#4292c6","stop-opacity":.05}));defs.appendChild(g);svg.appendChild(defs);
+  // full area
+  svg.appendChild(el("path",{d:line+" L"+X(x1)+" "+Y(0)+" L"+X(x0)+" "+Y(0)+" Z",fill:"url(#bg1)"}));
+  // atrophy tail
+  const tail=pts.filter(p=>p[0]<=CUT);
+  if(tail.length){const tl=tail.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)).join(" ");
+    svg.appendChild(el("path",{d:tl+" L"+X(CUT)+" "+Y(0)+" L"+X(x0)+" "+Y(0)+" Z",fill:"#d94801","fill-opacity":.28}));}
+  // curve line
+  svg.appendChild(el("path",{d:line,fill:"none",stroke:"#2171b5","stroke-width":2.4}));
+  // axis
+  svg.appendChild(el("line",{x1:mL,y1:Y(0),x2:W-mR,y2:Y(0),stroke:"#c8d0dd","stroke-width":1}));
+  for(let t=x0;t<=x1;t++){svg.appendChild(el("line",{x1:X(t),y1:Y(0),x2:X(t),y2:Y(0)+5,stroke:"#c8d0dd"}));
+    const tx=el("text",{x:X(t),y:Y(0)+18,"text-anchor":"middle","font-size":11,fill:"#5b667a"});tx.textContent=t;svg.appendChild(tx);}
+  // threshold marker
+  svg.appendChild(el("line",{x1:X(CUT),y1:Y(0),x2:X(CUT),y2:mT,stroke:"#d94801","stroke-width":1.3,"stroke-dasharray":"4 3"}));
+  const tt=el("text",{x:X(CUT)-4,y:mT+10,"text-anchor":"end","font-size":10.5,fill:"#b45309","font-weight":700});
+  tt.textContent="atrophy ≤ −1.645";svg.appendChild(tt);
+  // patient
+  const wc=Math.max(x0,Math.min(x1,w));
+  svg.appendChild(el("line",{x1:X(wc),y1:Y(0),x2:X(wc),y2:Y(phi(wc)),stroke:"#111827","stroke-width":2}));
+  svg.appendChild(el("circle",{cx:X(wc),cy:Y(phi(wc)),r:6.5,fill:"#111827",stroke:"#fff","stroke-width":2}));
+  const lab=el("text",{x:X(wc),y:Y(phi(wc))-11,"text-anchor":"middle","font-size":12.5,fill:"#111827","font-weight":800});
+  lab.textContent="W = "+w.toFixed(2);svg.appendChild(lab);
+}
+
+/* ---------- controls ---------- */
+let male=false;
+function calc(){
+  const age=+document.getElementById("age").value, tiv=+document.getElementById("tiv").value,
+        ch4=+document.getElementById("ch4").value;
+  const warn=document.getElementById("warn");let msgs=[];
+  if(age<40||age>95)msgs.push("Age is outside the range where the model was well sampled (40–95 y).");
+  if(tiv<1000||tiv>2000)msgs.push("TIV looks unusual; check units are mL.");
+  if(ch4<=0||ch4>0.6)msgs.push("Ch4 volume looks out of range; check units are mL.");
+  warn.style.display=msgs.length?"block":"none";warn.textContent=msgs.join(" ");
+  if(!(age>0&&tiv>0&&ch4>0)){return;}
+  const pred=predict(age,male,tiv), sig=sigma(age,male), w=(ch4-pred)/sig, pct=Phi(w)*100;
+  document.getElementById("wval").textContent=(w>=0?"+":"")+w.toFixed(2);
+  const atr=w<=CUT;
+  const badge=document.getElementById("badge");
+  badge.className="badge "+(atr?"atr":"norm");
+  badge.textContent=atr?"Ch4 atrophy":"within normal range";
+  document.getElementById("subline").textContent=
+    atr?"At or below the a priori 5th-centile cut (W ≤ −1.645)."
+       :"Above the a priori atrophy cut (W ≤ −1.645).";
+  document.getElementById("pred").textContent=pred.toFixed(3)+" mL";
+  document.getElementById("pct").textContent=pct.toFixed(1)+"th";
+  document.getElementById("dev").textContent=(w>=0?"+":"")+w.toFixed(2)+" SD";
+  // interpretation
+  const emp=w<=CUT_EMP;
+  document.getElementById("interp").innerHTML=
+    "This Ch4 volume sits at about the <b>"+pct.toFixed(0)+"th percentile</b> of the clinically normal reference "+
+    "distribution (i.e., "+(pct<50?(100-pct).toFixed(0)+"% of cognitively healthy adults have a larger Ch4":
+    pct.toFixed(0)+"% of cognitively healthy adults have a smaller Ch4")+"). "+
+    (atr?"It meets the a priori atrophy definition":"It does not meet the a priori atrophy definition")+
+    " (empirical cut W ≤ −1.681: "+(emp?"also met":"not met")+"). "+
+    "This is a research estimate of deviation from the normative reference, not a diagnosis.";
+  drawBell(w);
+}
+document.querySelectorAll("#sex button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("#sex button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");male=b.dataset.v==="M";calc();}));
+[["age","ageR"],["tiv","tivR"],["ch4","ch4R"]].forEach(([n,r])=>{
+  const N=document.getElementById(n), R=document.getElementById(r);
+  N.addEventListener("input",()=>{if(N.value!=="")R.value=N.value;calc();});
+  R.addEventListener("input",()=>{N.value=R.value;calc();});
+});
+// legend
+calc();
+</script>
+</body>
+</html>
