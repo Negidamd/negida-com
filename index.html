@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Negida, MD, PhD | Multimodal Imaging Biomarkers of PD and ADRD</title>
     <meta name="description" content="Ahmed Negida, MD, PhD, translational neuroscientist at VCU: multimodal imaging biomarkers of cholinergic vulnerability to stratify PD and dementia trials.">
-    <meta name="keywords" content="Ahmed Negida, Parkinson's Disease, Lewy Body Dementia, Neuroimaging, Precision Medicine, Machine Learning, Clinical Research, VCU">
+    <meta name="keywords" content="Ahmed Negida, Parkinson's Disease, Lewy Body Dementia, Neuroimaging, Precision Medicine, Clinical Research, VCU">
     <meta name="author" content="Ahmed Negida">
     <link rel="canonical" href="https://negidamd.github.io/">
 
@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://negidamd.github.io/assets/social-card.jpg">
     <meta name="twitter:image:alt" content="Ahmed Negida, MD, PhD. Translational Neuroscientist: multimodal imaging biomarkers of PD and ADRD">
 
-    <meta name="theme-color" content="#162e51">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Fonts — Public Sans (USWDS / NIH official) + Merriweather (USWDS serif), self-hosted variable fonts (SIL OFL, see assets/fonts/) -->
     <link rel="preload" href="assets/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -553,7 +553,7 @@
             .metrics-inner { justify-content: center; }
             #career-map { height: 220px; }
             .lecture-entry { grid-template-columns: 1fr; }
-            .lecture-venue { display: none; }
+            .lecture-venue { text-align: left; }
             .contact-grid { grid-template-columns: 1fr; }
         }
 
@@ -674,66 +674,6 @@
         @media (max-width: 560px) { .pillar-stats strong { font-size: 1.05rem; min-width: 4.9rem; } }
         @media (prefers-reduced-motion: reduce) { .pillar:hover { transform: none; } }
 
-        /* ---------- Ch4 explorer ---------- */
-        .ch4x { margin: .5rem 0 0; background: radial-gradient(120% 140% at 0% 0%, #13294b 0%, #0a1426 55%, #060b16 100%); color: #e8edf5;
-            border-radius: 14px; padding: 1.5rem 1.5rem 1.1rem; box-shadow: 0 18px 50px rgba(8,20,40,.28); position: relative; overflow: hidden; }
-        .ch4x::before { content: ''; position: absolute; width: 420px; height: 420px; right: -120px; top: -160px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(253,141,60,.22), transparent 65%); animation: ch4xGlow 9s ease-in-out infinite alternate; pointer-events: none; }
-        @keyframes ch4xGlow { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,40px) scale(1.15); } }
-        .ch4x-head { position: relative; max-width: 640px; margin-bottom: 1.1rem; }
-        .ch4x-kicker { font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: var(--heat-1); display: inline-flex; align-items: center; gap: .45rem; }
-        .ch4x-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--heat-2); box-shadow: 0 0 0 0 rgba(253,141,60,.7); animation: ch4xPing 1.8s infinite; }
-        @keyframes ch4xPing { 0% { box-shadow: 0 0 0 0 rgba(253,141,60,.7); } 80%,100% { box-shadow: 0 0 0 9px rgba(253,141,60,0); } }
-        .ch4x-head h3 { font-family: var(--font-serif); font-size: 1.2rem; color: #fff; margin: .35rem 0 .35rem; line-height: 1.3; }
-        .ch4x-head p { font-size: .85rem; color: #aebbd0; line-height: 1.6; }
-        .ch4x-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .75fr) minmax(0, 1fr); gap: 1rem; align-items: stretch; position: relative; }
-        .ch4x-view { position: relative; margin: 0; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.08);
-            transition: border-color .3s ease, box-shadow .3s ease; }
-        .ch4x-view.is-hot { border-color: rgba(253,141,60,.65); box-shadow: 0 0 0 1px rgba(253,141,60,.25), 0 0 26px rgba(227,26,28,.25); }
-        .ch4x-view canvas { display: block; width: 100%; height: auto; cursor: crosshair; touch-action: none; }
-        .ch4x-view[data-view="coronal"] canvas { aspect-ratio: 147 / 148; }
-        .ch4x-view[data-view="axial"] canvas { aspect-ratio: 147 / 184; }
-        .ch4x-view[data-view="sagittal"] canvas { aspect-ratio: 184 / 148; }
-        .ch4x-view canvas:focus-visible { outline: 2px solid var(--heat-1); outline-offset: -2px; }
-        .ch4x-view figcaption { position: absolute; left: .6rem; bottom: .45rem; font-size: .68rem; letter-spacing: .04em; color: #cfd8e6; background: rgba(0,0,0,.45); padding: .1rem .45rem; border-radius: 4px; pointer-events: none; }
-        .ch4x-lr { position: absolute; top: .45rem; font-size: .7rem; font-weight: 800; color: rgba(255,255,255,.55); pointer-events: none; }
-        .ch4x-l { left: .6rem; } .ch4x-r { right: .6rem; }
-        .ch4x-side { display: grid; grid-template-rows: auto auto; gap: 1rem; align-content: start; }
-        .ch4x-info { display: flex; flex-direction: column; gap: .7rem; }
-        .ch4x-readout { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 10px; padding: .8rem .9rem; }
-        .ch4x-coord { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; color: #cfd8e6; }
-        .ch4x-prob-label { font-size: .8rem; color: #aebbd0; margin-top: .25rem; }
-        .ch4x-prob-label strong { color: #fff; font-size: 1.15rem; margin-left: .3rem; font-variant-numeric: tabular-nums; }
-        .ch4x-bar { height: 6px; border-radius: 6px; background: rgba(255,255,255,.08); margin-top: .45rem; overflow: hidden; }
-        .ch4x-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #ffffcc, #fed976, #fd8d3c, #e31a1c, #800026); background-size: 280px 100%; transition: width .25s var(--ease-out); }
-        .ch4x-region { all: unset; box-sizing: border-box; display: flex; gap: .7rem; align-items: flex-start; padding: .7rem .8rem; border-radius: 10px; cursor: pointer;
-            border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.03); transition: background .3s ease, border-color .3s ease, transform .3s var(--ease-out); }
-        .ch4x-region:hover, .ch4x-region.is-active, .ch4x-region:focus-visible { background: rgba(255,255,255,.08); transform: translateX(3px); }
-        .ch4x-region[data-region="ch4"].is-active, .ch4x-region[data-region="ch4"]:hover { border-color: rgba(253,141,60,.7); }
-        .ch4x-region[data-region="ch123"].is-active, .ch4x-region[data-region="ch123"]:hover { border-color: rgba(90,174,97,.8); }
-        .ch4x-region strong { display: block; font-size: .82rem; color: #fff; }
-        .ch4x-region small { display: block; font-size: .74rem; color: #aebbd0; line-height: 1.5; margin-top: .15rem; }
-        .ch4x-swatch { flex: none; width: 14px; height: 14px; border-radius: 4px; margin-top: .2rem; transition: transform .3s var(--ease-out), box-shadow .3s ease; }
-        .ch4x-sw-ch4 { background: linear-gradient(135deg, #fed976, #e31a1c); }
-        .ch4x-sw-ch123 { background: transparent; border: 2px solid #5aae61; }
-        .ch4x-region.is-active .ch4x-sw-ch4 { transform: scale(1.25); box-shadow: 0 0 14px #fd8d3c; }
-        .ch4x-region.is-active .ch4x-sw-ch123 { transform: scale(1.25); background: #1B7837; box-shadow: 0 0 14px #5aae61; }
-        .ch4x-scale { display: flex; align-items: center; gap: .5rem; font-size: .68rem; color: #8d9bb2; margin-top: auto; }
-        .ch4x-scale i { flex: 1; height: 6px; border-radius: 6px; background: linear-gradient(90deg, #ffffcc, #fed976, #feb24c, #fd8d3c, #fc4e2a, #e31a1c, #bd0026, #800026); }
-        .ch4x-controls { display: flex; align-items: center; gap: .7rem; margin-top: 1rem; position: relative; }
-        .ch4x-play { all: unset; width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 50%; background: var(--heat-2); color: #1b1b1b; font-size: .75rem; cursor: pointer; transition: transform .2s var(--ease-out), background .2s ease; flex: none; }
-        .ch4x-play:hover { transform: scale(1.1); background: var(--heat-1); }
-        .ch4x-play:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-        .ch4x-end { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #8d9bb2; flex: none; }
-        .ch4x-controls input[type=range] { flex: 1; min-width: 0; accent-color: #fd8d3c; cursor: pointer; }
-        .ch4x-zoom { all: unset; flex: none; cursor: pointer; font-size: .72rem; font-weight: 700; letter-spacing: .03em; color: #fed976; border: 1px solid rgba(254,217,118,.5); padding: .3rem .75rem; border-radius: 999px; transition: background .2s ease, color .2s ease, transform .2s var(--ease-out); }
-        .ch4x-zoom:hover, .ch4x-zoom:focus-visible { background: #fed976; color: #1b1b1b; transform: translateY(-1px); }
-        .ch4x-src { text-align: right; } .ch4x-src { font-size: .68rem; color: #7f8ca3; line-height: 1.55; margin-top: .8rem; position: relative; }
-        .ch4x-tip { position: fixed; z-index: 1200; pointer-events: none; background: rgba(6,11,22,.92); color: #fff; border: 1px solid rgba(253,141,60,.6);
-            font-size: .72rem; padding: .3rem .55rem; border-radius: 6px; transform: translate(14px, 14px); opacity: 0; transition: opacity .15s ease; white-space: nowrap; font-variant-numeric: tabular-nums; }
-        .ch4x-tip.on { opacity: 1; }
-
-
         .nav-links a { white-space: nowrap; }
         .hero-content .affiliation { margin-bottom: .55rem; }
         .coe-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
@@ -797,17 +737,6 @@
         @media (max-width: 900px) { .fw-grid { grid-template-columns: 1fr; } }
         @media (max-width: 560px) { .conf-photos { grid-template-columns: 1fr; } .conf-photo img { height: 210px; } }
         @media (prefers-reduced-motion: reduce) { .fw-item:hover, .fw-lightbox[open] { transform: none; animation: none; } .fw-media img, .conf-photo img { transition: none; } }
-        @media (max-width: 900px) {
-            .ch4x-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr); }
-            .ch4x-info { grid-column: 1 / -1; }
-        }
-        @media (max-width: 560px) {
-            .ch4x { padding: 1.1rem 1rem .9rem; border-radius: 10px; }
-            .ch4x-grid { grid-template-columns: 1fr; }
-            .ch4x-side { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-            .ch4x-end { display: none; }
-            .ch4x-controls { gap: .5rem; }
-        }
         @media (prefers-reduced-motion: reduce) {
             .hero-content > *, .profile-photo { animation: none; }
             .reveal { opacity: 1; transform: none; transition: none; }
@@ -1115,7 +1044,6 @@
     </style>
 </head>
 <body>
-    <div class="scroll-progress" aria-hidden="true"></div>
     <a href="#main" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav role="navigation" aria-label="Main">
@@ -1167,7 +1095,7 @@
 
 
     <!-- Research Section -->
-    <section id="research" class="fade-in">
+    <section id="research">
         <div class="section-inner">
             <div class="section-header">
                 <h2>Research Program</h2>
@@ -1189,7 +1117,7 @@
             <div class="pillars">
                 <article class="pillar pillar-ch4">
                     <div class="pillar-main">
-                        <h4>1#: In vivo imaging of cholinergic integrity</h4>
+                        <h4>1. In vivo imaging of cholinergic integrity</h4>
                         <p class="pillar-text">Ch4 is small and difficult to delineate with conventional MRI volumetry. Using probabilistic cytoarchitectonic maps, I quantified Ch4 integrity from standard MRI and identified a subtype of PD mild cognitive impairment (PD-MCI) defined by MRI evidence of Ch4 degeneration. I then added diffusion MRI, estimating Ch4 free water with the regularized bi-tensor model of <a href="https://doi.org/10.1002/mrm.22055" target="_blank" rel="noopener">Pasternak et al. (2009)</a>. In resting-state fMRI, Ch4 connectivity with the attention-related cingulo-opercular network mediated the relationship between Ch4 degeneration and cognition, a candidate circuit link to cognitive impairment.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank" rel="noopener"><em>Parkinsonism Relat Disord</em>, 2025</a><a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank" rel="noopener">medRxiv, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="/ch4-subtyper/" target="_blank" rel="noopener">Ch4 Subtyper</a><a href="https://ch4subtyping.negida.com" target="_blank" rel="noopener">Ch4 Subtyping Tool</a></div></div>
@@ -1198,7 +1126,7 @@
 
                 <article class="pillar pillar-ch4">
                     <div class="pillar-main">
-                        <h4>2#: EEG Signature of Lewy Body Dementia</h4>
+                        <h4>2. EEG signature of Lewy body dementia</h4>
                         <p class="pillar-text">EEG is inexpensive, repeatable, and widely available, and cognitive fluctuations in Lewy body dementia are commonly attributed to cholinergic degeneration. In the NIH R21 AG077469 study, I analyzed resting-state EEG in patients with Lewy body disease and built a machine-learning model that detects cognitive fluctuations. Building on this work, I contributed pilot data and the multimodal Ch4 MRI pipeline to a funded mechanistic R01 on cholinergic degeneration and cognitive fluctuations, which currently supports my position.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank" rel="noopener"><em>Alzheimer's Res Ther</em>, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="https://github.com/Negidamd/negida-fe-toolbox" target="_blank" rel="noopener">EEG feature toolbox</a></div></div>
@@ -1207,7 +1135,7 @@
 
                 <article class="pillar pillar-sub">
                     <div class="pillar-main">
-                        <h4>3#: Modeling Disease Progression</h4>
+                        <h4>3. Modeling disease progression</h4>
                         <p class="pillar-text">Heterogeneity in progression also complicates disease-modifying trials. Using PPMI, I modeled ten-year progression milestones across clinical, pathological, and data-driven PD subtypes; diffuse-malignant PD progressed fastest. To identify these patients prospectively, I developed disease-duration&ndash;specific percentiles for the first five years after diagnosis, released an open-source subtype calculator, and characterized the genetic associations of these subtypes. This work converges with my imaging research: patients with PD-MCI and MRI evidence of Ch4 degeneration overlap with those classified as diffuse-malignant PD.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank" rel="noopener"><em>npj Parkinson's Dis</em>, 2026</a><a href="https://doi.org/10.1002/mdc3.70740" target="_blank" rel="noopener"><em>Mov Disord Clin Pract</em>, 2026</a><a href="https://doi.org/10.3390/genes17040449" target="_blank" rel="noopener"><em>Genes</em>, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="/data-driven-pd-subtype-calculator/" target="_blank" rel="noopener">Percentile calculator</a><a href="https://pdsubtyping.negida.com" target="_blank" rel="noopener">PD Subtyping Tool</a></div></div>
@@ -1228,7 +1156,7 @@
                     <div class="fw-text">
                         <h3>Low Ch4 gray-matter density marks a more severe, faster-declining PD-MCI group</h3>
                         <p>Using voxel-based morphometry and probabilistic Ch4 maps in 162 PPMI participants with PD-MCI, we identified 40 with low Ch4 density (below &minus;1 SD). They had worse MDS-UPDRS, autonomic, and olfactory scores and reached cognitive milestones sooner (log-rank <i>p</i>&nbsp;=&nbsp;0.002). The classifier is released as an open research tool.</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank"><em>Parkinsonism &amp; Related Disorders</em>, 2025 &rarr;</a></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank" rel="noopener"><em>Parkinsonism &amp; Related Disorders</em>, 2025 &rarr;</a></p>
                         <p class="fw-lic" style="margin-left:0;">Illustration: Julich-Brain Ch4 on the MNI152 template (not a figure from the article).</p>
                     </div>
                 </article>
@@ -1239,7 +1167,7 @@
                     <div class="fw-text">
                         <h3>Ch4 gray-matter density and free water are independently associated with cognition in PD (preprint)</h3>
                         <p>We combined T1-weighted and free-water diffusion MRI in 92 participants (controls, PD-NC, PD-MCI, PDD). Ch4 gray-matter density was lowest and free water highest in PDD. Only these two Ch4 measures were independently associated with cognition, and together they separated PDD from PD without dementia (exploratory AUC&nbsp;0.93).</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank">medRxiv preprint, 2026 &rarr;</a></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank" rel="noopener">medRxiv preprint, 2026 &rarr;</a></p>
                     </div>
                 </article>
                 <article class="fw-item" data-method="ch4" data-status="ongoing">
@@ -1258,7 +1186,7 @@
                     <div class="fw-text">
                         <h3>Slower resting EEG rhythms are associated with cognitive fluctuations in Lewy body disease</h3>
                         <p>Eyes-closed resting EEG in 53 patients across the Lewy body spectrum. Patients with fluctuations had lower dominant frequency, dominant-alpha prevalence, and individual alpha peak frequency after adjusting for age, sex, and MoCA; an elastic-net model detected fluctuations with AUC&nbsp;0.86. The topographic maps show mean dominant frequency at every electrode: about 6&ndash;7&nbsp;Hz in patients with fluctuations versus about 8&nbsp;Hz in those without.</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank"><em>Alzheimer's Research &amp; Therapy</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank" rel="noopener"><em>Alzheimer's Research &amp; Therapy</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
                     </div>
                 </article>
                 <article class="fw-item" data-method="subtyping" data-status="published">
@@ -1268,7 +1196,7 @@
                     <div class="fw-text">
                         <h3>Diffuse-malignant PD progresses fastest; enrolling it halved required sample sizes in trial simulations</h3>
                         <p>Over 10 years of PPMI follow-up, we compared clinical, pathological, and data-driven subtypes on milestones across six functional domains using Cox regression. Diffuse-malignant patients reached 63.0% of milestones (PIGD 55.6%, body-first 54.0%), and in trial simulations enrolling them cut the required sample size by about 50%.</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank"><em>npj Parkinson's Disease</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0 &middot; cropped</span></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank" rel="noopener"><em>npj Parkinson's Disease</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0 &middot; cropped</span></p>
                     </div>
                 </article>
                 <article class="fw-item" data-method="subtyping" data-status="published">
@@ -1278,7 +1206,7 @@
                     <div class="fw-text">
                         <h3>Year-specific percentiles enable real-time PD subtyping for trial enrollment</h3>
                         <p>Percentile thresholds for motor, cognitive, RBD, and autonomic scores, set for each of the first 5 years after diagnosis (PPMI, N&nbsp;=&nbsp;1,030), classify patients prospectively each year. Diffuse-malignant PD reached a first progression milestone fastest (HR&nbsp;3.03, 95% CI 2.30&ndash;3.97, vs mild motor-predominant).</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.1002/mdc3.70740" target="_blank"><em>Mov Disord Clin Pract</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY-NC-ND 4.0</span></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.1002/mdc3.70740" target="_blank" rel="noopener"><em>Mov Disord Clin Pract</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY-NC-ND 4.0</span></p>
                     </div>
                 </article>
                 <article class="fw-item" data-method="subtyping" data-status="published">
@@ -1288,7 +1216,7 @@
                     <div class="fw-text">
                         <h3><i>LRRK2</i> and <i>GBA1</i> map onto different PD subtypes</h3>
                         <p>Variant frequencies were compared across four subtyping frameworks in 1,390 genotyped PPMI patients with FDR correction. <i>LRRK2</i> variants were enriched in &alpha;&#8209;synuclein SAA-negative PD (37.1% vs 10.2%) and <i>GBA1</i> variants in diffuse-malignant PD (14.0% vs 5.9% in mild motor-predominant); the tremor/gait split showed no signal that survived correction.</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.3390/genes17040449" target="_blank"><em>Genes</em> (Basel), 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.3390/genes17040449" target="_blank" rel="noopener"><em>Genes</em> (Basel), 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
                     </div>
                 </article>
                 <article class="fw-item" data-method="global" data-status="published">
@@ -1303,7 +1231,7 @@
                     <div class="fw-text">
                         <h3>TBI mortality across 29 countries does not follow a development gradient</h3>
                         <p>This prospective cohort enrolled 2,165 patients with operative or nonoperative TBI at 100 hospitals. In inverse-probability-weighted mixed-effects models, mortality showed no dose-response with the Human Development Index; injury mechanism, demographics, and prehospital access drove the disparities. Role: co-founder of the Global NeuroSurg Research Collaborative; co-principal investigator, steering committee, and writing group.</p>
-                        <p class="fw-ref"><a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank"><em>Nature Medicine</em>, 2026 &rarr;</a></p>
+                        <p class="fw-ref"><a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank" rel="noopener"><em>Nature Medicine</em>, 2026 &rarr;</a></p>
                     </div>
                 </article>
             </div>
@@ -1312,11 +1240,6 @@
     </section>
 
 
-    <dialog class="fw-lightbox" id="fw-lightbox" aria-label="Enlarged figure">
-        <button type="button" class="fw-close" aria-label="Close">&times;</button>
-        <img alt="">
-        <p class="fw-caption"></p>
-    </dialog>
 
     <section id="education">
         <div class="section-inner">
@@ -1356,7 +1279,7 @@
                     <div class="inst-badge" style="background: #000000;" title="VCU">VCU</div>
                     <div class="timeline-date">2023 &ndash; present</div>
                     <h3>Postdoctoral Scholar</h3>
-                    <h4>VCU Parkinson's & Movement Disorders Center, Department of Neurology &middot; Richmond, VA</h4>
+                    <h4>VCU Parkinson's and Movement Disorders Center, Department of Neurology &middot; Richmond, VA</h4>
                     <ul>
                         <li>Built a multimodal Ch4 MRI signature (T1-weighted gray-matter density and diffusion free water), now extended with resting-state fMRI across PD, DLB, and AD, and identified a PD-MCI subtype with MRI evidence of cholinergic nucleus 4 degeneration</li>
                         <li>Developed EEG-based biomarkers for cognitive fluctuations in Lewy body dementia, combining NASA's Psychomotor Vigilance Test with resting-state and task-based EEG</li>
@@ -1466,20 +1389,8 @@
                     <p class="pub-cite"><strong class="me">Negida A</strong>, Zaman A, Wyman-Chick KA, Hallak R, Miller-Patterson C, Berman BD, et al. Multimodal MRI characterization of nucleus basalis of Meynert degeneration: structural atrophy and free-water diffusion in Parkinson's disease cognitive impairment. medRxiv. 2026. <a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank" rel="noopener">doi:10.64898/2026.06.08.26355183</a></p>
                 </div>
                 <div class="pub-entry">
-                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-ad">Alzheimer's disease</span><span class="ptag t-note">Preprint</span></div>
-                    <p class="pub-cite"><strong class="me">Negida A</strong>; for the Alzheimer's Disease Neuroimaging Initiative. Alpha-synuclein co-pathology amplifies amyloid-driven tau accumulation across Braak stages without modifying tau-cognition associations. bioRxiv. 2026. <a href="https://doi.org/10.64898/2026.03.31.713304" target="_blank" rel="noopener">doi:10.64898/2026.03.31.713304</a></p>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-dem">Dementia</span><span class="ptag t-note">Preprint</span></div>
-                    <p class="pub-cite"><strong class="me">Negida A</strong>. Dose-dependent acceleration of cognitive decline by co-occurring neuropathologies in autopsy-confirmed neurodegenerative disease. Research Square. 2026. <a href="https://doi.org/10.21203/rs.3.rs-9188042/v1" target="_blank" rel="noopener">doi:10.21203/rs.3.rs-9188042/v1</a></p>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-note">Preprint</span></div>
-                    <p class="pub-cite"><strong class="me">Negida A</strong>. Which autonomic symptoms can predict cognitive progression milestones in Parkinson's disease? An item-level SCOPA-AUT analysis. Research Square. 2026. <a href="https://doi.org/10.21203/rs.3.rs-9129721/v1" target="_blank" rel="noopener">doi:10.21203/rs.3.rs-9129721/v1</a></p>
-                </div>
-                <div class="pub-entry">
                     <div class="pub-tags"><span class="ptag t-role">Co-principal investigator</span><span class="ptag t-tbi">Traumatic brain injury</span></div>
-                    <p class="pub-cite">. Nugent JG, Tan H, Stedelin B, et al.; Negida A, Raslan AM; on behalf of the GNS-I Collaborators. Traumatic brain injury outcomes across human development index strata in 29 countries. Nature Medicine (Impact Factor = 52.5). 2026. <a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank" rel="noopener">doi:10.1038/s41591-026-04600-6</a></p>
+                    <p class="pub-cite">Nugent JG, Tan H, Stedelin B, et al.; Negida A, Raslan AM; on behalf of the GNS-I Collaborators. Traumatic brain injury outcomes across human development index strata in 29 countries. Nature Medicine (Impact Factor = 52.5). 2026. <a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank" rel="noopener">doi:10.1038/s41591-026-04600-6</a></p>
                 </div>
                 <div class="pub-entry">
                     <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
@@ -1551,7 +1462,7 @@
                 </div>
                 <div class="pub-entry">
                     <div class="pub-tags"><span class="ptag t-epi">Epilepsy</span><span class="ptag t-nm">Neuromodulation</span></div>
-                    <p class="pub-cite">Pichardo-Rojas PS, Pichardo-Rojas D, Zarate-Duran CA, ..., <strong class="me">Negida A</strong>, ..., Milanese V. Stereoelectroencephalography-guided radiofrequency thermocoagulation for drug-resistant epilepsy: A meta-analysis. Epilepsia. 2025;66(10):3602- 3620. <a href="https://pubmed.ncbi.nlm.nih.gov/40569267/" target="_blank" rel="noopener">PMID: 40569267</a></p>
+                    <p class="pub-cite">Pichardo-Rojas PS, Pichardo-Rojas D, Zarate-Duran CA, ..., <strong class="me">Negida A</strong>, ..., Milanese V. Stereoelectroencephalography-guided radiofrequency thermocoagulation for drug-resistant epilepsy: A meta-analysis. Epilepsia. 2025;66(10):3602-3620. <a href="https://pubmed.ncbi.nlm.nih.gov/40569267/" target="_blank" rel="noopener">PMID: 40569267</a></p>
                 </div>
                 <div class="pub-entry">
                     <div class="pub-tags"><span class="ptag t-dys">Dystonia</span><span class="ptag t-nm">Neuromodulation</span></div>
@@ -1749,10 +1660,19 @@
                     <div class="tool-meta">Parkinsonism & Related Disorders, 2025</div>
                     <p>Imaging-based subtype tool for PD-MCI using cholinergic nucleus 4 (NBM) gray matter density. Helps identify patients with cholinergic vulnerability markers for treatment selection.</p>
                     <div class="tool-links-inline">
-                        <a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank">Paper &rarr;</a>
-                        <a href="https://ch4subtyping.negida.com" target="_blank">Online Tool &rarr;</a>
-                        <a href="https://negidamd.github.io/ch4-subtyper/" target="_blank">Ch4 Subtyper (open source) &rarr;</a>
-                        <a href="https://github.com/Negidamd/ch4-subtyper" target="_blank">Source on GitHub &rarr;</a>
+                        <a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank" rel="noopener">Paper &rarr;</a>
+                        <a href="https://ch4subtyping.negida.com" target="_blank" rel="noopener">Online Tool &rarr;</a>
+                        <a href="https://negidamd.github.io/ch4-subtyper/" target="_blank" rel="noopener">Ch4 Subtyper (open source) &rarr;</a>
+                        <a href="https://github.com/Negidamd/ch4-subtyper" target="_blank" rel="noopener">Source on GitHub &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="tool-entry">
+                    <h4>Ch4 Normative Calculator</h4>
+                    <div class="tool-meta">Structural MRI &middot; Research demonstrator</div>
+                    <p>Converts an individual&rsquo;s Ch4 gray-matter volume (CAT12, Julich-Brain Ch4) into a W-score relative to cognitively healthy adults of the same age, sex, and head size. Runs in the browser; research and educational use only.</p>
+                    <div class="tool-links-inline">
+                        <a href="/ch4-norm/" target="_blank" rel="noopener">Online Tool &rarr;</a>
                     </div>
                 </div>
 
@@ -1761,7 +1681,7 @@
                     <div class="tool-meta">EEG Analysis &middot; Open Source</div>
                     <p>MATLAB toolbox for dominant frequency-based EEG feature extraction, released from the NIH R21 AG077469 study of cognitive fluctuations in Lewy body disease. Automated spectral analysis and biomarker pipelines for AD, LBD, and PD cohorts.</p>
                     <div class="tool-links-inline">
-                        <a href="https://github.com/Negidamd/negida-fe-toolbox" target="_blank">GitHub &rarr;</a>
+                        <a href="https://github.com/Negidamd/negida-fe-toolbox" target="_blank" rel="noopener">GitHub &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1773,10 +1693,10 @@
                     <div class="tool-meta">Mov Disord Clin Pract, 2026 &middot; npj Parkinson's Disease, 2026</div>
                     <p>Clinical, pathological, and data-driven subtyping of Parkinson's disease. Disease-duration&ndash;specific percentiles (PPMI, N&nbsp;=&nbsp;1,030) classify patients as diffuse-malignant, intermediate, or mild motor-predominant for real-time trial stratification.</p>
                     <div class="tool-links-inline">
-                        <a href="https://negidamd.github.io/data-driven-pd-subtype-calculator/" target="_blank">Percentile Calculator &rarr;</a>
-                        <a href="https://pdsubtyping.negida.com" target="_blank">Online Tool &rarr;</a>
-                        <a href="https://doi.org/10.1002/mdc3.70740" target="_blank">Percentiles paper &rarr;</a>
-                        <a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank">Milestones paper &rarr;</a>
+                        <a href="https://negidamd.github.io/data-driven-pd-subtype-calculator/" target="_blank" rel="noopener">Percentile Calculator &rarr;</a>
+                        <a href="https://pdsubtyping.negida.com" target="_blank" rel="noopener">Online Tool &rarr;</a>
+                        <a href="https://doi.org/10.1002/mdc3.70740" target="_blank" rel="noopener">Percentiles paper &rarr;</a>
+                        <a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank" rel="noopener">Milestones paper &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1788,7 +1708,7 @@
                     <div class="tool-meta">Diffusion MRI &middot; Open Source</div>
                     <p>DTI-ALPS pipeline for perivascular (glymphatic) diffusivity that uses ANTs SyN and T1-based boundary-based registration to correct ROI misplacement under high head rotation. Validated against the reference alps.sh toolbox in 106 diffusion-MRI datasets (r&nbsp;=&nbsp;0.96 for mean ALPS); MIT-licensed.</p>
                     <div class="tool-links-inline">
-                        <a href="https://github.com/Negidamd/Negida-DTI-ALPS" target="_blank">GitHub &rarr;</a>
+                        <a href="https://github.com/Negidamd/Negida-DTI-ALPS" target="_blank" rel="noopener">GitHub &rarr;</a>
                     </div>
                 </div>
 
@@ -1797,7 +1717,7 @@
                     <div class="tool-meta">Deep Learning &middot; Open Source</div>
                     <p>Convolutional neural network for automated Parkinson's Disease detection from structural 3D T1-weighted MRI. End-to-end pipeline from preprocessing to classification with interpretability visualization.</p>
                     <div class="tool-links-inline">
-                        <a href="https://github.com/negidamd/CNN-PD-3D" target="_blank">GitHub &rarr;</a>
+                        <a href="https://github.com/negidamd/CNN-PD-3D" target="_blank" rel="noopener">GitHub &rarr;</a>
                     </div>
                 </div>
 
@@ -1806,8 +1726,8 @@
                     <div class="tool-meta">Movement Disorders, 2024</div>
                     <p>Online calculator for predicting striatal volumes in Huntington's Disease patients using demographic and clinical variables, enabling pre-screening for clinical trials of intrastriatal gene therapies.</p>
                     <div class="tool-links-inline">
-                        <a href="https://doi.org/10.1002/mds.29749" target="_blank">Paper &rarr;</a>
-                        <a href="https://concepcion388.softr.app" target="_blank">Online Tool &rarr;</a>
+                        <a href="https://doi.org/10.1002/mds.29749" target="_blank" rel="noopener">Paper &rarr;</a>
+                        <a href="https://concepcion388.softr.app" target="_blank" rel="noopener">Online Tool &rarr;</a>
                     </div>
                 </div>
 
@@ -1820,7 +1740,7 @@
                     <div class="tool-meta">BMC Medical Research Methodology, 2024 &middot; 12,000+ Users</div>
                     <p>Comprehensive statistical conversion tool for systematic reviews with 21 conversion functions including median/IQR to mean/SD, SEM to SD, and CI to SD for one and two groups.</p>
                     <div class="tool-links-inline">
-                        <a href="https://meta-analysis-accelerator.com" target="_blank">Online Tool &rarr;</a>
+                        <a href="https://ma-accelerator.com" target="_blank" rel="noopener">Online Tool &rarr;</a>
                     </div>
                 </div>
 
@@ -1829,7 +1749,7 @@
                     <div class="tool-meta">Comprehensive Meta-Analysis Platform</div>
                     <p>Full-featured platform for meta-analyses with statistical analysis and visualization. Supports standard meta-analysis, DTA, meta-regression, subgroup analysis, and publication bias assessment.</p>
                     <div class="tool-links-inline">
-                        <a href="https://meta-analysis.io" target="_blank">Online Tool &rarr;</a>
+                        <a href="https://meta-analysis.io" target="_blank" rel="noopener">Online Tool &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1978,12 +1898,12 @@
                     <strong>20+</strong> countries &nbsp;&middot;&nbsp;
                     <strong>2,500+</strong> active members
                 </p>
-                <p><a href="https://courses.negida.com" target="_blank">Visit Negida Academy &rarr;</a></p>
+                <p><a href="https://courses.negida.com" target="_blank" rel="noopener">Visit Negida Academy &rarr;</a></p>
             </div>
 
             <div class="teaching-block">
                 <h3>Global Research Training</h3>
-                <p>Most Academy trainees work in low- and middle-income countries in the Middle East, Africa, and South Asia. I developed the first neuroimaging analysis course in Arabic (MRI preprocessing, VBM, and fMRI with MATLAB/SPM12/CAT12), and in 2022 I provided free, specialized training to African medical students affected by the war in Ukraine; their work resulted in a peer-reviewed publication (<a href="https://pubmed.ncbi.nlm.nih.gov/38087277/" target="_blank">PMID: 38087277</a>). In the Global NeuroSurg Research Collaborative, investigators from low- and middle-income countries hold authorship and leadership roles.</p>
+                <p>Most Academy trainees work in low- and middle-income countries in the Middle East, Africa, and South Asia. I developed the first neuroimaging analysis course in Arabic (MRI preprocessing, VBM, and fMRI with MATLAB/SPM12/CAT12), and in 2022 I provided free, specialized training to African medical students affected by the war in Ukraine; their work resulted in a peer-reviewed publication (<a href="https://pubmed.ncbi.nlm.nih.gov/38087277/" target="_blank" rel="noopener">PMID: 38087277</a>). In the Global NeuroSurg Research Collaborative, investigators from low- and middle-income countries hold authorship and leadership roles.</p>
             </div>
 
             <div class="teaching-block">
@@ -2032,7 +1952,7 @@
 
             <h3 class="subsection-title">Research Network Leadership</h3>
             <div class="service-block">
-                <p><strong>Co-Founder &amp; Global Research Lead Coordinator</strong>, Global NeuroSurg Research Collaborative, Oregon Health &amp; Science University (2018&ndash;present). International network of 2,000+ investigators in 50+ countries; co-principal investigator, steering committee, and writing group of GNS-I, a prospective study of 2,165 patients with traumatic brain injury at 100 hospitals in 29 countries (<a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank"><em>Nature Medicine</em>, 2026</a>). Network PI: Ahmed M.T. Raslan, MD.</p>
+                <p><strong>Co-Founder &amp; Global Research Lead Coordinator</strong>, Global NeuroSurg Research Collaborative, Oregon Health &amp; Science University (2018&ndash;present). International network of 2,000+ investigators in 50+ countries; co-principal investigator, steering committee, and writing group of GNS-I, a prospective study of 2,165 patients with traumatic brain injury at 100 hospitals in 29 countries (<a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank" rel="noopener"><em>Nature Medicine</em>, 2026</a>). Network PI: Ahmed M.T. Raslan, MD.</p>
                 <p><strong>Regional Lead, North African Countries</strong>, Global PaedSurg Study, King's College London (2018&ndash;2020)</p>
                 <p><strong>National Lead, Egypt</strong>, GlobalSurg-I Study, Royal College of Surgeons, London (2014&ndash;2015); 27 hospitals</p>
             </div>
@@ -2042,17 +1962,17 @@
                 <h3>Guidelines Development</h3>
                 <p>Member, Education, Research, and Guidelines Development Committees, North American Neuromodulation Society (2023&ndash;present)</p>
                 <p>Member, European Association of Neurosurgical Societies Guidelines Committee</p>
-                <p>Lead Author, Global CHYSPR guidelines for spina bifida and hydrocephalus in low- and middle-income countries (<a href="https://www.chyspr.org" target="_blank">chyspr.org</a>), endorsed by 30+ global institutions</p>
+                <p>Lead Author, Global CHYSPR guidelines for spina bifida and hydrocephalus in low- and middle-income countries (<a href="https://www.chyspr.org" target="_blank" rel="noopener">chyspr.org</a>), endorsed by 30+ global institutions</p>
             </div>
             <div class="service-block">
                 <h3>Grant Review</h3>
-                <p>Ad hoc reviewer, VCU Parkinson's &amp; Movement Disorders Center Internal Pilot Grants (2025)</p>
+                <p>Ad hoc reviewer, VCU Parkinson's and Movement Disorders Center Internal Pilot Grants (2025)</p>
                 <p>Ad hoc reviewer, Wright Center for Clinical and Translational Research Pilot Grants (2025)</p>
             </div>
             <div class="service-block">
                 <h3>Editorial Service</h3>
                 <p><strong>Editorial Boards:</strong> Therapeutic Advances in Neurological Disorders; Frontiers in Neurology (Dementia, Neurodegenerative Diseases, Neurotrauma, Experimental Therapeutics); PLOS ONE; Current Neuropharmacology; Frontiers in Pain Research; Frontiers in Pediatrics; Medicine; Pain Research and Management</p>
-                <p><strong>Ad-hoc Reviewer:</strong> Nature Scientific Reports, BMJ JNNP, BMC Neurology, BMC Public Health, Frontiers in Medicine/Neuroscience/Pharmacology, World Neurosurgery, and more (<a href="https://www.webofscience.com/wos/author/record/1586553" target="_blank">150+ verified reviews on Web of Science</a>)</p>
+                <p><strong>Ad-hoc Reviewer:</strong> Nature Scientific Reports, BMJ JNNP, BMC Neurology, BMC Public Health, Frontiers in Medicine/Neuroscience/Pharmacology, World Neurosurgery, and more (<a href="https://www.webofscience.com/wos/author/record/1586553" target="_blank" rel="noopener">150+ verified reviews on Web of Science</a>)</p>
             </div>
             <div class="service-block">
                 <h3>Conference Service</h3>
@@ -2060,7 +1980,7 @@
             </div>
             <div class="service-block">
                 <h3>Professional Memberships</h3>
-                <p>International Parkinson's & Movement Disorder Society &middot; American Academy of Neurology &middot; International Neuromodulation Society &middot; North American Neuromodulation Society &middot; Sigma Xi Scientific Honor Society &middot; European Association of Neurosurgical Societies &middot; WFNS Global Neurosurgery Committee (Secretariat)</p>
+                <p>International Parkinson and Movement Disorder Society &middot; American Academy of Neurology &middot; International Neuromodulation Society &middot; North American Neuromodulation Society &middot; Sigma Xi Scientific Honor Society &middot; European Association of Neurosurgical Societies &middot; WFNS Global Neurosurgery Committee (Secretariat)</p>
             </div>
         </div>
     </section>
@@ -2108,9 +2028,9 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Ahmed Negida, MD, PhD &middot; Parkinson's &amp; Movement Disorders Center, Department of Neurology, Virginia Commonwealth University, Richmond, VA</p>
+        <p>&copy; 2026 Ahmed Negida, MD, PhD &middot; Parkinson's and Movement Disorders Center, Department of Neurology, Virginia Commonwealth University, Richmond, VA</p>
         <p style="margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.7; max-width: 680px; margin-left: auto; margin-right: auto;">A personal academic website &mdash; the tools and views presented here are the author's own and are not official products of, or endorsed by, Virginia Commonwealth University. Outside activities, including Negida Research Academy and the research platforms listed here, are disclosed and managed under institutional conflict-of-interest and outside-activity policies.</p>
-        <p style="margin-top: 0.4rem; font-size: 0.78rem; opacity: 0.7;">Last updated <span id="last-updated">September 2026</span></p>
+        <p style="margin-top: 0.4rem; font-size: 0.78rem; opacity: 0.7;">Last updated <span id="last-updated">October 2026</span></p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener">CV (PDF)</a></p>
     </footer>
 
@@ -2118,28 +2038,12 @@
         // ===== Navigation: mobile menu, "More" dropdown, smooth scroll =====
         const navLinks = document.querySelector('.nav-links');
         const mobileMenu = document.querySelector('.mobile-menu');
-        const dropdown = document.querySelector('.nav-dropdown');
-        const dropdownToggle = dropdown && dropdown.querySelector('.nav-dropdown-toggle');
-        function setDropdown(open) {
-            if (!dropdown) return;
-            dropdown.classList.toggle('open', open);
-            dropdownToggle.setAttribute('aria-expanded', open);
-        }
         function setMenu(open) {
             navLinks.classList.toggle('open', open);
             mobileMenu.setAttribute('aria-expanded', open);
-            if (!open) setDropdown(false);
         }
         mobileMenu.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
-        if (dropdown) {
-            dropdownToggle.addEventListener('click', () => setDropdown(!dropdown.classList.contains('open')));
-            dropdown.addEventListener('focusout', e => { if (!dropdown.contains(e.relatedTarget)) setDropdown(false); });
-            document.addEventListener('keydown', e => {
-                if (e.key === 'Escape' && dropdown.classList.contains('open')) { setDropdown(false); dropdownToggle.focus(); }
-            });
-        }
         document.addEventListener('click', e => {
-            if (dropdown && !dropdown.contains(e.target)) setDropdown(false);
             if (!e.target.closest('nav')) setMenu(false);
         });
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2177,385 +2081,10 @@
         if (location.hash) { const t0 = document.getElementById(location.hash.slice(1)); if (t0) openSection(t0); }
         addEventListener('hashchange', () => { const t1 = document.getElementById(location.hash.slice(1)); if (t1) openSection(t1); });
 
-        // ===== Fade-In Observer =====
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
-            });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-
-        // ===== Animated Counters =====
-        let metricsAnimated = false;
-        const metricsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !metricsAnimated) {
-                    metricsAnimated = true; animateCounters(); metricsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        const metricsBar = document.querySelector('.metrics-bar');
-        if (metricsBar) metricsObserver.observe(metricsBar);
-
-        function animateCounters() {
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            document.querySelectorAll('.metric-number[data-target]').forEach(counter => {
-                const target = parseInt(counter.dataset.target);
-                const suffix = counter.dataset.suffix || '';
-                if (reduceMotion) {
-                    counter.textContent = target.toLocaleString() + suffix;
-                    return;
-                }
-                const duration = 2000;
-                const startTime = performance.now();
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    counter.textContent = Math.floor(parseInt(counter.dataset.target) * eased).toLocaleString() + suffix;
-                    if (progress < 1) requestAnimationFrame(update);
-                }
-                requestAnimationFrame(update);
-            });
-        }
-
-        // ===== Active Nav Tracking =====
-        const sections = document.querySelectorAll('section[id]');
-        const allNavLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(s => { if (scrollY >= s.offsetTop - 100) current = s.id; });
-            allNavLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-            });
-        });
-
-        // ===== Motion layer: scroll progress + staggered reveals =====
-        (function motionLayer() {
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const bar = document.querySelector('.scroll-progress');
-            if (bar && !reduce) {
-                let ticking = false;
-                const upd = () => {
-                    const max = document.documentElement.scrollHeight - innerHeight;
-                    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, scrollY / max) : 0) + ')';
-                    ticking = false;
-                };
-                addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
-                requestAnimationFrame(upd);
-            }
-            if (reduce || !('IntersectionObserver' in window)) return;
-            const sel = '.fw-item, .conf-photo, .timeline-item, .tool-entry, .pub-entry, .grant-entry, .lecture-entry, .presentation-entry, .award-entry, .service-block, .teaching-block';
-            const els = document.querySelectorAll(sel);
-            els.forEach(el => el.classList.add('reveal'));
-            const io = new IntersectionObserver(entries => {
-                const hits = entries.filter(e => e.isIntersecting).map(e => e.target);
-                hits.forEach((el, i) => {
-                    el.style.setProperty('--i', Math.min(i, 8));
-                    el.classList.add('in');
-                    io.unobserve(el);
-                    setTimeout(() => el.style.setProperty('--i', 0), Math.min(i, 8) * 70 + 700);
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            els.forEach(el => io.observe(el));
-            // Fallback: anything already scrolled past is revealed immediately (fast scroll, anchor jumps, throttled tabs)
-            let pend = false;
-            const sweep = () => {
-                pend = false;
-                document.querySelectorAll('.reveal:not(.in), .fade-in:not(.visible)').forEach(el => {
-                    if (el.getBoundingClientRect().top < innerHeight) {
-                        el.classList.add(el.classList.contains('fade-in') ? 'visible' : 'in');
-                        if (el.classList.contains('reveal')) io.unobserve(el);
-                    }
-                });
-            };
-            addEventListener('scroll', () => { if (!pend) { pend = true; setTimeout(sweep, 150); } }, { passive: true });
-            addEventListener('load', sweep);
-            addEventListener('hashchange', () => setTimeout(sweep, 50));
-            [0, 300, 1200].forEach(t => setTimeout(sweep, t));
-        })();
-
-        // ===== Interactive Ch4 explorer (MNI152NLin2009cAsym + Julich-Brain Ch4) =====
-        (function ch4Explorer() {
-            const root = document.getElementById('ch4x');
-            if (!root) return;
-            const BASE = 'assets/ch4-explorer/';
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const $ = id => document.getElementById(id);
-
-            // YlOrRd lookup table (matplotlib stops)
-            const STOPS = [[255,255,204],[255,237,160],[254,217,118],[254,178,76],[253,141,60],[252,78,42],[227,26,28],[189,0,38],[128,0,38]];
-            const LUT = new Uint8ClampedArray(256 * 3);
-            for (let n = 0; n < 256; n++) {
-                const t = n / 255 * (STOPS.length - 1), i = Math.min(STOPS.length - 2, Math.floor(t)), f = t - i;
-                for (let c = 0; c < 3; c++) LUT[n * 3 + c] = STOPS[i][c] + (STOPS[i + 1][c] - STOPS[i][c]) * f;
-            }
-
-            const loadImg = src => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = BASE + src; });
-            const pixels = im => { const c = document.createElement('canvas'); c.width = im.width; c.height = im.height;
-                const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(im, 0, 0); return x.getImageData(0, 0, c.width, c.height).data; };
-
-            const start = () => Promise.all([
-                fetch(BASE + 'meta.json').then(r => r.json()),
-                loadImg('coronal_t1.jpg'), loadImg('coronal_lbl.png'),
-                loadImg('axial_t1.jpg'), loadImg('axial_lbl.png'),
-                loadImg('sagittal_t1.jpg'), loadImg('sagittal_lbl.png')
-            ]).then(([meta, cT1, cLb, aT1, aLb, sT1, sLb]) => init(meta, cT1, pixels(cLb), cLb.width, aT1, pixels(aLb), sT1, pixels(sLb)))
-              .catch(err => { root.querySelector('.ch4x-head p').textContent = 'The interactive viewer could not load in this browser.'; console.warn(err); });
-            // Fetch the template and atlas images only when the viewer nears the screen (~420 KB kept off the initial load)
-            if ('IntersectionObserver' in window) {
-                const near = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { near.disconnect(); start(); } }, { rootMargin: '600px 0px' });
-                near.observe(root);
-            } else start();
-
-            function init(meta, cT1, cLbl, cLblW, aT1, aLbl, sT1, sLbl) {
-                const [SX, SY, SZ] = meta.shape, A = meta.affine, PMAX = meta.pmax, C = meta.coronal;
-                const slices = C.slices, nS = slices.length;
-                const mni = (i, j, k) => [A[0][3] + i * A[0][0], A[1][3] + j * A[1][1], A[2][3] + k * A[2][2]].map(Math.round);
-                const peakIdx = slices.reduce((b, s, i) => Math.abs(s.y - meta.peak_mni[1]) < Math.abs(slices[b].y - meta.peak_mni[1]) ? i : b, 0);
-
-                const state = { Z: 1, Zt: 1, s: peakIdx, H: 0, Ht: 0, Q: 0, Qt: 0, cross: slices[peakIdx].j, pinned: null, playing: false, dir: 1, dirty: true };
-
-                function mkView(name, w, h, t1, lbl, lblStride, srcRect, toIJK) {
-                    const fig = root.querySelector('[data-view="' + name + '"]');
-                    const cv = fig.querySelector('canvas');
-                    const off = document.createElement('canvas'); off.width = w; off.height = h;
-                    const octx = off.getContext('2d'); const img = octx.createImageData(w, h);
-                    return { name, fig, cv, ctx: cv.getContext('2d'), w, h, t1, lbl, lblStride, srcRect, toIJK, off, octx, img, hover: null };
-                }
-                const views = [
-                    mkView('coronal', C.w, C.h, cT1, cLbl, cLblW, () => {
-                        const r = Math.floor(state.s / C.cols), c = state.s % C.cols;
-                        return { t: [c * C.W, r * C.H, C.W, C.H], lx: c * C.w, ly: r * C.h };
-                    }, (u, v) => [u, slices[state.s].j, SZ - 1 - v]),
-                    mkView('axial', meta.axial.w, meta.axial.h, aT1, aLbl, meta.axial.w, () => ({ t: [0, 0, aT1.width, aT1.height], lx: 0, ly: 0 }),
-                        (u, v) => [u, SY - 1 - v, meta.axial.index]),
-                    mkView('sagittal', meta.sagittal.w, meta.sagittal.h, sT1, sLbl, meta.sagittal.w, () => ({ t: [0, 0, sT1.width, sT1.height], lx: 0, ly: 0 }),
-                        (u, v) => [meta.sagittal.index, u, SZ - 1 - v])
-                ];
-                $('ch4x-zlab').textContent = 'z = ' + meta.axial.z + ' mm';
-                $('ch4x-xlab').textContent = 'x = ' + meta.sagittal.x + ' mm';
-                views.forEach(v => v.cv.style.aspectRatio = v.w + ' / ' + v.h);
-
-                const sample = (v, u, vv) => {
-                    const r = v.srcRect(), k = ((r.ly + vv) * v.lblStride + (r.lx + u)) * 4;
-                    return { brain: v.lbl[k] > 127, g: v.lbl[k + 1], ch123: v.lbl[k + 2] > 127 };
-                };
-
-                // visible window in label coords (coronal view can zoom toward Ch4)
-                const ZC = { u: -A[0][3] / A[0][0], v: SZ - 1 - (meta.peak_mni[2] - A[2][3]) };
-                function win(v) {
-                    const Z = v.name === 'coronal' ? state.Z : 1, ww = v.w / Z, hh = v.h / Z;
-                    const x0 = Math.max(0, Math.min(v.w - ww, ZC.u - ww / 2)), y0 = Math.max(0, Math.min(v.h - hh, ZC.v - hh * 0.55));
-                    return v.name === 'coronal' ? { x0, y0, ww, hh } : { x0: 0, y0: 0, ww: v.w, hh: v.h };
-                }
-
-                function buildOverlay(v) {
-                    const r = v.srcRect(), d = v.img.data, L = v.lbl, W = v.w, Hh = v.h, S = v.lblStride;
-                    const H = state.H, Q = state.Q;
-                    for (let y = 0; y < Hh; y++) for (let x = 0; x < W; x++) {
-                        const k = ((r.ly + y) * S + (r.lx + x)) * 4, o = (y * W + x) * 4;
-                        const g = L[k + 1], b = L[k + 2];
-                        if (g >= 18) {
-                            const nrm = g / 255;
-                            const t = Math.min(255, Math.round((0.10 + nrm * (0.48 + 0.42 * H)) * 255)) * 3;
-                            d[o] = LUT[t]; d[o + 1] = LUT[t + 1]; d[o + 2] = LUT[t + 2];
-                            d[o + 3] = Math.min(255, (0.35 + nrm * 0.9) * (0.8 + 0.2 * H) * 255);
-                        } else if (b > 127) {
-                            const edge = x === 0 || y === 0 || x === W - 1 || y === Hh - 1 ||
-                                L[k - 4 + 2] <= 127 || L[k + 4 + 2] <= 127 || L[k - S * 4 + 2] <= 127 || L[k + S * 4 + 2] <= 127;
-                            d[o] = 27 + 63 * Q; d[o + 1] = 120 + 54 * Q; d[o + 2] = 55 + 42 * Q;
-                            d[o + 3] = (edge ? 0.95 : 0.1 + 0.6 * Q) * 255;
-                        } else d[o + 3] = 0;
-                    }
-                    v.octx.putImageData(v.img, 0, 0);
-                }
-
-                function draw(v, now) {
-                    const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
-                    const cw = Math.max(1, Math.round(v.cv.clientWidth * dpr)), ch = Math.round(cw * v.h / v.w);
-                    if (v.cv.width !== cw || v.cv.height !== ch) { v.cv.width = cw; v.cv.height = ch; }
-                    const ctx = v.ctx, r = v.srcRect();
-                    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-                    const wv = win(v), su = r.t[2] / v.w;
-                    ctx.drawImage(v.t1, r.t[0] + wv.x0 * su, r.t[1] + wv.y0 * su, wv.ww * su, wv.hh * su, 0, 0, cw, ch);
-                    buildOverlay(v);
-                    ctx.save();
-                    const pulse = reduce ? 1 : 0.75 + 0.25 * Math.sin(now / 260);
-                    if (state.H > 0.02) { ctx.shadowColor = 'rgba(227,26,28,' + (0.85 * state.H) + ')'; ctx.shadowBlur = 24 * state.H * pulse * dpr; }
-                    else if (state.Q > 0.02) { ctx.shadowColor = 'rgba(90,174,97,' + (0.8 * state.Q) + ')'; ctx.shadowBlur = 18 * state.Q * pulse * dpr; }
-                    ctx.drawImage(v.off, wv.x0, wv.y0, wv.ww, wv.hh, 0, 0, cw, ch);
-                    ctx.restore();
-                    // linked cursor: coronal plane position on axial + sagittal
-                    ctx.save(); ctx.setLineDash([5 * dpr, 4 * dpr]); ctx.lineWidth = 1.2 * dpr; ctx.strokeStyle = 'rgba(254,217,118,.85)';
-                    if (v.name === 'axial') { const yy = (SY - 1 - state.cross + 0.5) / v.h * ch; ctx.beginPath(); ctx.moveTo(0, yy); ctx.lineTo(cw, yy); ctx.stroke(); }
-                    if (v.name === 'sagittal') { const xx = (state.cross + 0.5) / v.w * cw; ctx.beginPath(); ctx.moveTo(xx, 0); ctx.lineTo(xx, ch); ctx.stroke(); }
-                    ctx.restore();
-                    if (v.hover) {
-                        const hx = (v.hover.u + 0.5 - wv.x0) / wv.ww * cw, hy = (v.hover.v + 0.5 - wv.y0) / wv.hh * ch;
-                        ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = dpr;
-                        ctx.beginPath(); ctx.moveTo(hx, 0); ctx.lineTo(hx, ch); ctx.moveTo(0, hy); ctx.lineTo(cw, hy); ctx.stroke();
-                        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(hx, hy, 2.4 * dpr, 0, 6.283); ctx.fill(); ctx.restore();
-                    }
-                }
-
-                // ---- render loop (runs only while visible) ----
-                let inView = false, raf = 0, lastStep = 0;
-                function frame(now) {
-                    raf = 0;
-                    const target = state.pinned === 'ch4' ? 1 : state.Ht, qt = state.pinned === 'ch123' ? 1 : state.Qt;
-                    const k = reduce ? 1 : 0.14;
-                    state.H += (target - state.H) * k; state.Q += (qt - state.Q) * k;
-                    state.Z += (state.Zt - state.Z) * (reduce ? 1 : 0.09);
-                    const jt = slices[state.s].j; state.cross += (jt - state.cross) * (reduce ? 1 : 0.25);
-                    if (state.playing && now - lastStep > 120) {
-                        lastStep = now;
-                        let n = state.s + state.dir;
-                        if (n >= nS || n < 0) { state.dir *= -1; n = state.s + state.dir; }
-                        setSlice(n, true);
-                    }
-                    const animating = Math.abs(target - state.H) > 0.003 || Math.abs(qt - state.Q) > 0.003 || Math.abs(jt - state.cross) > 0.02 || Math.abs(state.Zt - state.Z) > 0.003 ||
-                        state.H > 0.02 || state.Q > 0.02 || state.playing;
-                    if (state.dirty || animating) { views.forEach(v => draw(v, now)); state.dirty = false; }
-                    if (inView && (animating || state.dirty)) raf = requestAnimationFrame(frame);
-                }
-                const kick = () => { state.dirty = true; if (!raf && inView) raf = requestAnimationFrame(frame); };
-
-                const slider = $('ch4x-slider'), playBtn = $('ch4x-play');
-                slider.max = nS - 1; slider.value = state.s;
-                function setSlice(n, fromPlay) {
-                    state.s = Math.max(0, Math.min(nS - 1, n));
-                    slider.value = state.s;
-                    $('ch4x-ylab').textContent = 'y = ' + slices[state.s].y.toString().replace('-', '−') + ' mm';
-                    if (!fromPlay) stop();
-                    kick();
-                }
-                function stop() { state.playing = false; playBtn.innerHTML = '&#9654;'; playBtn.setAttribute('aria-label', 'Play slice sweep'); }
-                function play() { state.playing = true; playBtn.innerHTML = '&#10074;&#10074;'; playBtn.setAttribute('aria-label', 'Pause slice sweep'); kick(); }
-                playBtn.addEventListener('click', () => state.playing ? stop() : play());
-                const zoomBtn = $('ch4x-zoom');
-                const setZoom = z => { state.Zt = z; zoomBtn.textContent = z > 1 ? 'Whole brain' : 'Zoom to Ch4'; zoomBtn.setAttribute('aria-pressed', z > 1); kick(); };
-                zoomBtn.addEventListener('click', () => setZoom(state.Zt > 1 ? 1 : 1.8));
-                slider.addEventListener('input', () => setSlice(+slider.value));
-                views[0].cv.addEventListener('keydown', e => {
-                    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { setSlice(state.s + 1); e.preventDefault(); }
-                    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { setSlice(state.s - 1); e.preventDefault(); }
-                });
-                setSlice(state.s, true);
-
-                // ---- hover / readout ----
-                const tip = document.createElement('div'); tip.className = 'ch4x-tip'; document.body.appendChild(tip);
-                const regionBtns = root.querySelectorAll('.ch4x-region');
-                const setActive = reg => regionBtns.forEach(b => b.classList.toggle('is-active', b.dataset.region === reg || state.pinned === b.dataset.region));
-                function readout(xyz, p) {
-                    $('ch4x-coord').textContent = xyz ? 'MNI  ' + xyz.join(', ') + ' mm' : 'MNI  —, —, —';
-                    $('ch4x-prob').textContent = p == null ? '—' : Math.round(p * 100) + '%';
-                    $('ch4x-barfill').style.width = p == null ? '0' : Math.round(p / PMAX * 100) + '%';
-                }
-                views.forEach(v => {
-                    v.cv.addEventListener('pointermove', e => {
-                        const rect = v.cv.getBoundingClientRect();
-                        const wv = win(v);
-                        const u = Math.min(v.w - 1, Math.max(0, Math.floor(wv.x0 + (e.clientX - rect.left) / rect.width * wv.ww)));
-                        const vv = Math.min(v.h - 1, Math.max(0, Math.floor(wv.y0 + (e.clientY - rect.top) / rect.height * wv.hh)));
-                        const s = sample(v, u, vv), p = s.g / 255 * PMAX;
-                        const xyz = mni(...v.toIJK(u, vv));
-                        v.hover = { u, v: vv };
-                        const isCh4 = s.g >= 18, isCh123 = !isCh4 && s.ch123;
-                        state.Ht = isCh4 ? 1 : 0; state.Qt = isCh123 ? 1 : 0;
-                        views.forEach(o => o.fig.classList.toggle('is-hot', isCh4 || isCh123));
-                        setActive(isCh4 ? 'ch4' : isCh123 ? 'ch123' : null);
-                        readout(xyz, s.brain || s.g ? p : null);
-                        tip.innerHTML = '(' + xyz.join(', ') + ') &middot; ' + (isCh4 ? '<b style="color:#fed976">Ch4 ' + Math.round(p * 100) + '%</b>' : isCh123 ? '<b style="color:#8fd694">Ch1–3</b>' : s.brain ? 'Ch4 ' + Math.round(p * 100) + '%' : 'outside brain');
-                        tip.style.left = e.clientX + 'px'; tip.style.top = e.clientY + 'px'; tip.classList.add('on');
-                        kick();
-                    });
-                    v.cv.addEventListener('pointerleave', () => {
-                        v.hover = null; state.Ht = 0; state.Qt = 0; tip.classList.remove('on');
-                        views.forEach(o => o.fig.classList.remove('is-hot')); setActive(null); kick();
-                    });
-                    if (v.name !== 'coronal') v.cv.addEventListener('pointerdown', e => {
-                        // click on axial / sagittal jumps the coronal view to that y
-                        const rect = v.cv.getBoundingClientRect();
-                        const j = v.name === 'axial' ? SY - 1 - Math.floor((e.clientY - rect.top) / rect.height * v.h) : Math.floor((e.clientX - rect.left) / rect.width * v.w);
-                        let best = 0; slices.forEach((s, i) => { if (Math.abs(s.j - j) < Math.abs(slices[best].j - j)) best = i; });
-                        setSlice(best);
-                    });
-                });
-                regionBtns.forEach(b => {
-                    const on = () => { state.Ht = b.dataset.region === 'ch4' ? 1 : 0; state.Qt = b.dataset.region === 'ch123' ? 1 : 0; setActive(b.dataset.region); kick(); };
-                    const off = () => { state.Ht = 0; state.Qt = 0; setActive(null); kick(); };
-                    b.addEventListener('mouseenter', on); b.addEventListener('focus', on);
-                    b.addEventListener('mouseleave', off); b.addEventListener('blur', off);
-                    b.addEventListener('click', () => { state.pinned = state.pinned === b.dataset.region ? null : b.dataset.region; setActive(b.dataset.region); kick(); });
-                });
-
-                // ---- visibility: render only on screen; sweep once on first view ----
-                let swept = false;
-                new IntersectionObserver(es => es.forEach(e => {
-                    inView = e.isIntersecting;
-                    if (inView) {
-                        kick();
-                        if (!swept && !reduce) {
-                            swept = true; state.s = 0; state.dir = 1;
-                            const target = peakIdx; play();
-                            const chk = setInterval(() => { if (state.s >= target || !state.playing) { clearInterval(chk); stop(); setSlice(target, true); setTimeout(() => setZoom(1.8), 350); } }, 60);
-                        }
-                    }
-                }), { threshold: 0.25 }).observe(root);
-                addEventListener('resize', kick);
-            }
-        })();
-
-
         // ===== Footer: last-updated date from the server's Last-Modified header =====
         (function lastUpdated() {
             const el = document.getElementById('last-updated'), d = new Date(document.lastModified);
             if (el && !isNaN(d) && d.getFullYear() >= 2026 && d <= new Date()) el.textContent = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        })();
-
-        // ===== Google Scholar metrics (data/scholar.json is refreshed weekly by a GitHub Action) =====
-        (function scholarMetrics() {
-            const BASE = { citations: 8955, h_index: 46, i10_index: 109 };   // values at last page edit
-            fetch('data/scholar.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(d => {
-                if (!d || !(d.citations >= BASE.citations) || !(d.h_index >= BASE.h_index) || !(d.i10_index >= BASE.i10_index)) return;
-                document.querySelectorAll('[data-scholar]').forEach(el => {
-                    const v = d[el.dataset.scholar]; if (!Number.isFinite(v)) return;
-                    if (el.classList.contains('metric-number')) {
-                        el.dataset.target = v;
-                        if (el.textContent !== '0') el.textContent = v.toLocaleString() + (el.dataset.suffix || '');
-                    } else el.textContent = v.toLocaleString();
-                });
-            }).catch(() => {});
-        })();
-
-        // ===== GNS-I stat tile count-up =====
-        (function statCount() {
-            const els = document.querySelectorAll('.fw-stat [data-count]');
-            if (!els.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            const io = new IntersectionObserver(es => es.forEach(e => {
-                if (!e.isIntersecting) return; io.unobserve(e.target);
-                const el = e.target, n = +el.dataset.count, t0 = performance.now();
-                const step = t => { const p = Math.min(1, (t - t0) / 1400), v = Math.round(n * (1 - Math.pow(1 - p, 3)));
-                    el.textContent = v.toLocaleString(); if (p < 1) requestAnimationFrame(step); };
-                requestAnimationFrame(step);
-            }), { threshold: 0.6 });
-            els.forEach(el => io.observe(el));
-        })();
-        // ===== Featured Work lightbox =====
-        (function featuredLightbox() {
-            const dlg = document.getElementById('fw-lightbox');
-            if (!dlg || typeof dlg.showModal !== 'function') return;
-            const img = dlg.querySelector('img'), cap = dlg.querySelector('.fw-caption');
-            document.querySelectorAll('.fw-media[data-full]').forEach(btn => btn.addEventListener('click', () => {
-                const item = btn.closest('.fw-item');
-                img.src = btn.dataset.full; img.alt = btn.querySelector('img').alt;
-                cap.textContent = item.querySelector('h3').textContent + ' \u00b7 ' + item.querySelector('.fw-status').textContent;
-                dlg.showModal();
-            }));
-            dlg.querySelector('.fw-close').addEventListener('click', () => dlg.close());
-            dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
         })();
 
         // ===== Sidebar: highlight the section in view =====
