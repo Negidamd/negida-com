@@ -60,8 +60,7 @@
         "https://linkedin.com/in/ahmednegida",
         "https://x.com/negidamd"
       ],
-      "email": "ahmed.said.negida@gmail.com",
-      "knowsAbout": ["Parkinson's disease", "Lewy body dementia", "Neuroimaging", "Precision medicine", "Machine learning", "Clinical research"],
+      "knowsAbout": ["Parkinson's disease", "Dementia with Lewy bodies", "Alzheimer's disease", "Cholinergic system", "Neuroimaging", "Clinical research"],
       "description": "Translational neuroscientist developing multimodal MRI and EEG biomarkers of cholinergic (nucleus basalis of Meynert, Ch4) degeneration in Parkinson's disease, dementia with Lewy bodies, and Alzheimer's disease."
     }
     </script>
@@ -729,7 +728,7 @@
         .ch4x-controls input[type=range] { flex: 1; min-width: 0; accent-color: #fd8d3c; cursor: pointer; }
         .ch4x-zoom { all: unset; flex: none; cursor: pointer; font-size: .72rem; font-weight: 700; letter-spacing: .03em; color: #fed976; border: 1px solid rgba(254,217,118,.5); padding: .3rem .75rem; border-radius: 999px; transition: background .2s ease, color .2s ease, transform .2s var(--ease-out); }
         .ch4x-zoom:hover, .ch4x-zoom:focus-visible { background: #fed976; color: #1b1b1b; transform: translateY(-1px); }
-        .ch4x-src { font-size: .68rem; color: #7f8ca3; line-height: 1.55; margin-top: .8rem; position: relative; }
+        .ch4x-src { text-align: right; } .ch4x-src { font-size: .68rem; color: #7f8ca3; line-height: 1.55; margin-top: .8rem; position: relative; }
         .ch4x-tip { position: fixed; z-index: 1200; pointer-events: none; background: rgba(6,11,22,.92); color: #fff; border: 1px solid rgba(253,141,60,.6);
             font-size: .72rem; padding: .3rem .55rem; border-radius: 6px; transform: translate(14px, 14px); opacity: 0; transition: opacity .15s ease; white-space: nowrap; font-variant-numeric: tabular-nums; }
         .ch4x-tip.on { opacity: 1; }
@@ -857,6 +856,259 @@
             .fw-text p { font-size: .72rem; }
             section { padding: .9rem 0; }
         }
+
+        /* ===================================================================
+           Minimal layer + left sidebar navigation (Oct 2026).
+           Research program, contribution cards, Ch4 explorer and Featured Work keep their styling.
+           =================================================================== */
+        body { background: #fff; }
+        /* Navigation: light bar on phones, left sidebar on wide screens */
+        nav { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border-light); backdrop-filter: blur(6px); }
+        nav .logo { color: var(--accent-darker); font-family: var(--font-serif); font-weight: 900; }
+        nav .logo span { color: var(--accent-darker); }
+        nav .nav-links a { color: var(--text-secondary); }
+        nav .nav-links a:hover, nav .nav-links a.active { color: var(--accent-darker); background: var(--bg-lighter); }
+        nav .nav-links a.nav-cv { color: var(--accent); border-color: var(--accent); }
+        nav .nav-links a.nav-cv:hover { color: #fff; background: var(--accent); }
+        .mobile-menu span { background: var(--accent-darker); }
+        @media (max-width: 768px) {
+            nav .nav-links.open { background: #fff; border-bottom: 1px solid var(--border-light); }
+        }
+        /* Hero: no rule underneath, quieter buttons */
+        .hero { border-bottom: none; padding-bottom: 1.5rem; }
+        .hero-content h1 { color: var(--text-primary); }
+        .hero-content .credentials { color: var(--text-secondary); font-weight: 600; }
+        .btn-secondary { border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-secondary:hover { background: var(--bg-lighter); color: var(--accent-darker); border-color: var(--accent); }
+        .btn:hover { box-shadow: none; }
+        /* Metrics: hairline strip instead of a dark band */
+        .metrics-bar { background: #fff; color: var(--text-primary); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .metric-number { color: var(--accent-darker); }
+        .metric-label { color: var(--text-muted); }
+        /* Section headings: sentence case, no underline bar */
+        section { border-bottom: none; padding-top: 3rem; padding-bottom: 1.5rem; }
+        .section-header h2 { text-transform: none; letter-spacing: 0; font-size: 1.55rem; color: var(--text-primary); border-bottom: none; padding-bottom: 0; }
+        .section-header h2::after { display: none; }
+        .subsection-title { text-transform: none; letter-spacing: 0; }
+        /* Contribution cards span the full width now that the stat column is gone */
+        .pillar { grid-template-columns: minmax(0, 1fr); }
+        /* CV timeline: drop the coloured institution badges */
+        .inst-badge { display: none; }
+        .timeline-item.has-badge { padding-left: 1.25rem; }
+        .timeline-item.has-badge::before { display: block; }
+        /* Footer: plain */
+        footer { background: #fff; color: var(--text-muted); border-top: 1px solid var(--border-light); }
+        footer a { color: var(--text-secondary); }
+
+        @media (min-width: 1024px) {
+            :root { --sidebar-w: 220px; }
+            body { padding-left: var(--sidebar-w); }
+            nav { top: 0; bottom: 0; left: 0; right: auto; width: var(--sidebar-w);
+                border-bottom: none; border-right: 1px solid var(--border-light); background: #fff; backdrop-filter: none; }
+            nav .nav-inner { height: 100%; max-width: none; flex-direction: column; align-items: stretch; justify-content: flex-start;
+                padding: 2rem 1rem 1.5rem; overflow-y: auto; }
+            nav .logo { font-size: 1.2rem; line-height: 1.3; padding: 0 0.75rem 1.25rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); }
+            nav .logo span { display: block; }
+            nav .nav-links { flex-direction: column; align-items: stretch; gap: 0.1rem; flex: 1; }
+            nav .nav-links a { display: block; font-size: 0.9rem; font-weight: 500; padding: 0.45rem 0.75rem; border-radius: 6px; border-left: 2px solid transparent; }
+            nav .nav-links a.active { font-weight: 700; border-left-color: var(--accent); border-radius: 0 6px 6px 0; }
+            nav .nav-links li:last-child { margin-top: auto; padding-top: 1rem; }
+            nav .nav-links a.nav-cv { margin-left: 0; text-align: center; font-weight: 700; border: 1px solid var(--accent); border-radius: 6px; }
+            .mobile-menu { display: none; }
+            .hero, .cv-head { padding-top: 3.5rem; }
+            section[id] { scroll-margin-top: 1.5rem; }
+            .scroll-progress { left: var(--sidebar-w); }
+        }
+        @media print { body { padding-left: 0; } nav { display: none; } }
+
+        /* Publication tags (by-year list) */
+        .pub-year { margin-top: 1.75rem; }
+        .pub-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .3rem; }
+        .ptag { font-size: .68rem; font-weight: 700; letter-spacing: .02em; padding: .1rem .5rem; border-radius: 999px; line-height: 1.5; }
+        .ptag-role { color: var(--accent-darker); border: 1px solid var(--accent); background: #fff; }
+        .ptag-note { color: var(--text-muted); border: 1px solid var(--border); background: #fff; }
+        .ptag-pd { background: #e1eefa; color: #0b4a7d; }
+        .ptag-lbd { background: #efe6f7; color: #5b2a86; }
+        .ptag-dem { background: #fbeadb; color: #8a3b00; }
+        .ptag-hd { background: #e0f2ef; color: #0e5c52; }
+        .ptag-dys { background: #e9f3e1; color: #2f5d12; }
+        .ptag-tbi { background: #f1f1f1; color: #3d4551; }
+        .pub-entry .pub-authors a { text-decoration: none; }
+        .pub-entry .pub-authors a:hover { text-decoration: underline; }
+        .pub-journal { color: var(--text-primary); font-weight: 700; }
+        @media print { .ptag { border: 1px solid #999; background: #fff !important; color: #000 !important; } }
+
+        /* ===== Typography: two typefaces only (Oct 2026) =====
+           Merriweather: name and section titles. Public Sans: everything else. */
+        h3, h4, h5, .subsection-title, .pub-title, .grant-agency, .grant-title, .timeline-item h3, .timeline-item h4,
+        .teaching-block h3, .service-block h3, .tool-entry h4, .contact-block h3, .book-chapter h3,
+        .pillar h4, .fw-text h3, .ch4x-head h3, .ch4x-coord { font-family: var(--font-sans) !important; }
+        .hero-content h1, .cv-head h1, .section-header h2, nav .logo { font-family: var(--font-serif); font-weight: 700; }
+        .ch4x-coord { font-variant-numeric: tabular-nums; }
+        main *, nav *, footer * { text-transform: none !important; letter-spacing: normal !important; }
+        .hero-content .subtitle, .grant-title, .lecture-title { font-style: normal; }
+        .pillar-kicker, .fw-status, .pillar-tools > span, .ch4x-kicker, .ch4x-end, .fw-stat-grid span, .ptag { font-weight: 600; }
+        .pillar h4, .fw-text h3, .ch4x-head h3, .tool-entry h4, .timeline-item h3, .subsection-title { font-weight: 700; }
+        /* ===== CV page ===== */
+        .cv-head { padding: 5rem 2rem 1.75rem; border-bottom: 3px solid var(--accent); }
+        .cv-head .section-inner { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end; }
+        .cv-head h1 { font-family: var(--font-serif); font-size: 2rem; font-weight: 900; color: var(--accent-darker); line-height: 1.2; }
+        .cv-head .credentials { font-size: 1.05rem; color: var(--accent); font-weight: 700; }
+        .cv-head .cv-role { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin-top: 0.5rem; }
+        .cv-contact { list-style: none; font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; line-height: 1.7; }
+        .cv-contact span { display: inline-block; min-width: 4.5rem; color: var(--text-muted); font-weight: 600; }
+        .cv-actions { display: flex; flex-direction: column; gap: 0.5rem; align-items: stretch; }
+        .cv-updated { font-size: 0.75rem; color: var(--text-muted); text-align: right; }
+        .cv-head + section, main > section { border-bottom: 1px solid var(--border-light); }
+        .skills-grid { display: grid; grid-template-columns: 11rem 1fr; gap: 0.35rem 1.25rem; font-size: 0.9rem; }
+        .skills-grid dt { font-weight: 700; color: var(--text-primary); }
+        .skills-grid dd { color: var(--text-secondary); line-height: 1.6; }
+        @media (max-width: 700px) {
+            .cv-head { padding: 4.5rem 2rem 1.5rem; }
+            .cv-head .section-inner { grid-template-columns: 1fr; }
+            .cv-actions { flex-direction: row; flex-wrap: wrap; }
+            .cv-updated { text-align: left; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skills-grid dd { margin-bottom: 0.5rem; }
+        }
+        @media print {
+            nav, .cv-actions, .conf-photos, .skip-link, .scroll-progress, footer .footer-links { display: none !important; }
+            .cv-head { padding-top: 0; }
+            html { font-size: 12px; }
+            a { color: inherit; text-decoration: none; }
+            section { padding: 1rem 0; break-inside: auto; }
+            .timeline-item, .grant-entry, .pub-entry, .tool-entry, .award-entry { break-inside: avoid; }
+            .tool-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .cv-head .section-inner { grid-template-columns: 132px minmax(0, 1fr) auto; }
+        .cv-photo { width: 132px; height: 165px; overflow: hidden; border: 1px solid var(--border-light); align-self: start; }
+        .cv-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .cv-summary { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.75rem; max-width: 46rem; }
+        @media (max-width: 700px) { .cv-head .section-inner { grid-template-columns: minmax(0, 1fr); } .cv-photo { width: 112px; height: 140px; } }
+        .fw-sub { margin-top: 2.5rem; }
+        /* Gallery (by year) */
+        .gal-year { margin-top: 1.75rem; }
+        .gal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .gal-item { margin: 0; }
+        .gal-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border: 1px solid var(--border-light); }
+        .gal-item figcaption { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; margin-top: 0.45rem; }
+        .gal-item figcaption strong { color: var(--text-primary); font-weight: 600; }
+        @media (max-width: 900px) { .gal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 560px) { .gal-grid { grid-template-columns: minmax(0, 1fr); } }
+
+        /* ===== Uniform text (Oct 2026): one typeface, black, regular weight.
+           Exceptions: name, section titles (serif) and subheadings (bold). The Ch4 viewer keeps its own palette. ===== */
+        :root { --ink: #111111; }
+        :is(main, nav, footer) :is(*):not(#ch4x, #ch4x *) {
+            color: var(--ink) !important; font-weight: 400 !important; font-family: var(--font-sans) !important;
+        }
+        :is(main, nav, footer) a:not(#ch4x *) { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; text-decoration-color: #9a9a9a; }
+        :is(main, nav, footer) a:not(#ch4x *):hover { text-decoration-color: var(--ink); }
+        nav .nav-links a, nav .logo { text-decoration: none !important; }
+        /* headings */
+        :is(main, nav) :is(.cv-head h1, .section-header h2, .logo, .logo *):not(#ch4x, #ch4x *) { font-family: var(--font-serif) !important; font-weight: 700 !important; }
+        main :is(h3, h4, .subsection-title, .pillar h4, .fw-text h3, .timeline-item h3, .pub-year, .gal-year):not(#ch4x *) { font-weight: 700 !important; }
+        /* neutral tags, buttons and badges */
+        .ptag, .fw-status, .coe { background: #fff !important; border: 1px solid #c8c8c8 !important; }
+        .btn, .btn-primary, .btn-secondary, nav .nav-links a.nav-cv { background: #fff !important; border: 1px solid var(--ink) !important; box-shadow: none !important; }
+        .btn:hover, nav .nav-links a.nav-cv:hover { background: #f2f2f2 !important; }
+        nav .nav-links a.active { background: #f2f2f2 !important; border-left-color: var(--ink) !important; }
+        .pillar-kicker, .pillar-tools > span { color: var(--ink) !important; }
+
+        /* ===== Basic / senior-professor style (Oct 2026): no animation, no cards, no gradients ===== */
+        *, *::before, *::after { animation: none !important; transition: none !important; }
+        .scroll-progress { display: none !important; }
+        .fade-in { opacity: 1 !important; transform: none !important; }
+        .pillar, .fw-item, .tool-grid .tool-entry { border: none !important; border-top: 1px solid #dcdcdc !important; border-radius: 0 !important;
+            box-shadow: none !important; background: none !important; padding: 1.1rem 0 !important; transform: none !important; }
+        .pillar::before, .tool-grid .tool-entry::before, .fw-media::after { display: none !important; }
+        .pillars, .fw-grid, .tool-grid { gap: 0 1.5rem !important; }
+        .fw-media { border-radius: 0 !important; border: 1px solid #e3e3e3 !important; }
+        .fw-media img, .profile-photo img { filter: none !important; transform: none !important; }
+        .btn, nav .nav-links a, nav .nav-links a.nav-cv { border-radius: 0 !important; }
+        .ptag, .fw-status { border: none !important; padding: 0 !important; background: none !important; border-radius: 0 !important; font-size: 0.8rem !important; }
+        .pub-tags { gap: 0 !important; }
+        .pub-tags .ptag + .ptag::before { content: " \00B7  "; white-space: pre; }
+        .ch4x { background: #0b0b0b !important; border-radius: 0 !important; box-shadow: none !important; }
+        .ch4x::before { display: none !important; }
+        /* Research program as four steps */
+        .rp-flow { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 2rem; margin: 0 0 2rem; padding: 0; counter-reset: rp; }
+        .rp-flow li { position: relative; border-top: 1px solid #111; padding-top: 0.6rem; }
+        .rp-flow li:not(:last-child)::after { content: "\2192"; position: absolute; right: -1.45rem; top: -0.8rem; font-size: 1rem; background: #fff; padding: 0 0.15rem; }
+        .rp-flow h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .rp-flow p { font-size: 0.88rem; line-height: 1.6; }
+        @media (max-width: 860px) { .rp-flow { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } .rp-flow li:not(:last-child)::after { content: "\2193"; right: auto; left: 0; top: auto; bottom: -1.2rem; } }
+        .cv-head { border-bottom: 1px solid #dcdcdc !important; }
+        .mobile-menu span { background: #111 !important; }
+        nav { border-color: #dcdcdc !important; }
+        .rp-flow li:not(:last-child)::after { content: none; }
+        .rp-flow > li:nth-child(-n+3)::after { content: "\2192"; position: absolute; right: -1.45rem; top: -0.8rem; font-size: 1rem; background: #fff; padding: 0 0.15rem; }
+        .rp-flow p + p { margin-top: 0.5rem; }
+        .rp-flow .rp-branch { grid-column: 2; grid-row: 2; margin-top: 2rem; }
+        .rp-flow .rp-branch::before { content: "\2193"; position: absolute; left: 0; top: -1.75rem; font-size: 1rem; }
+        @media (max-width: 860px) {
+            .rp-flow > li:nth-child(-n+3)::after { content: "\2193"; right: auto; left: 0; top: auto; bottom: -1.2rem; }
+            .rp-flow .rp-branch { grid-column: auto; grid-row: auto; margin-top: 0.5rem; }
+            .rp-flow .rp-branch::before { content: "\21B3  from Target"; position: static; display: block; font-size: 0.8rem; margin-bottom: 0.2rem; }
+        }
+        /* Publication tags: black text, colored background */
+        main .pub-tags { gap: 0.3rem !important; }
+        main .pub-tags .ptag + .ptag::before { content: none !important; }
+        main .pub-tags .ptag[class*="t-"] { padding: 0.08rem 0.5rem !important; border-radius: 3px !important; border: none !important; font-size: 0.78rem !important; }
+        main .pub-tags .ptag.t-role { background: #e6e6e6 !important; }
+        main .pub-tags .ptag.t-pd { background: #d7e8f7 !important; }
+        main .pub-tags .ptag.t-ad { background: #fbe0c8 !important; }
+        main .pub-tags .ptag.t-dem { background: #f8edc4 !important; }
+        main .pub-tags .ptag.t-lbd { background: #e7dcf4 !important; }
+        main .pub-tags .ptag.t-hd { background: #d4efe9 !important; }
+        main .pub-tags .ptag.t-tbi { background: #ece0d4 !important; }
+        main .pub-tags .ptag.t-stroke { background: #f7d6d6 !important; }
+        main .pub-tags .ptag.t-dys { background: #dcefd2 !important; }
+        main .pub-tags .ptag.t-epi { background: #fff0b8 !important; }
+        main .pub-tags .ptag.t-nm { background: #d2eef4 !important; }
+        main .pub-tags .ptag.t-noh { background: #e1e3f7 !important; }
+        main .pub-tags .ptag.t-np { background: #dbf1e0 !important; }
+        main .pub-tags .ptag.t-note { background: #f1f1f1 !important; }
+        main .pub-cite { font-size: 0.9rem; line-height: 1.6; margin: 0; }
+        :is(main) .pub-entry strong.me:not(#ch4x *) { font-weight: 700 !important; }
+        main .pub-entry { padding: 0.6rem 0; }
+        .rp-flow > li { min-width: 0; }
+        .rp-flow .rp-sub { margin-top: 1.1rem; border-top: 1px solid #111; padding-top: 0.6rem; position: relative; }
+        .rp-flow .rp-down { position: absolute; left: 0; top: -1.45rem; background: #fff; padding-right: 0.2rem; }
+        .rp-flow .rp-list { list-style: none; margin: 0; padding: 0; }
+        .rp-flow .rp-list li { font-size: 0.88rem; line-height: 1.55; padding-left: 0.9rem; position: relative; margin-bottom: 0.35rem; border: none; }
+        .rp-flow .rp-list li::before { content: "\2013"; position: absolute; left: 0; }
+        .rp-flow .rp-list li::after { content: none !important; }
+        .rp-flow .rp-icons { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+        .rp-flow .rp-icons li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 0.6rem; align-items: center; border: none; padding: 0; font-size: 0.86rem; line-height: 1.45; }
+        .rp-flow .rp-icons li::after { content: none !important; }
+        @media (min-width: 861px) { .rp-flow { grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(0, 1fr)) !important; } }
+        main .rp-intro { font-size: 0.95rem; line-height: 1.7; margin: 0 0 1.5rem; max-width: 52rem; }
+        :is(main) .rp-flow b.rp-k:not(#ch4x *) { font-weight: 700 !important; }
+        .rp-flow .rp-icons li { align-items: start; }
+        /* Research diagram: 2 x 2 */
+        @media (min-width: 861px) {
+            .rp-flow { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 2rem 3rem !important; }
+            .rp-flow > li::after { content: none !important; }
+            .rp-flow > li:nth-child(odd)::after { content: "\2192" !important; position: absolute; right: -2.05rem; top: -0.8rem; font-size: 1rem; background: #fff; padding: 0 0.15rem; }
+        }
+        .rp-flow p, .rp-flow .rp-icons li { font-size: 0.92rem !important; line-height: 1.65 !important; }
+        .rp-flow .rp-icons { gap: 0.55rem; }
+        /* No double rule under subsection headings: first row of items has no top border */
+        .pillars > .pillar:first-child,
+        .fw-grid > .fw-item:nth-child(-n+2),
+        .tool-grid > .tool-entry:nth-child(-n+2) { border-top: none !important; padding-top: 0.25rem !important; }
+        @media (max-width: 700px) {
+            .fw-grid > .fw-item:nth-child(2), .tool-grid > .tool-entry:nth-child(2) { border-top: 1px solid #dcdcdc !important; padding-top: 1.1rem !important; }
+        }
+        /* Featured work as horizontal bands: figure left, text right */
+        .fw-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
+        .fw-item { display: grid !important; grid-template-columns: 260px minmax(0, 1fr); gap: 1.5rem !important; align-items: start; }
+        .fw-item .fw-media { width: 100%; }
+        .fw-grid > .fw-item:nth-child(2) { border-top: 1px solid #dcdcdc !important; padding-top: 1.1rem !important; }
+        .fw-text h3 { font-size: 1rem !important; }
+        @media (max-width: 700px) { .fw-item { grid-template-columns: minmax(0, 1fr); gap: 0.75rem !important; } }
     </style>
 </head>
 <body>
@@ -868,21 +1120,16 @@
             <a href="#" class="logo">Ahmed <span>Negida</span></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#research">Research</a></li>
-                <li><a href="#featured-work">Featured Work</a></li>
-                <li><a href="#publications">Publications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#appointments">Appointments</a></li>
                 <li><a href="#grants">Funding</a></li>
-                <li><a href="#tools">Tools</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#tools">Code &amp; Tools</a></li>
+                <li><a href="#presentations">Talks</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#teaching">Teaching</a></li>
-                <li><a href="#appointments">Career</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-more">More &#9662;</button>
-                    <div class="nav-dropdown-menu" id="nav-more">
-                        <a href="#presentations">Talks</a>
-                        <a href="#honors">Honors &amp; Service</a>
-                    </div>
-                </li>
-                <li><a class="nav-cv" href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener">CV</a></li>
+                <li><a href="#honors">Honors &amp; Service</a></li>
+                <li><a class="nav-cv" href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener">CV (PDF)</a></li>
             </ul>
             <button class="mobile-menu" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span><span></span><span></span>
@@ -891,182 +1138,84 @@
     </nav>
 
     <main id="main" tabindex="-1">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="profile-photo">
-                <img src="headshot.jpg" srcset="headshot-320.jpg 320w, headshot.jpg 400w" sizes="160px" alt="Ahmed Negida, MD, PhD" width="160" height="200" fetchpriority="high" onerror="this.parentElement.innerHTML='<div class=\'profile-placeholder\'>&#128100;</div>'">
-            </div>
-
-            <div class="hero-content">
+    <header class="cv-head">
+        <div class="section-inner">
+            <div class="cv-photo"><img src="headshot.jpg" srcset="headshot-320.jpg 320w, headshot.jpg 400w" sizes="132px" alt="Ahmed Negida, MD, PhD" width="132" height="165" fetchpriority="high"></div>
+            <div>
                 <h1>Ahmed Negida</h1>
                 <div class="credentials">MD, PhD</div>
-                <p class="subtitle">Translational Neuroscientist &middot; Multimodal Imaging Biomarkers of PD and ADRD</p>
-                <p class="affiliation">
-                    Postdoctoral Scholar<br>
-                    VCU Parkinson's & Movement Disorders Center<br>
-                    Department of Neurology, Virginia Commonwealth University
-                </p>
-                <div class="coe-row" aria-label="Center designations">
-                    <span class="coe"><span class="coe-dot"></span>Parkinson's Foundation Center of Excellence</span>
-                    <span class="coe"><span class="coe-dot"></span>LBDA Research Center of Excellence</span>
-                </div>
-
-                <p class="professional-summary">
-                    I develop multimodal imaging biomarkers to stratify patients with Parkinson's disease (PD), dementia with Lewy bodies (DLB), and Alzheimer's disease (AD) for therapeutic trials and to monitor disease progression. My program centers on <strong>cholinergic vulnerability</strong>: I built a multimodal MRI signature of nucleus basalis of Meynert (Ch4) degeneration, complemented MRI with resting-state EEG markers of cognitive fluctuations, and modeled PD progression to identify rapid progressors for trial enrichment.
-                </p>
-
-                <div class="hero-links">
-                    <a href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-primary">CV (PDF)</a>
-                    <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" rel="noopener" class="btn btn-secondary">Google Scholar</a>
-                    <a href="https://github.com/negidamd" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
-                    <a href="mailto:ahmed.said.negida@gmail.com" class="btn btn-secondary">Email</a>
-                </div>
+                <p class="cv-role">Postdoctoral Scholar, Parkinson's and Movement Disorders Center<br>Department of Neurology, Virginia Commonwealth University, Richmond, VA</p>
+                <p class="cv-summary">I develop multimodal MRI and EEG biomarkers to select patients with Parkinson's disease (PD), dementia with Lewy bodies (DLB), and Alzheimer's disease (AD) for therapeutic trials and to track disease progression. My work centers on degeneration of the cholinergic <strong>nucleus basalis of Meynert (Ch4)</strong>.</p>
+                <ul class="cv-contact">
+                    <li><span>Email 1</span>ahmed.negida [at] vcuhealth [dot] org</li>
+                    <li><span>Email 2</span>ahmed.said.negida [at] gmail [dot] com</li>
+                    <li><span>ORCID</span><a href="https://orcid.org/0000-0001-5363-6369" target="_blank" rel="noopener">0000-0001-5363-6369</a></li>
+                    <li><span>Scholar</span><a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+                    <li><span>Web</span><a href="https://github.com/negidamd" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.researchgate.net/profile/Ahmed-Negida-2" target="_blank" rel="noopener">ResearchGate</a> &middot; <a href="https://linkedin.com/in/ahmednegida" target="_blank" rel="noopener">LinkedIn</a> &middot; <a href="https://x.com/negidamd" target="_blank" rel="noopener">X</a></li>
+                </ul>
+            </div>
+            <div class="cv-actions">
+                <a href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-primary">Download PDF</a>
+                <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
+                <div class="cv-updated">Updated October 2026</div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Key Metrics Bar -->
-    <div class="metrics-bar">
-        <div class="metrics-inner">
-            <div class="metric-item"><div class="metric-number" data-target="8955" data-suffix="" data-scholar="citations">0</div><div class="metric-label">Citations (Google Scholar)</div></div>
-            <div class="metric-item"><div class="metric-number" data-target="46" data-suffix="" data-scholar="h_index">0</div><div class="metric-label">H-Index</div></div>
-            <div class="metric-item"><div class="metric-number" data-target="9" data-suffix="">0</div><div class="metric-label">Open Research Tools</div></div>
-            <div class="metric-item"><div class="metric-number" data-target="50" data-suffix="+">0</div><div class="metric-label">Mentees to first-author papers</div></div>
-        </div>
-    </div>
 
     <!-- Research Section -->
     <section id="research" class="fade-in">
         <div class="section-inner">
             <div class="section-header">
                 <h2>Research Program</h2>
-                <p>Cholinergic vulnerability and cognition in Parkinson's disease and Alzheimer's disease and related dementias</p>
+                <p>Cholinergic vulnerability and cognitive resilience in Lewy body disorders and Alzheimer&rsquo;s disease</p>
             </div>
 
-            <p class="research-vision-text">
-                PD, DLB, and AD are heterogeneous in their clinical features, pathology, and progression, and enrolling biologically diverse patients into trials of target-specific therapies can dilute treatment effects. Degeneration of the <strong>nucleus basalis of Meynert (Ch4)</strong>, which supplies most cholinergic input to the cortex, is shared by all three diseases and is the rationale for cholinesterase inhibitors, yet response to these drugs varies widely, and newer cholinergic therapies are still tested without target enrichment. I have developed a <strong>multimodal imaging signature of Ch4 degeneration</strong> and am extending it across PD, DLB, and AD to test whether it improves patient selection. A validated staging marker could also inform prognosis, interpretation of treatment response, and assessment of remaining target tissue before Ch4 deep brain stimulation or gene therapy.
-            </p>
+            <p class="rp-intro">I develop scalable multimodal imaging biomarkers of cholinergic degeneration to predict cognitive outcomes and select patients for therapeutic trials in Parkinson&rsquo;s disease, dementia with Lewy bodies, and Alzheimer&rsquo;s disease.</p>
+            <ol class="rp-flow">
+                <li><h4>Problem</h4><p>Cholinergic degeneration contributes to cognitive impairment in all three diseases and is the rationale for cholinesterase inhibitors in dementia. Its extent and regional pattern vary between patients, and cognitive impairment does not follow a single pattern of cholinergic loss.</p><p>New cholinergic therapies are in trials: muscarinic agonists (xanomeline&ndash;trospium; the M1 agonist NSC001), Ch4 deep brain stimulation, and regenerative tissue implanted into Ch4. Unlike amyloid and tau trials, the cholinergic pipeline lacks an enrichment biomarker that selects patients with cholinergic degeneration. Can imaging identify who is most likely to benefit?</p></li>
+                <li><h4>Target: Ch4 and its cortical connections</h4><p>Ch4 (the nucleus basalis of Meynert) supplies most cortical cholinergic input and degenerates in these diseases. I measure its structure, microstructure, and cortical connectivity to capture degeneration and preservation that volume alone does not reveal.</p>
+                    <div class="rp-sub"><span class="rp-down">&darr;</span><h4>Cognitive resilience</h4><p>Some patients keep better cognition than their Ch4 degeneration would predict. I study whether regional cholinergic preservation and network connectivity explain this resilience.</p></div></li>
+                <li><h4>Approach</h4><ul class="rp-icons"><li><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 6c-3-2-8-1-9 3-3 1-4 5-2 8-1 3 1 7 5 7 1 2 4 3 6 2 2 1 5 0 6-2 4 0 6-4 5-7 2-3 1-7-2-8-1-4-6-5-9-3z"/><path d="M16 6v20M9 12h4M19 16h4M10 19h3"/></svg><span><b class="rp-k">Multimodal MRI.</b> Structural, diffusion, and functional imaging of Ch4 integrity and cortical connectivity.</span></li><li><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="10"/><circle cx="16" cy="16" r="3"/><path d="M16 3v3M16 26v3M3 16h3M26 16h3M7 7l2 2M23 23l2 2M7 25l2-2M23 9l2-2"/></svg><span><b class="rp-k">Cholinergic PET benchmarking.</b> Relating MRI signatures to regional cholinergic innervation.</span></li><li><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h4l2-6 3 12 3-15 3 13 2-7 2 3h7"/></svg><span><b class="rp-k">Complementary EEG.</b> Network dysfunction and cognitive fluctuations.</span></li><li><svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="6" r="2.5"/><circle cx="7" cy="26" r="2.5"/><circle cx="16" cy="26" r="2.5"/><circle cx="25" cy="26" r="2.5"/><path d="M16 8.5v15M16 14l-9 9.5M16 14l9 9.5"/></svg><span><b class="rp-k">Subtyping and longitudinal modeling.</b> Patient subgroups, deviations from normative trajectories, and prediction of cognitive decline and dementia.</span></li></ul></li>
+                <li><h4>Applications</h4><p>Validated imaging biomarkers for patient stratification in cholinergic trials, with secondary goals of refining prognosis and testing whether baseline cholinergic status explains differences in treatment response.</p><p>Longer term: assessing residual target integrity before Ch4 stimulation or restorative therapies.</p></li>
+            </ol>
 
-            <div class="chip-row">
-                <span class="chip-label">Disease Areas</span>
-                <span class="chip">Parkinson's Disease</span>
-                <span class="chip">Dementia with Lewy Bodies</span>
-                <span class="chip">Alzheimer's Disease and Related Dementias</span>
-            </div>
 
             <!-- Three research contributions -->
             <h3 class="subsection-title" style="margin-top: 0;">Contributions</h3>
             <div class="pillars">
                 <article class="pillar pillar-ch4">
                     <div class="pillar-main">
-                        <div class="pillar-kicker">Contribution 1</div>
-                        <h4>Measuring Ch4 integrity with MRI</h4>
-                        <p class="pillar-text">Ch4 is small and difficult to delineate with conventional MRI volumetry. Using probabilistic cytoarchitectonic maps, I quantified Ch4 integrity from standard MRI and identified a subtype of PD mild cognitive impairment (PD-MCI) defined by MRI evidence of Ch4 degeneration. In resting-state fMRI, Ch4 connectivity with the attention-related cingulo-opercular network mediated the relationship between Ch4 degeneration and cognition, a candidate circuit link to cognitive impairment.</p>
+                        <h4>1#: In vivo imaging of cholinergic integrity</h4>
+                        <p class="pillar-text">Ch4 is small and difficult to delineate with conventional MRI volumetry. Using probabilistic cytoarchitectonic maps, I quantified Ch4 integrity from standard MRI and identified a subtype of PD mild cognitive impairment (PD-MCI) defined by MRI evidence of Ch4 degeneration. I then added diffusion MRI, estimating Ch4 free water with the regularized bi-tensor model of <a href="https://doi.org/10.1002/mrm.22055" target="_blank" rel="noopener">Pasternak et al. (2009)</a>. In resting-state fMRI, Ch4 connectivity with the attention-related cingulo-opercular network mediated the relationship between Ch4 degeneration and cognition, a candidate circuit link to cognitive impairment.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank" rel="noopener"><em>Parkinsonism Relat Disord</em>, 2025</a><a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank" rel="noopener">medRxiv, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="/ch4-subtyper/" target="_blank" rel="noopener">Ch4 Subtyper</a><a href="https://ch4subtyping.negida.com" target="_blank" rel="noopener">Ch4 Subtyping Tool</a></div></div>
-                    </div>
-                    <div class="pillar-stats">
-                        <div><strong>40 of 162</strong><span>PPMI patients with PD-MCI had low Ch4 gray-matter density; they reached cognitive milestones sooner</span></div>
-                        <div><strong>AUC 0.93</strong><span>in 92 VCU participants, Ch4 gray-matter density and free water, the only basal forebrain measures independently associated with MoCA, separated PD dementia from PD without dementia</span></div>
                     </div>
                 </article>
 
                 <article class="pillar pillar-ch4">
                     <div class="pillar-main">
-                        <div class="pillar-kicker">Contribution 2</div>
-                        <h4>EEG Signature of Lewy Body Dementia</h4>
+                        <h4>2#: EEG Signature of Lewy Body Dementia</h4>
                         <p class="pillar-text">EEG is inexpensive, repeatable, and widely available, and cognitive fluctuations in Lewy body dementia are commonly attributed to cholinergic degeneration. In the NIH R21 AG077469 study, I analyzed resting-state EEG in patients with Lewy body disease and built a machine-learning model that detects cognitive fluctuations. Building on this work, I contributed pilot data and the multimodal Ch4 MRI pipeline to a funded mechanistic R01 on cholinergic degeneration and cognitive fluctuations, which currently supports my position.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank" rel="noopener"><em>Alzheimer's Res Ther</em>, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="https://github.com/Negidamd/negida-fe-toolbox" target="_blank" rel="noopener">EEG feature toolbox</a></div></div>
-                    </div>
-                    <div class="pillar-stats">
-                        <div><strong>AUC 0.86</strong><span>resting-state EEG model detected cognitive fluctuations across the Lewy body disease spectrum</span></div>
-                        <div><strong>R01</strong><span>NS142622 (PI, Matthew Barrett): funded mechanistic study of cholinergic degeneration and cognitive fluctuations, built on this work</span></div>
                     </div>
                 </article>
 
                 <article class="pillar pillar-sub">
                     <div class="pillar-main">
-                        <div class="pillar-kicker">Contribution 3</div>
-                        <h4>Modeling Disease Progression</h4>
+                        <h4>3#: Modeling Disease Progression</h4>
                         <p class="pillar-text">Heterogeneity in progression also complicates disease-modifying trials. Using PPMI, I modeled ten-year progression milestones across clinical, pathological, and data-driven PD subtypes; diffuse-malignant PD progressed fastest. To identify these patients prospectively, I developed disease-duration&ndash;specific percentiles for the first five years after diagnosis, released an open-source subtype calculator, and characterized the genetic associations of these subtypes. This work converges with my imaging research: patients with PD-MCI and MRI evidence of Ch4 degeneration overlap with those classified as diffuse-malignant PD.</p>
                         <div class="pillar-tools"><span>Papers</span><div class="pt-links"><a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank" rel="noopener"><em>npj Parkinson's Dis</em>, 2026</a><a href="https://doi.org/10.1002/mdc3.70740" target="_blank" rel="noopener"><em>Mov Disord Clin Pract</em>, 2026</a><a href="https://doi.org/10.3390/genes17040449" target="_blank" rel="noopener"><em>Genes</em>, 2026</a></div></div>
                         <div class="pillar-tools"><span>Tools</span><div class="pt-links"><a href="/data-driven-pd-subtype-calculator/" target="_blank" rel="noopener">Percentile calculator</a><a href="https://pdsubtyping.negida.com" target="_blank" rel="noopener">PD Subtyping Tool</a></div></div>
                     </div>
-                    <div class="pillar-stats">
-                        <div><strong>63%</strong><span>of 10-year progression milestones reached by diffuse-malignant PD (vs 55.6% PIGD, 54.0% body-first)</span></div>
-                        <div><strong>~50%</strong><span>smaller required sample size in trial simulations enrolling diffuse-malignant PD</span></div>
-                        <div><strong>HR 3.03</strong><span>for a first milestone, diffuse-malignant vs mild motor-predominant PD, classified with year-specific percentiles</span></div>
-                    </div>
                 </article>
             </div>
 
-            <div class="methods-row">
-                <div><span>Methods</span><p>SPM12, CAT12, FreeSurfer, FSL, MRtrix3, fMRIPrep, CONN, and EEGLAB for image preprocessing and statistical modeling</p></div>
-                <div><span>Data</span><p>Approved data use agreements for ten multisite imaging and biomarker cohorts in PD and ADRD, including ADNI, NACC, PPMI, PDBP, and AMP-PD (more than 35,000 MRIs)</p></div>
-            </div>
+            <p class="research-vision-text" style="margin-bottom: 2rem;">I leverage existing human brain imaging data from more than 40,000 MRIs obtained under data use agreements from large multisite consortia: A4, ADNI, ADNI-DoD, AIBL, AMP-PD, Critical Path for Parkinson's (CPP), NACC, OASIS-3, PDBP, PPMI, and U.S. POINTER.</p>
 
-            <!-- Interactive Ch4 explorer (MNI152 template) -->
-            <div class="ch4x" id="ch4x">
-                <div class="ch4x-head">
-                    <span class="ch4x-kicker"><span class="ch4x-dot"></span> Interactive &middot; MNI152 standard brain</span>
-                    <h3>Explore the target: the nucleus basalis of Meynert (Ch4)</h3>
-                    <p>Hover over any view to read the probability that a voxel belongs to Ch4; the region heats up across all three planes. Use the slider or arrow keys to sweep through the basal forebrain.</p>
-                </div>
-                <div class="ch4x-grid">
-                    <figure class="ch4x-view ch4x-main" data-view="coronal">
-                        <canvas tabindex="0" aria-label="Coronal MNI152 slice with Ch4 probability overlay; use left and right arrow keys to change slice"></canvas>
-                        <span class="ch4x-lr ch4x-l">L</span><span class="ch4x-lr ch4x-r">R</span>
-                        <figcaption>Coronal &middot; <span id="ch4x-ylab">y = &minus;2 mm</span></figcaption>
-                    </figure>
-                    <div class="ch4x-side">
-                        <figure class="ch4x-view" data-view="axial">
-                            <canvas aria-label="Axial MNI152 slice through the Ch4 peak"></canvas>
-                            <figcaption>Axial &middot; <span id="ch4x-zlab">z</span></figcaption>
-                        </figure>
-                        <figure class="ch4x-view" data-view="sagittal">
-                            <canvas aria-label="Sagittal MNI152 slice through the Ch4 peak"></canvas>
-                            <figcaption>Sagittal &middot; <span id="ch4x-xlab">x</span></figcaption>
-                        </figure>
-                    </div>
-                    <aside class="ch4x-info" aria-live="polite">
-                        <div class="ch4x-readout">
-                            <div class="ch4x-coord" id="ch4x-coord">MNI &nbsp;&mdash;, &mdash;, &mdash;</div>
-                            <div class="ch4x-prob-label">Ch4 probability <strong id="ch4x-prob">&mdash;</strong></div>
-                            <div class="ch4x-bar"><span id="ch4x-barfill"></span></div>
-                        </div>
-                        <button type="button" class="ch4x-region" data-region="ch4">
-                            <span class="ch4x-swatch ch4x-sw-ch4"></span>
-                            <span><strong>Ch4 &middot; nucleus basalis of Meynert</strong>
-                            <small>Supplies most cholinergic input to the cortex and modulates attention. Its degeneration is shared by PD, DLB, and AD.</small></span>
-                        </button>
-                        <button type="button" class="ch4x-region" data-region="ch123">
-                            <span class="ch4x-swatch ch4x-sw-ch123"></span>
-                            <span><strong>Ch1&ndash;3 &middot; medial septum &amp; diagonal band</strong>
-                            <small>Neighboring cholinergic cell groups that project mainly to the hippocampus and olfactory bulb.</small></span>
-                        </button>
-                        <div class="ch4x-scale"><span>low</span><i></i><span>high probability</span></div>
-                    </aside>
-                </div>
-                <div class="ch4x-controls">
-                    <button type="button" class="ch4x-play" id="ch4x-play" aria-label="Play slice sweep">&#9654;</button>
-                    <span class="ch4x-end">posterior</span>
-                    <input type="range" id="ch4x-slider" min="0" max="23" value="14" aria-label="Coronal slice">
-                    <span class="ch4x-end">anterior</span>
-                    <button type="button" class="ch4x-zoom" id="ch4x-zoom" aria-pressed="false">Zoom to Ch4</button>
-                </div>
-                <p class="ch4x-src">Template: MNI152NLin2009cAsym T1 (1 mm). Ch4: Julich-Brain probabilistic cytoarchitectonic map of Ch 4, derived from 10 postmortem brains (Zaborszky et al., <em>NeuroImage</em> 2008). Ch1&ndash;3: Julich-Brain maximum probability map. Atlas data &copy; EBRAINS, CC BY-NC-SA 4.0. Ch4 voxels classified as CSF on the template (FSL FAST on the brain-masked T1, CSF partial volume &gt; 0.5) or outside the brain mask were removed (5,799 &rarr; 5,332 voxels); remaining probabilities are the original atlas values.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Work -->
-    <section id="featured-work" class="fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Featured Work</h2>
-            </div>
+            <div class="fw-sub" id="featured-work">
+                <h3 class="subsection-title">Featured work</h3>
 
             <div class="fw-grid">
                 <article class="fw-item" data-method="ch4 subtyping" data-status="published">
@@ -1074,7 +1223,6 @@
                         <img class="fw-true-color" src="assets/featured/ch4_red_mni_tile.jpg" alt="Coronal and axial MNI152 slices with the nucleus basalis of Meynert highlighted in red" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3>Low Ch4 gray-matter density marks a more severe, faster-declining PD-MCI group</h3>
                         <p>Using voxel-based morphometry and probabilistic Ch4 maps in 162 PPMI participants with PD-MCI, we identified 40 with low Ch4 density (below &minus;1 SD). They had worse MDS-UPDRS, autonomic, and olfactory scores and reached cognitive milestones sooner (log-rank <i>p</i>&nbsp;=&nbsp;0.002). The classifier is released as an open research tool.</p>
                         <p class="fw-ref"><a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank"><em>Parkinsonism &amp; Related Disorders</em>, 2025 &rarr;</a></p>
@@ -1086,8 +1234,7 @@
                         <img src="assets/featured/ch4_gmd_fw_tile.jpg" alt="Raincloud plots of Ch4 and Ch1-3 gray-matter density and free-water fraction across HC, PD-NC, PD-MCI, and PDD" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-pending">Pending Publication</span>
-                        <h3>Ch4 gray-matter density and free water are independently associated with cognition in PD</h3>
+                        <h3>Ch4 gray-matter density and free water are independently associated with cognition in PD (preprint)</h3>
                         <p>We combined T1-weighted and free-water diffusion MRI in 92 participants (controls, PD-NC, PD-MCI, PDD). Ch4 gray-matter density was lowest and free water highest in PDD. Only these two Ch4 measures were independently associated with cognition, and together they separated PDD from PD without dementia (exploratory AUC&nbsp;0.93).</p>
                         <p class="fw-ref"><a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank">medRxiv preprint, 2026 &rarr;</a></p>
                     </div>
@@ -1097,7 +1244,6 @@
                         <img src="assets/featured/ch4_fc_maps_tile.jpg" alt="Axial slices showing positive (red-yellow) and negative (blue) resting-state connectivity of the Ch4 seed" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-ongoing">Ongoing Work</span>
                         <h3>Ch4&ndash;cingulo-opercular connectivity links Ch4 degeneration to cognition</h3>
                         <p>Resting-state fMRI extends the multimodal Ch4 signature. Ch4 connectivity with the attention-related cingulo-opercular network statistically mediated the relationship between Ch4 degeneration and cognition, supporting a candidate circuit link between Ch4 degeneration and cognitive impairment.</p>
                     </div>
@@ -1107,7 +1253,6 @@
                         <img class="fw-true-color" src="assets/featured/eeg_df_topomap_tile.jpg" alt="Topographic heat maps of mean dominant EEG frequency with eyes closed: mostly blue to yellow (about 6 to 7 Hz) in patients with cognitive fluctuations and red (about 8 Hz) in patients without" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3>Slower resting EEG rhythms are associated with cognitive fluctuations in Lewy body disease</h3>
                         <p>Eyes-closed resting EEG in 53 patients across the Lewy body spectrum. Patients with fluctuations had lower dominant frequency, dominant-alpha prevalence, and individual alpha peak frequency after adjusting for age, sex, and MoCA; an elastic-net model detected fluctuations with AUC&nbsp;0.86. The topographic maps show mean dominant frequency at every electrode: about 6&ndash;7&nbsp;Hz in patients with fluctuations versus about 8&nbsp;Hz in those without.</p>
                         <p class="fw-ref"><a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank"><em>Alzheimer's Research &amp; Therapy</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
@@ -1118,7 +1263,6 @@
                         <img src="assets/featured/milestones_km_tile.jpg" alt="Kaplan-Meier curves of milestone-free probability for data-driven PD subtypes" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3>Diffuse-malignant PD progresses fastest; enrolling it halved required sample sizes in trial simulations</h3>
                         <p>Over 10 years of PPMI follow-up, we compared clinical, pathological, and data-driven subtypes on milestones across six functional domains using Cox regression. Diffuse-malignant patients reached 63.0% of milestones (PIGD 55.6%, body-first 54.0%), and in trial simulations enrolling them cut the required sample size by about 50%.</p>
                         <p class="fw-ref"><a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank"><em>npj Parkinson's Disease</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0 &middot; cropped</span></p>
@@ -1129,7 +1273,6 @@
                         <img src="assets/featured/percentiles_forest_tile.jpg" alt="Forest plot of adjusted hazard ratios for diffuse-malignant and intermediate versus mild motor-predominant PD" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3>Year-specific percentiles enable real-time PD subtyping for trial enrollment</h3>
                         <p>Percentile thresholds for motor, cognitive, RBD, and autonomic scores, set for each of the first 5 years after diagnosis (PPMI, N&nbsp;=&nbsp;1,030), classify patients prospectively each year. Diffuse-malignant PD reached a first progression milestone fastest (HR&nbsp;3.03, 95% CI 2.30&ndash;3.97, vs mild motor-predominant).</p>
                         <p class="fw-ref"><a href="https://doi.org/10.1002/mdc3.70740" target="_blank"><em>Mov Disord Clin Pract</em>, 2026 &rarr;</a> <span class="fw-lic">CC BY-NC-ND 4.0</span></p>
@@ -1140,7 +1283,6 @@
                         <img src="assets/featured/genes_subtypes_tile.jpg" alt="Heatmap of gene-variant association strength across four PD subtyping schemes" loading="lazy">
                     </button>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3><i>LRRK2</i> and <i>GBA1</i> map onto different PD subtypes</h3>
                         <p>Variant frequencies were compared across four subtyping frameworks in 1,390 genotyped PPMI patients with FDR correction. <i>LRRK2</i> variants were enriched in &alpha;&#8209;synuclein SAA-negative PD (37.1% vs 10.2%) and <i>GBA1</i> variants in diffuse-malignant PD (14.0% vs 5.9% in mild motor-predominant); the tremor/gait split showed no signal that survived correction.</p>
                         <p class="fw-ref"><a href="https://doi.org/10.3390/genes17040449" target="_blank"><em>Genes</em> (Basel), 2026 &rarr;</a> <span class="fw-lic">CC BY 4.0</span></p>
@@ -1156,15 +1298,16 @@
                         <div class="fw-stat-foot">GNS-I &middot; prospective traumatic brain injury cohort</div>
                     </div>
                     <div class="fw-text">
-                        <span class="fw-status is-published">Published</span>
                         <h3>TBI mortality across 29 countries does not follow a development gradient</h3>
                         <p>This prospective cohort enrolled 2,165 patients with operative or nonoperative TBI at 100 hospitals. In inverse-probability-weighted mixed-effects models, mortality showed no dose-response with the Human Development Index; injury mechanism, demographics, and prehospital access drove the disparities. Role: co-founder of the Global NeuroSurg Research Collaborative; co-principal investigator, steering committee, and writing group.</p>
                         <p class="fw-ref"><a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank"><em>Nature Medicine</em>, 2026 &rarr;</a></p>
                     </div>
                 </article>
             </div>
+            </div>
         </div>
     </section>
+
 
     <dialog class="fw-lightbox" id="fw-lightbox" aria-label="Enlarged figure">
         <button type="button" class="fw-close" aria-label="Close">&times;</button>
@@ -1172,148 +1315,90 @@
         <p class="fw-caption"></p>
     </dialog>
 
-    <!-- Publications -->
-    <section id="publications" class="fade-in">
+    <section id="education">
         <div class="section-inner">
             <div class="section-header">
-                <h2>Selected Publications</h2>
+                <h2>Education and Training</h2>
             </div>
-
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 1.25rem;">170+ peer-reviewed publications in total (<span data-scholar="citations">8,955</span> citations; h-index <span data-scholar="h_index">46</span>; i10-index <span data-scholar="i10_index">109</span> on Google Scholar), including 66 systematic reviews, meta-analyses, and scoping reviews, 36 of them senior-author papers led by trainees in my research-training program. Full list on <a href="https://orcid.org/0000-0001-5363-6369" target="_blank" rel="noopener">ORCID</a> and <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
-
-            <p class="pub-legend"><sup>*</sup> Trainee I mentored &nbsp;&middot;&nbsp; (first) / (senior): my author position</p>
-
-            <h3 class="subsection-title" style="margin-top: 0;">Cholinergic Imaging and EEG Biomarkers</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Multimodal MRI characterization of nucleus basalis of Meynert degeneration: structural atrophy and free-water diffusion in Parkinson's disease cognitive impairment</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Zaman A, Wyman-Chick KA, et al. &middot; <a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank">medRxiv preprint (under review), 2026</a></div>
+            <div class="timeline">
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #162e51;" title="NIA / Alzheimer's Association">NIA</div>
+                    <div class="timeline-date">2025</div>
+                    <h3>IMPACT-AD Fellowship</h3>
+                    <h4>Institute on Methods and Protocols for Advancement of Clinical Trials in ADRD &middot; NIA and Alzheimer's Association</h4>
                 </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Resting-state EEG features of cognitive fluctuations across the Lewy body disease spectrum</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Lageman SK, Ono K, Ahsan MM, Mukhopadhyay N, Barrett MJ &middot; <a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank">Alzheimer's Research &amp; Therapy, 2026</a></div>
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #5c2d91;" title="UoP">UoP</div>
+                    <div class="timeline-date">2022</div>
+                    <h3>Ph.D. in Biomedical Sciences</h3>
+                    <h4>University of Portsmouth &middot; United Kingdom</h4>
                 </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Parkinson's disease mild cognitive impairment with MRI evidence of cholinergic nucleus 4 degeneration: A new subtype?</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Vohra HZ, Lageman SK, Mukhopadhyay N, Berman BD, Weintraub D, Barrett MJ &middot; <a href="https://doi.org/10.1016/j.parkreldis.2025.108072" target="_blank">Parkinsonism & Related Disorders, 2025</a></div>
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #1a6b3c;" title="ZU">ZU</div>
+                    <div class="timeline-date">2018</div>
+                    <h3>M.B.B.Ch. in Medicine and Surgery (equivalent to MD)</h3>
+                    <h4>Zagazig University Faculty of Medicine &middot; Egypt</h4>
                 </div>
-            </div>
-
-            <h3 class="subsection-title">Parkinson's Disease Subtypes and Progression</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Comparative analysis of progression milestones across PD clinical, pathological, and data-driven subtypes: 10-year follow-up</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Mukhopadhyay N, Berman BD, Barrett MJ &middot; <a href="https://doi.org/10.1038/s41531-026-01430-8" target="_blank">npj Parkinson's Disease, 2026</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Disease-duration–specific percentiles for prospective subtyping of Parkinson's disease: A PPMI-based study</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Mukhopadhyay N, Berman BD, Fereshtehnejad SM, Barrett MJ &middot; <a href="https://doi.org/10.1002/mdc3.70740" target="_blank">Movement Disorders Clinical Practice, 2026</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Genetic associations of Parkinson's disease clinical, pathological, and data-driven subtypes</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Abouelmagd ME<sup>*</sup>, Hamed BM<sup>*</sup>, et al. &middot; <a href="https://doi.org/10.3390/genes17040449" target="_blank">Genes (Basel), 2026;17(4):449</a></div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Treatment Patterns in Dementia and Movement Disorders</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Cholinesterase inhibitors for patients with dementia: Patterns of prescribing and disparities in treatment</div>
-                    <div class="pub-authors">Heo RJ, <strong>Negida A</strong>, Barrett MJ, et al. &middot; <a href="https://doi.org/10.1177/13872877251411418" target="_blank">Journal of Alzheimer's Disease, 2026</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Patterns and predictors of cholinesterase inhibitor use in dementia with Lewy bodies</div>
-                    <div class="pub-authors">Heo RJ, <strong>Negida A</strong>, Wyman-Chick KA, et al. &middot; <a href="https://doi.org/10.1002/trc2.70136" target="_blank">Alzheimer's & Dementia: TRCI, 2025</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Oral medication treatment patterns in blepharospasm and Meige syndrome: a multi-institutional TriNetX study</div>
-                    <div class="pub-authors">Heo RJ, Mukhopadhyay N, Dintino C, <strong>Negida A</strong>, Barrett MJ, Berman BD &middot; <a href="https://doi.org/10.3389/dyst.2025.15368" target="_blank">Dystonia, 2025</a></div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Other Clinical Studies</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Optimizing screening for intrastriatal interventions in Huntington's disease using predictive models</div>
-                    <div class="pub-authors">Barrett MJ, <strong>Negida A</strong>, Mukhopadhyay N, et al. &middot; <a href="https://doi.org/10.1002/mds.29749" target="_blank">Movement Disorders, 2024</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Neuropsychological determinants of impairment in activities of daily living in patients with Lewy body dementia</div>
-                    <div class="pub-authors">Desai N, Nawaz H, Mukhopadhyay ND, ... <strong>Negida A</strong>, ... Barrett MJ &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/39493124/" target="_blank">Cureus, 2024</a></div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Multicenter Consortium Study (Co-Principal Investigator)</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Traumatic brain injury outcomes across human development index strata in 29 countries</div>
-                    <div class="pub-authors">Nugent JG, Tan H, Stedelin B, et al.; <strong>Negida A</strong>, Raslan AM; on behalf of the GNS-I Collaborators &middot; <a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank"><strong>Nature Medicine</strong>, 2026</a></div>
-                    <div class="pub-authors">PMID: 42618631. Role: Co-Principal Investigator, Steering Committee and Writing Group. Prospective study of 2,165 patients with traumatic brain injury at 100 hospitals in 29 countries; flagship study of the Global NeuroSurg Research Collaborative, which I co-founded.</div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Reviews and Evidence Synthesis (Selected)</h3>
-            <div class="pub-list">
-                <div class="pub-entry">
-                    <div class="pub-title">Efficacy and safety of apomorphine in the treatment of Parkinson's disease: a systematic review and meta-analysis of randomized controlled trials</div>
-                    <div class="pub-authors">Abouelmagd ME<sup>*</sup>, Abbas A, Yousef O, et al.; <strong>Negida A (senior)</strong> &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/42027696/" target="_blank">Therapeutic Advances in Neurological Disorders, 2026</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Comparative safety of cholinesterase inhibitors and memantine for dementia: a protocol for a network meta-analysis of randomized controlled trials</div>
-                    <div class="pub-authors">Abouelmagd ME<sup>*</sup>, Almosilhy NA, Makhlouf HA, et al.; <strong>Negida A (senior)</strong> &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/41188985/" target="_blank">Systematic Reviews, 2025</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Multimodal diagnostic tools and advanced data models for detection of prodromal Parkinson's disease: a scoping review</div>
-                    <div class="pub-authors">Serag I<sup>*</sup>, Azzam AY, ... <strong>Negida A (senior)</strong> &middot; <a href="https://doi.org/10.1186/s12880-025-01620-5" target="_blank">BMC Medical Imaging, 2025</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Subthalamic nucleus versus globus pallidus internus deep brain stimulation in the treatment of dystonia: a systematic review and meta-analysis of safety and efficacy</div>
-                    <div class="pub-authors">Yousef O, Abbas A, Abdelmeseh M, ... <strong>Negida A</strong>, ... Berman BD &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/39647323/" target="_blank">Journal of Clinical Neuroscience, 2025</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Statins and Parkinson's disease risk reduction and disease-modification: A meta-analysis of 4 million participants</div>
-                    <div class="pub-authors">Mady A<sup>*</sup>, Nabil Y, ... Barrett MJ, Berman B, <strong>Negida A (senior)</strong> &middot; <a href="https://doi.org/10.1111/cns.14888" target="_blank">CNS Neuroscience & Therapeutics, 2024</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Efficacy of the iron-chelating agent, deferiprone, in patients with Parkinson's disease: A systematic review and meta-analysis</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Hassan NM, Aboeldahab H, et al. &middot; <a href="https://doi.org/10.1111/cns.14607" target="_blank">CNS Neuroscience & Therapeutics, 2024</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Do cerebral microbleeds increase the risk of dementia? A systematic review and meta-analysis</div>
-                    <div class="pub-authors">Hussein AS, Shawqi M, Bahbah EI, et al.; <strong>Negida A (senior)</strong> &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/36632242/" target="_blank">IBRO Neuroscience Reports, 2023</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Mavoglurant (AFQ056) for the treatment of levodopa-induced dyskinesia in patients with Parkinson's disease: a meta-analysis</div>
-                    <div class="pub-authors"><strong>Negida A (first)</strong>, Ghaith HS<sup>*</sup>, Fala SY, et al. &middot; <a href="https://pubmed.ncbi.nlm.nih.gov/34014397/" target="_blank">Neurological Sciences, 2021</a></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">C-Abl inhibition: A novel therapeutic target for Parkinson's disease</div>
-                    <div class="pub-authors">Abushouk AI, <strong>Negida A</strong>, et al. &middot; CNS & Neurological Disorders - Drug Targets, 2018 <span class="pub-citation-note">[100+ citations]</span></div>
-                </div>
-                <div class="pub-entry">
-                    <div class="pub-title">Caffeine: The forgotten potential for Parkinson's disease</div>
-                    <div class="pub-authors"><strong>Negida A</strong>, Elfil M, Attia A, et al. &middot; CNS & Neurological Disorders - Drug Targets, 2017 <span class="pub-citation-note">[150+ citations]</span></div>
-                </div>
-            </div>
-
-            <!-- Book Chapter -->
-            <div class="book-chapter">
-                <h3>Book Chapter</h3>
-                <p><strong>Negida A</strong>, et al. Chapter 14: Epidemiology and risk factors of Parkinson's disease. In: <em>Essential Guide to Neurodegenerative Disorders</em>. Academic Press, 2025; pp 225&ndash;234.</p>
-            </div>
-
-            <div style="text-align: center; margin-top: 1.5rem;">
-                <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" class="btn btn-primary">View All Publications &rarr;</a>
             </div>
         </div>
     </section>
 
-    <!-- Research Support -->
-    <section id="grants" class="fade-in">
+    <section id="appointments">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Academic and Research Appointments</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #000000;" title="VCU">VCU</div>
+                    <div class="timeline-date">2023 &ndash; present</div>
+                    <h3>Postdoctoral Scholar</h3>
+                    <h4>VCU Parkinson's & Movement Disorders Center, Department of Neurology &middot; Richmond, VA</h4>
+                    <ul>
+                        <li>Built a multimodal Ch4 MRI signature (T1-weighted gray-matter density and diffusion free water), now extended with resting-state fMRI across PD, DLB, and AD, and identified a PD-MCI subtype with MRI evidence of cholinergic nucleus 4 degeneration</li>
+                        <li>Developed EEG-based biomarkers for cognitive fluctuations in Lewy body dementia, combining NASA's Psychomotor Vigilance Test with resting-state and task-based EEG</li>
+                        <li>Led PPMI, NACC, and PDBP database studies stratifying PD, LBD, and AD patients, including 10-year progression patterns across PD subtypes</li>
+                        <li>Built structural, functional, and diffusion MRI pipelines, including DTI-ALPS and white matter hyperintensity quantification for glymphatic&ndash;vascular studies</li>
+                        <li>Generated pilot data and contributed study design, biostatistical planning, and the multimodal Ch4 MRI pipeline to the funded NIH/NINDS R01 NS142622</li>
+                    </ul>
+                </div>
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #a51c30;" title="HMS">HMS</div>
+                    <div class="timeline-date">2021 &ndash; 2023</div>
+                    <h3>Research Fellow</h3>
+                    <h4>Harvard Medical School, Department of Global Health and Social Medicine &middot; Boston, MA</h4>
+                    <ul>
+                        <li>Assessed global neurological care delivery systems through systematic data collection</li>
+                        <li>Quantified social and environmental determinants of neurological health disparities</li>
+                        <li>Applied external validation methods for financial risk prediction tools in low-income settings</li>
+                        <li>Led the development of CHYSPR guidelines in LMICs (first author, www.chyspr.org)</li>
+                        <li>Produced peer-reviewed outputs informing WHO and regional health policy decisions</li>
+                    </ul>
+                </div>
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #0066b3;" title="BAU">BAU</div>
+                    <div class="timeline-date">2019</div>
+                    <h3>Research Fellow</h3>
+                    <h4>Bah&ccedil;e&scedil;ehir University, Department of Neurological Surgery &middot; Istanbul, Turkey</h4>
+                    <ul>
+                        <li>Evaluated deep brain stimulation outcomes in Parkinson's and Huntington's disease patients</li>
+                        <li>Analyzed clinical and neuropsychological endpoints using advanced statistical methods</li>
+                    </ul>
+                </div>
+                <div class="timeline-item has-badge">
+                    <div class="inst-badge" style="background: #7a4b1e;" title="ELRIAH">ELRI</div>
+                    <div class="timeline-date">2015</div>
+                    <h3>Clinical Research Assistant</h3>
+                    <h4>Epidemiology Department, Egyptian Liver Research Institute and Hospital &middot; Mansoura, Egypt</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="grants">
         <div class="section-inner">
             <div class="section-header">
                 <h2>Research Support</h2>
-                <p>Contributing role as a postdoctoral researcher on NIH awards led by Matthew J. Barrett, MD, MS (VCU).</p>
             </div>
 
             <h3 class="subsection-title" style="margin-top: 0;">Postdoctoral Salary Support (PI: Matthew J. Barrett, MD, MS)</h3>
@@ -1343,19 +1428,316 @@
 
             <h3 class="subsection-title">Data Resources</h3>
             <div class="grant-entry">
-                <div class="grant-status">Executed data use agreements &middot; ten cohorts &middot; more than 35,000 MRIs</div>
-                <p class="grant-detail">A4, ADNI (2&ndash;5), ADNI-DoD, AIBL, AMP-PD (Tier 1), Critical Path for Parkinson's (CPP), NACC, OASIS-3, PDBP, and PPMI; plus the VCU multimodal discovery cohort (n = 111).</p>
+                <div class="grant-status">Data use agreements &middot; more than 40,000 MRIs from multisite consortia</div>
+                <p class="grant-detail">A4, ADNI (2&ndash;5), ADNI-DoD, AIBL, AMP-PD (Tier 1), Critical Path for Parkinson's (CPP), NACC, OASIS-3, PDBP, PPMI, and U.S. POINTER (imaging secondary analysis); plus the VCU multimodal discovery cohort (n = 111).</p>
             </div>
         </div>
     </section>
 
-    <!-- Research Tools & Software -->
-    <section id="tools" class="fade-in">
+    <section id="publications">
         <div class="section-inner">
             <div class="section-header">
-                <h2>Research Tools & Software</h2>
-                <p>Open-source tools developed for clinical neuroscience and evidence synthesis research</p>
+                <h2>Publications</h2>
             </div>
+
+            <h3 class="subsection-title pub-year">2026</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Mukhopadhyay N, Berman BD, Fereshtehnejad SM, Barrett MJ. Disease-Duration–Specific Percentiles for Prospective Subtyping of Parkinson’s Disease: A PPMI-Based Study. Movement Disorders Clinical Practice (Impact Factor = 3.4). 2026. <a href="https://doi.org/10.1002/mdc3.70740" target="_blank" rel="noopener">doi:10.1002/mdc3.70740</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Mukhopadhyay N, Berman BD, Barrett MJ. Comparative analysis of progression milestones across Parkinson’s disease clinical, pathological, and data-driven subtypes: a 10-year follow-up. npj Parkinson's Disease (Impact Factor = 8.5). 2026. <a href="https://pubmed.ncbi.nlm.nih.gov/42286020/" target="_blank" rel="noopener">PMID: 42286020</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Abouelmagd ME, Hamed BM, et al. Genetic Associations of Parkinson’s Disease Clinical, Pathological, and Data-Driven Subtypes. Genes (Basel) (Impact Factor = 3.1; Q2). 2026;17(4):449. <a href="https://pubmed.ncbi.nlm.nih.gov/42074567/" target="_blank" rel="noopener">PMID: 42074567</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-lbd">Lewy body dementia</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Lageman SK, Ono K, Ahsan MM, Mukhopadhyay N, Barrett MJ. Resting-State EEG Features of Cognitive Fluctuations Across the Lewy Body Disease Spectrum. Alzheimer's Research &amp; Therapy (Impact Factor = 8.9). 2026. <a href="https://doi.org/10.1186/s13195-026-02148-8" target="_blank" rel="noopener">doi:10.1186/s13195-026-02148-8</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-note">Preprint</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Zaman A, Wyman-Chick KA, Hallak R, Miller-Patterson C, Berman BD, et al. Multimodal MRI characterization of nucleus basalis of Meynert degeneration: structural atrophy and free-water diffusion in Parkinson's disease cognitive impairment. medRxiv. 2026. <a href="https://doi.org/10.64898/2026.06.08.26355183" target="_blank" rel="noopener">doi:10.64898/2026.06.08.26355183</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-ad">Alzheimer's disease</span><span class="ptag t-note">Preprint</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>; for the Alzheimer's Disease Neuroimaging Initiative. Alpha-synuclein co-pathology amplifies amyloid-driven tau accumulation across Braak stages without modifying tau-cognition associations. bioRxiv. 2026. <a href="https://doi.org/10.64898/2026.03.31.713304" target="_blank" rel="noopener">doi:10.64898/2026.03.31.713304</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-dem">Dementia</span><span class="ptag t-note">Preprint</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>. Dose-dependent acceleration of cognitive decline by co-occurring neuropathologies in autopsy-confirmed neurodegenerative disease. Research Square. 2026. <a href="https://doi.org/10.21203/rs.3.rs-9188042/v1" target="_blank" rel="noopener">doi:10.21203/rs.3.rs-9188042/v1</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-note">Preprint</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>. Which autonomic symptoms can predict cognitive progression milestones in Parkinson's disease? An item-level SCOPA-AUT analysis. Research Square. 2026. <a href="https://doi.org/10.21203/rs.3.rs-9129721/v1" target="_blank" rel="noopener">doi:10.21203/rs.3.rs-9129721/v1</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Co-principal investigator</span><span class="ptag t-tbi">Traumatic brain injury</span></div>
+                    <p class="pub-cite">. Nugent JG, Tan H, Stedelin B, et al.; Negida A, Raslan AM; on behalf of the GNS-I Collaborators. Traumatic brain injury outcomes across human development index strata in 29 countries. Nature Medicine (Impact Factor = 52.5). 2026. <a href="https://doi.org/10.1038/s41591-026-04600-6" target="_blank" rel="noopener">doi:10.1038/s41591-026-04600-6</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Abouelmagd ME, Abbas A, Yousef O, et al.; <strong class="me">Negida A</strong>. Efficacy and safety of apomorphine in the treatment of Parkinson's disease: a systematic review and meta-analysis of randomized controlled trials. Therapeutic Advances in Neurological Disorders (Impact Factor = 4.0). 2026;19:17562864261436541. <a href="https://pubmed.ncbi.nlm.nih.gov/42027696/" target="_blank" rel="noopener">PMID: 42027696</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Abbas AW, Al-Qiami A, Sarhan K, et al.; <strong class="me">Negida A</strong>. The potential of utilizing Local Field Potential (LFP) in diagnosis and management of Parkinsonism's hallmark symptoms: a comprehensive review. Neurological Sciences (Impact Factor = 2.7). 2026;47(5). <a href="https://pubmed.ncbi.nlm.nih.gov/41957306/" target="_blank" rel="noopener">PMID: 41957306</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Messak M, Abdelmageed A, Khattab YA, Mandour Y, Shaker O, <strong class="me">Negida A</strong>. Bright light therapy for depression and excessive daytime sleepiness in Parkinson's disease: a systematic review and meta-analysis of randomized controlled trials with dose-response meta-regression. Neurodegenerative Disease Management (Impact Factor = 2.8; Q2). 2026:1-16. <a href="https://pubmed.ncbi.nlm.nih.gov/42217222/" target="_blank" rel="noopener">PMID: 42217222</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Messak M, Abdelmageed A, Abbas AN, Mandour Y, Talkhan A, Eltohami MF, Kanaan D, Alfahmi FK, Saeed HT, Hamzeh LH, Taman L, <strong class="me">Negida A</strong>. Therapeutic effects of cannabinoids on Parkinson's disease: an updated systematic review and meta-analysis of randomized controlled trials. Acta Neurologica Belgica (Impact Factor = 2.0). 2026. <a href="https://pubmed.ncbi.nlm.nih.gov/42138778/" target="_blank" rel="noopener">PMID: 42138778</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-np">Neuroprotection</span></div>
+                    <p class="pub-cite">Hawas Y, Abouzid M, Gadelmawla AF, Ewis DK, Khatatbeh A, Negida Y; <strong class="me">Negida A</strong>. The Neuroprotective Potentials of Dual GIP/GLP1-RA (Tirzepatide): From Preclinical Experiments to Clinical Trials: A Scoping Review. Brain and Behavior (Impact Factor = 2.8). 2026;16(8):e71702. <a href="https://pubmed.ncbi.nlm.nih.gov/42608956/" target="_blank" rel="noopener">PMID: 42608956</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-dem">Dementia</span></div>
+                    <p class="pub-cite">Heo RJ, <strong class="me">Negida A</strong>, Barrett MJ, et al. Cholinesterase inhibitors for patients with dementia: Patterns of prescribing and disparities in treatment. Journal of Alzheimer's Disease (Impact Factor = 3.1). 2026;109(4):1917-1924. <a href="https://pubmed.ncbi.nlm.nih.gov/41527747/" target="_blank" rel="noopener">PMID: 41527747</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2025</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Vohra HZ, Lageman SK, et al. Parkinson's disease mild cognitive impairment with MRI evidence of cholinergic nucleus 4 degeneration: A new subtype? Parkinsonism &amp; Related Disorders (Impact Factor = 4.3). 2025;141:108072. <a href="https://pubmed.ncbi.nlm.nih.gov/41106089/" target="_blank" rel="noopener">PMID: 41106089</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-note">Book chapter</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, et al. Chapter 14: Epidemiology and Risk Factors of Parkinson’s Disease. Essential Guide to Neurodegenerative Disorders (Academic Press). 2025:225-234.</p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-dem">Dementia</span></div>
+                    <p class="pub-cite">Abouelmagd ME, Almosilhy NA, Makhlouf HA, et al.; <strong class="me">Negida A</strong>. Comparative safety of cholinesterase inhibitors and memantine for dementia: a protocol for a network meta-analysis of randomized controlled trials. Systematic Reviews (Impact Factor = 5.7). 2025;14(1):213. <a href="https://pubmed.ncbi.nlm.nih.gov/41188985/" target="_blank" rel="noopener">PMID: 41188985</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Serag I, Azzam AY, Hassan AK, et al.; <strong class="me">Negida A</strong>. Multimodal diagnostic tools and advanced data models for detection of prodromal Parkinson's disease: a scoping review. BMC Medical Imaging (Impact Factor = 3.9). 2025;25(1):103. <a href="https://pubmed.ncbi.nlm.nih.gov/40155878/" target="_blank" rel="noopener">PMID: 40155878</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-ad">Alzheimer's disease</span></div>
+                    <p class="pub-cite">Mansour MEM, Ali AHG, Ibrahim MHM, Mousa AIA, <strong class="me">Negida AS</strong>. Safety and efficacy of sodium benzoate for patients with mild Alzheimer's disease: a systematic review and meta-analysis. Nutritional Neuroscience (Impact Factor = 3.1; Q2). 2025;28(6):763-772. <a href="https://pubmed.ncbi.nlm.nih.gov/39450675/" target="_blank" rel="noopener">PMID: 39450675</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-epi">Epilepsy</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Hawas Y, Abbas A, Alkhawaldeh IM, et al.; <strong class="me">Negida A</strong>. Efficacy and safety of transcranial direct current stimulation (tDCS) in treatment of refractory epilepsy: an updated systematic review and meta-analysis of randomized sham-controlled trials. Neurological Sciences (Impact Factor = 2.7). 2025;46(2):671-687. <a href="https://pubmed.ncbi.nlm.nih.gov/39532798/" target="_blank" rel="noopener">PMID: 39532798</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Alkhawaldeh IM, Abdelhady M, Aljabali A, et al.; <strong class="me">Negida A</strong>. Rates of discontinuation and non-publication of endovascular stroke clinical studies: A cross-sectional analysis. Journal of Clinical Neuroscience (Impact Factor = 1.9). 2025;135:111122. <a href="https://pubmed.ncbi.nlm.nih.gov/40043330/" target="_blank" rel="noopener">PMID: 40043330</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Mady A, Kashbour M, Abu-Qare'e O, et al.; Barrett MJ, <strong class="me">Negida A</strong>. Rheumatoid arthritis drugs and the risk of Parkinson's disease: a meta-analysis. NeuroImmune Pharmacology and Therapeutics. 2025. <a href="https://doi.org/10.1515/nipt-2024-0023" target="_blank" rel="noopener">doi:10.1515/nipt-2024-0023</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-lbd">Dementia with Lewy bodies</span></div>
+                    <p class="pub-cite">Heo RJ, <strong class="me">Negida A</strong>, Wyman-Chick KA, et al. Patterns and predictors of cholinesterase inhibitor use in dementia with Lewy bodies. Alzheimer's &amp; Dementia: TRCI (Impact Factor = 7.4). 2025;11(3):e70136. <a href="https://pubmed.ncbi.nlm.nih.gov/40687401/" target="_blank" rel="noopener">PMID: 40687401</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Abbas A, Sabet H, Hawas Y, ..., <strong class="me">Negida A</strong>, ..., Raslan AM. Impact of Subthalamic Nucleus Deep Brain Stimulation on Gastrointestinal Symptoms and Gastric Emptying in Parkinson's Disease: A Systematic Review and Meta-Analysis. Neuromodulation (Impact Factor = 3.7). 2025. <a href="https://pubmed.ncbi.nlm.nih.gov/40910967/" target="_blank" rel="noopener">PMID: 40910967</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-epi">Epilepsy</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Pichardo-Rojas PS, Pichardo-Rojas D, Zarate-Duran CA, ..., <strong class="me">Negida A</strong>, ..., Milanese V. Stereoelectroencephalography-guided radiofrequency thermocoagulation for drug-resistant epilepsy: A meta-analysis. Epilepsia. 2025;66(10):3602- 3620. <a href="https://pubmed.ncbi.nlm.nih.gov/40569267/" target="_blank" rel="noopener">PMID: 40569267</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-dys">Dystonia</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Yousef O, Abbas A, Abdelmeseh M, ..., <strong class="me">Negida A</strong>, ..., Berman BD. Subthalamic nucleus versus globus pallidus internus deep brain stimulation in the treatment of dystonia: A systematic review and meta-analysis of safety and efficacy. Journal of Clinical Neuroscience (Impact Factor = 1.9). 2025;132:110958. <a href="https://pubmed.ncbi.nlm.nih.gov/39647323/" target="_blank" rel="noopener">PMID: 39647323</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-dys">Dystonia</span></div>
+                    <p class="pub-cite">Heo RJ, Mukhopadhyay N, Dintino C, <strong class="me">Negida A</strong>, Barrett MJ, Berman BD. Oral medication treatment patterns in blepharospasm and Meige syndrome: a multi-institutional TriNetX study. Dystonia (Impact Factor = 1.6). 2025;4:15368. <a href="https://doi.org/10.3389/dyst.2025.15368" target="_blank" rel="noopener">doi:10.3389/dyst.2025.15368</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2024</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Hassan NM, Aboeldahab H, et al. Efficacy of the iron-chelating agent, deferiprone, in patients with Parkinson’s disease: a systematic review and meta-analysis. CNS Neuroscience &amp; Therapeutics (Impact Factor = 6.6). 2024;30(2):e14607. <a href="https://pubmed.ncbi.nlm.nih.gov/38334258/" target="_blank" rel="noopener">PMID: 38334258</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Mady A, Nabil Y, Daoud A, et al.; <strong class="me">Negida A</strong>. Determining the role of statins in Parkinson's disease risk reduction and disease modification: A comprehensive meta-analysis of 4 million participants' data. CNS Neuroscience &amp; Therapeutics (Impact Factor = 6.6). 2024;30(8):e14888. <a href="https://pubmed.ncbi.nlm.nih.gov/39097909/" target="_blank" rel="noopener">PMID: 39097909</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Ghaith HS, Gabra MD, Ebada MA, et al.; <strong class="me">Negida A</strong>. Tranexamic acid for patients with aneurysmal subarachnoid hemorrhage: a systematic review and meta-analysis of 2991 patients. International Journal of Neuroscience (Impact Factor = 1.7). 2024;134(7):763-776. <a href="https://pubmed.ncbi.nlm.nih.gov/36463556/" target="_blank" rel="noopener">PMID: 36463556</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-hd">Huntington's disease</span></div>
+                    <p class="pub-cite">Barrett MJ, <strong class="me">Negida A</strong>, Mukhopadhyay N, et al. Optimizing Screening for Intrastriatal Interventions in Huntington's Disease Using Predictive Models. Movement Disorders (Impact Factor = 7.7; Q1). 2024;39(5):855-862. <a href="https://pubmed.ncbi.nlm.nih.gov/38465778/" target="_blank" rel="noopener">PMID: 38465778</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-lbd">Lewy body dementia</span></div>
+                    <p class="pub-cite">Desai N, Nawaz H, Mukhopadhyay ND, ..., <strong class="me">Negida A</strong>, ..., Barrett MJ. Neuropsychological Determinants of Impairment in Activities of Daily Living in Patients With Lewy Body Dementia. Cureus. 2024;16(10):e70762. <a href="https://pubmed.ncbi.nlm.nih.gov/39493124/" target="_blank" rel="noopener">PMID: 39493124</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-ad">Alzheimer's disease</span></div>
+                    <p class="pub-cite">Saleh O, Albakri K, Altiti A, ..., <strong class="me">Negida A</strong>, ..., Kamal MA. The Role of Non-coding RNAs in Alzheimer's Disease: Pathogenesis, Novel Biomarkers, and Potential Therapeutic Targets. CNS &amp; Neurological Disorders - Drug Targets. 2024;23(6):731-745. <a href="https://pubmed.ncbi.nlm.nih.gov/37211844/" target="_blank" rel="noopener">PMID: 37211844</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2023</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Shahien M, Elaraby A, Gamal M, et al.; <strong class="me">Negida A</strong>. Physical therapy interventions for the management of hand tremors in patients with Parkinson's disease: a systematic review. Neurological Sciences (Impact Factor = 2.7). 2023;44(2):461-470. <a href="https://pubmed.ncbi.nlm.nih.gov/36205810/" target="_blank" rel="noopener">PMID: 36205810</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-dem">Dementia</span></div>
+                    <p class="pub-cite">Hussein AS, Shawqi M, Bahbah EI, et al.; <strong class="me">Negida A</strong>. Do cerebral microbleeds increase the risk of dementia? A systematic review and meta-analysis. IBRO Neuroscience Reports (Impact Factor = 2.9). 2023;14:86-94. <a href="https://pubmed.ncbi.nlm.nih.gov/36632242/" target="_blank" rel="noopener">PMID: 36632242</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Hassanein ME, Fayad J, Shabana JA, et al.; <strong class="me">Negida A</strong>. Efficacy and safety of intravenous mesenchymal stem cells for ischemic stroke patients, a systematic review and meta-analysis. Frontiers in Stroke (Impact Factor = 1.2). 2023;2:1339331. <a href="https://pubmed.ncbi.nlm.nih.gov/41541094/" target="_blank" rel="noopener">PMID: 41541094</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-stroke">Stroke</span><span class="ptag t-note">Preprint</span></div>
+                    <p class="pub-cite">Aljabali A, Abdelhady M, Altal MK, <strong class="me">Negida A</strong>, Masadeh MM, Alrabadi NS. The efficacy and safety of the sphingosine-1-phosphate receptor agonist fingolimod in cerebrovascular stroke: a systematic review and meta-analysis. Research Square. 2023. <a href="https://doi.org/10.21203/rs.3.rs-2680622/v1" target="_blank" rel="noopener">doi:10.21203/rs.3.rs-2680622/v1</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2022</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-note">PhD thesis</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>. The Hope and the Hype in Parkinson’s Disease Treatments. PhD thesis, University of Portsmouth. 2022.</p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Ghaith HS, Elfil M, Gabra MD, et al.; <strong class="me">Negida A</strong>. Intravenous thrombolysis before mechanical thrombectomy for acute ischemic stroke due to large vessel occlusion; should we cross that bridge? A systematic review and meta-analysis of 36,123 patients. Neurological Sciences (Impact Factor = 2.7). 2022;43(11):6243-6269. <a href="https://pubmed.ncbi.nlm.nih.gov/35871179/" target="_blank" rel="noopener">PMID: 35871179</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-tbi">Traumatic brain injury</span></div>
+                    <p class="pub-cite">Ghaith HS, Nawar AA, Gabra MD, ..., <strong class="me">Negida A</strong>, ..., Barreto GE. A Literature Review of Traumatic Brain Injury Biomarkers. Molecular Neurobiology (Impact Factor = 5.5). 2022;59(7):4141-4158. <a href="https://pubmed.ncbi.nlm.nih.gov/35499796/" target="_blank" rel="noopener">PMID: 35499796</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2021</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Ghaith HS, Fala SY, et al. Mavoglurant (AFQ056) for the treatment of levodopa-induced dyskinesia in patients with Parkinson's disease: a meta-analysis. Neurological Sciences (Impact Factor = 2.7). 2021;42(8):3135-3143. <a href="https://pubmed.ncbi.nlm.nih.gov/34014397/" target="_blank" rel="noopener">PMID: 34014397</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Ghaith HS, Gabra MD, et al. Should the direct aspiration first pass technique be advocated over the stent-retriever technique for acute ischemic stroke? A systematic review and meta-analysis of 7692 patients. Surgical Neurology International. 2021;12:597. <a href="https://pubmed.ncbi.nlm.nih.gov/34992914/" target="_blank" rel="noopener">PMID: 34992914</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-tbi">Traumatic brain injury</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Teton Z, Stedelin B, Nerison C, Al-Shami H, Hegazy A, Raslan AMT. Determining the global outcomes of traumatic brain injury in low-, middle- and high-income countries: a prospective, global neurosurgery, multicentre cohort study (GNS-1) protocol. Journal of Surgical Protocols and Research Methodologies. 2021. <a href="https://doi.org/10.1093/jsprm/snab002" target="_blank" rel="noopener">doi:10.1093/jsprm/snab002</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Yassin A, Ghzawi A, Al-Mistarehi AH, ..., <strong class="me">Negida A</strong>, ..., Abdelmonem M. Mortality rate and biomarker expression within COVID-19 patients who develop acute ischemic stroke: a systematic review and meta-analysis. Future Science OA (Impact Factor = 2.5). 2021;7(7):FSO713. <a href="https://pubmed.ncbi.nlm.nih.gov/34254031/" target="_blank" rel="noopener">PMID: 34254031</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2019</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-tbi">Traumatic brain injury</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Raslan AM. Invitation to the GNS-I Study; a Global Evaluation of Traumatic Brain Injury in Low-, Middle-, and High- income Countries. Advanced Journal of Emergency Medicine. 2019;3(3):e21. <a href="https://pubmed.ncbi.nlm.nih.gov/31410398/" target="_blank" rel="noopener">PMID: 31410398</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Ebada MA, Alkanj S, Ebada M, et al.; <strong class="me">Negida A</strong>. Safety and Efficacy of Levetiracetam for the Management of Levodopa- Induced Dyskinesia in Patients with Parkinson's Disease: A Systematic Review. CNS &amp; Neurological Disorders - Drug Targets. 2019;18(4):317-325. <a href="https://pubmed.ncbi.nlm.nih.gov/30868968/" target="_blank" rel="noopener">PMID: 30868968</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-ad">Alzheimer's disease</span></div>
+                    <p class="pub-cite">Bahbah EI, Fathy S, <strong class="me">Negida A</strong>. Is Alzheimer's disease linked to Herpes simplex virus type 1 infection? A mini‐review of the molecular correlation and the possible disease connections. Clinical and Experimental Neuroimmunology. 2019;10(3):192-196. <a href="https://doi.org/10.1111/cen3.12518" target="_blank" rel="noopener">doi:10.1111/cen3.12518</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Najmi E, Bahbah EI, <strong class="me">Negida A</strong>, Afifi A, Baratloo A. Diagnostic Value of Serum Neuron-Specific Enolase Level in Patients With Acute Ischemic Stroke; A Systematic Review and Meta-Analysis. International Clinical Neuroscience Journal. 2019;6(2):36-41. <a href="https://doi.org/10.15171/icnj.2019.08" target="_blank" rel="noopener">doi:10.15171/icnj.2019.08</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2018</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Elminawy M, El Ashal G, Essam A, Eysa A, Abd Elalem Aziz M. Subthalamic and Pallidal Deep Brain Stimulation for Parkinson's Disease. Cureus. 2018;10(2):e2232. <a href="https://pubmed.ncbi.nlm.nih.gov/29713577/" target="_blank" rel="noopener">PMID: 29713577</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite">Elgebaly A, Elfil M, Attia A, Magdy M, <strong class="me">Negida A</strong>. Neuropsychological performance changes following subthalamic versus pallidal deep brain stimulation in Parkinson's disease: a systematic review and metaanalysis. CNS Spectrums (Impact Factor = 4.6; Q1). 2018;23(1):10-23. <a href="https://pubmed.ncbi.nlm.nih.gov/28236811/" target="_blank" rel="noopener">PMID: 28236811</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Abushouk AI, <strong class="me">Negida A</strong>, Elshenawy RA, et al. C-Abl Inhibition; A Novel Therapeutic Target for Parkinson's Disease. CNS &amp; Neurological Disorders - Drug Targets. 2018;17(1):14-21. <a href="https://pubmed.ncbi.nlm.nih.gov/28571531/" target="_blank" rel="noopener">PMID: 28571531</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2017</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Elfil M, Attia, et al. Caffeine; the Forgotten Potential for Parkinson's Disease. CNS &amp; Neurological Disorders - Drug Targets. 2017;16(6):652-657. <a href="https://pubmed.ncbi.nlm.nih.gov/27823571/" target="_blank" rel="noopener">PMID: 27823571</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Attia, Ahmed H, Gadelkarim M, et al.; <strong class="me">Negida A</strong>. Meta-Analysis of Creatine for Neuroprotection Against Parkinson's Disease. CNS &amp; Neurological Disorders - Drug Targets. 2017;16(2):169-175. <a href="https://pubmed.ncbi.nlm.nih.gov/27823574/" target="_blank" rel="noopener">PMID: 27823574</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Abushouk AI, El-Husseny MWA, Magdy M, et al.; <strong class="me">Negida A</strong>. Evidence for association between hepatitis C virus and Parkinson's disease. Neurological Sciences (Impact Factor = 2.7). 2017;38(11):1913-1920. <a href="https://pubmed.ncbi.nlm.nih.gov/28780707/" target="_blank" rel="noopener">PMID: 28780707</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Ahmed H, Abushouk AI, Gabr M, <strong class="me">Negida A</strong>, Abdel-Daim MM. Parkinson's disease and pesticides: A meta-analysis of disease connection and genetic alterations. Biomedicine &amp; Pharmacotherapy (Impact Factor = 7.5). 2017;90:638-649. <a href="https://pubmed.ncbi.nlm.nih.gov/28412655/" target="_blank" rel="noopener">PMID: 28412655</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Awad K, Abushouk AI, AbdelKarim AH, Mohammed M, <strong class="me">Negida A</strong>, Shalash AS. Bee venom for the treatment of Parkinson's disease: How far is it possible? Biomedicine &amp; Pharmacotherapy (Impact Factor = 7.5). 2017;91:295-302. <a href="https://pubmed.ncbi.nlm.nih.gov/28477460/" target="_blank" rel="noopener">PMID: 28477460</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite">Abushouk AI, <strong class="me">Negida A</strong>, Ahmed H, Abdel-Daim MM. Neuroprotective mechanisms of plant extracts against MPTP induced neurotoxicity: Future applications in Parkinson's disease. Biomedicine &amp; Pharmacotherapy (Impact Factor = 7.5). 2017;85:635-645. <a href="https://pubmed.ncbi.nlm.nih.gov/27890431/" target="_blank" rel="noopener">PMID: 27890431</a></p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title pub-year">2016</h3>
+            <div class="pub-list">
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Menshawy A, El Ashal G, et al. Coenzyme Q10 for Patients with Parkinson's Disease: A Systematic Review and Meta-Analysis. CNS &amp; Neurological Disorders - Drug Targets. 2016;15(1):45-53. <a href="https://pubmed.ncbi.nlm.nih.gov/26553164/" target="_blank" rel="noopener">PMID: 26553164</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">First author</span><span class="ptag t-pd">Parkinson's disease</span><span class="ptag t-nm">Neuromodulation</span></div>
+                    <p class="pub-cite"><strong class="me">Negida A</strong>, Attia D. Comments on the paper "Efficacies of globus pallidus stimulation and subthalamic nucleus stimulation for advanced Parkinson's disease: a meta-analysis of randomized controlled trials". Clinical Interventions in Aging (Impact Factor = 4.1). 2016;11:1599-1600. <a href="https://pubmed.ncbi.nlm.nih.gov/27877029/" target="_blank" rel="noopener">PMID: 27877029</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-noh">Neurogenic orthostatic hypotension</span></div>
+                    <p class="pub-cite">Elgebaly A, Abdelazeim B, Mattar O, Gadelkarim M, Salah R, <strong class="me">Negida A</strong>. Meta-analysis of the safety and efficacy of droxidopa for neurogenic orthostatic hypotension. Clinical Autonomic Research (Impact Factor = 4.6). 2016;26(3):171-80. <a href="https://pubmed.ncbi.nlm.nih.gov/26951135/" target="_blank" rel="noopener">PMID: 26951135</a></p>
+                </div>
+                <div class="pub-entry">
+                    <div class="pub-tags"><span class="ptag t-role">Senior author</span><span class="ptag t-stroke">Stroke</span></div>
+                    <p class="pub-cite">Baratloo A, Forouzanfar MM, Hashemi B, et al.; <strong class="me">Negida A</strong>. Tissue Plasminogen Activator: A Literature Review. Archives of Neuroscience (Impact Factor = 0.5). 2016;3(1). <a href="https://doi.org/10.5812/archneurosci.30452" target="_blank" rel="noopener">doi:10.5812/archneurosci.30452</a></p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1.25rem; font-size: 0.9rem;">Full record: <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank" rel="noopener">Google Scholar</a> &middot; <a href="https://orcid.org/0000-0001-5363-6369" target="_blank" rel="noopener">ORCID</a></p>
+        </div>
+    </section>
+
+    <section id="tools">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Code &amp; Tools</h2>
+            </div>
+
 
             <h3 class="subsection-title" style="margin-top: 0;">Cholinergic Imaging and EEG</h3>
             <div class="tool-grid">
@@ -1426,14 +1808,6 @@
                     </div>
                 </div>
 
-                <div class="tool-entry">
-                    <h4>Neuroimaging Pipelines</h4>
-                    <div class="tool-meta">End-to-End Workflows</div>
-                    <p>Comprehensive pipelines for structural, functional, and diffusion MRI analysis including VBM, cortical thickness, DTI-ALPS for glymphatic function, and multimodal integration.</p>
-                    <div class="tool-links-inline">
-                        <a href="https://github.com/negidamd" target="_blank">GitHub &rarr;</a>
-                    </div>
-                </div>
             </div>
 
             <h3 class="subsection-title">Evidence Synthesis</h3>
@@ -1459,13 +1833,73 @@
         </div>
     </section>
 
-    <!-- Teaching & Mentorship -->
-    <section id="teaching" class="fade-in">
+    <section id="presentations">
         <div class="section-inner">
             <div class="section-header">
-                <h2>Teaching & Mentorship</h2>
-                <p>Research training and mentorship since 2014</p>
+                <h2>Invited Lectures and Presentations</h2>
             </div>
+
+            <h3 class="subsection-title">Invited Lectures (Selected)</h3>
+            <div>
+                <div class="lecture-entry">
+                    <div class="lecture-date">07/2025</div>
+                    <div class="lecture-title">PD-MCI with MRI Evidence of Cholinergic Nucleus 4 Degeneration: A New Subtype?</div>
+                    <div class="lecture-venue">VCU Parkinson's Center Symposium, VA</div>
+                </div>
+                <div class="lecture-entry">
+                    <div class="lecture-date">08/2024</div>
+                    <div class="lecture-title">Using Advanced Data Models to Study Neurodegenerative Diseases</div>
+                    <div class="lecture-venue">VCU Education Conference, VA</div>
+                </div>
+                <div class="lecture-entry">
+                    <div class="lecture-date">12/2023</div>
+                    <div class="lecture-title">T1 MRI Characteristics of Parkinson's Disease Dementia</div>
+                    <div class="lecture-venue">VCU Education Conference, VA</div>
+                </div>
+                <div class="lecture-entry">
+                    <div class="lecture-date">05/2022</div>
+                    <div class="lecture-title">Disease Modification and Neuroprotection in Neurodegenerative Disorders</div>
+                    <div class="lecture-venue">IBRO Neuroscience School, Tunisia</div>
+                </div>
+                <div class="lecture-entry">
+                    <div class="lecture-date">05/2022</div>
+                    <div class="lecture-title">Basic Mechanisms of Neurodegeneration: A Critical Update</div>
+                    <div class="lecture-venue">IBRO Neuroscience School, Tunisia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Gallery</h2>
+            </div>
+
+            <h3 class="subsection-title gal-year">2025</h3>
+            <div class="gal-grid">
+                <figure class="gal-item">
+                    <a href="assets/photos/aan-2025-oral.jpg" target="_blank" rel="noopener"><img src="assets/photos/aan-2025-oral.jpg" alt="Ahmed Negida delivering an oral presentation at the AAN 2025 Annual Meeting" loading="lazy"></a>
+                    <figcaption><strong>AAN Annual Meeting 2025</strong> &middot; Oral presentation: subtyping PD-MCI with MRI evidence of cholinergic nucleus 4 degeneration.</figcaption>
+                </figure>
+            </div>
+
+            <h3 class="subsection-title gal-year">2024</h3>
+            <div class="gal-grid">
+                <figure class="gal-item">
+                    <a href="assets/photos/mds-2024-poster.jpg" target="_blank" rel="noopener"><img src="assets/photos/mds-2024-poster.jpg" alt="Ahmed Negida presenting a poster on PD-MCI Ch4 subtyping at the MDS Congress 2024" loading="lazy"></a>
+                    <figcaption><strong>MDS International Congress 2024</strong> &middot; Poster on PD-MCI Ch4 subtyping.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Teaching and Mentorship</h2>
+            </div>
+
 
             <div class="teaching-block">
                 <h3>Mentorship Track Record</h3>
@@ -1501,158 +1935,12 @@
         </div>
     </section>
 
-    <!-- Career: Appointments & Education -->
-    <section id="appointments" class="fade-in">
+    <section id="honors">
         <div class="section-inner">
             <div class="section-header">
-                <h2>Career</h2>
-                <p>Academic appointments and education</p>
+                <h2>Honors, Leadership, and Service</h2>
             </div>
 
-            <!-- Combined Timeline (reverse chronological) -->
-            <div class="timeline">
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #000000;" title="VCU">VCU</div>
-                    <div class="timeline-date">March 2023 &ndash; Present</div>
-                    <h3>Postdoctoral Scholar</h3>
-                    <h4>VCU Parkinson's & Movement Disorders Center, Department of Neurology &middot; Richmond, VA</h4>
-                    <ul>
-                        <li>Built a multimodal Ch4 MRI signature (T1-weighted gray-matter density and diffusion free water), now extended with resting-state fMRI across PD, DLB, and AD, and identified a PD-MCI subtype with MRI evidence of cholinergic nucleus 4 degeneration</li>
-                        <li>Developed EEG-based biomarkers for cognitive fluctuations in Lewy body dementia, combining NASA's Psychomotor Vigilance Test with resting-state and task-based EEG</li>
-                        <li>Led PPMI, NACC, and PDBP database studies stratifying PD, LBD, and AD patients, including 10-year progression patterns across PD subtypes</li>
-                        <li>Built structural, functional, and diffusion MRI pipelines, including DTI-ALPS and white matter hyperintensity quantification for glymphatic&ndash;vascular studies</li>
-                        <li>Generated pilot data and contributed study design, biostatistical planning, and the multimodal Ch4 MRI pipeline to the funded NIH/NINDS R01 NS142622</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #a51c30;" title="HMS">HMS</div>
-                    <div class="timeline-date">July 2021 &ndash; March 2023</div>
-                    <h3>Research Fellow</h3>
-                    <h4>Harvard Medical School, Department of Global Health and Social Medicine &middot; Boston, MA</h4>
-                    <ul>
-                        <li>Assessed global neurological care delivery systems through systematic data collection</li>
-                        <li>Quantified social and environmental determinants of neurological health disparities</li>
-                        <li>Applied external validation methods for financial risk prediction tools in low-income settings</li>
-                        <li>Led the development of CHYSPR guidelines in LMICs (first author, www.chyspr.org)</li>
-                        <li>Produced peer-reviewed outputs informing WHO and regional health policy decisions</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #5c2d91;" title="UoP">UoP</div>
-                    <div class="timeline-date">2018 &ndash; 2022</div>
-                    <h3>Ph.D. in Biomedical Sciences</h3>
-                    <h4>University of Portsmouth &middot; United Kingdom</h4>
-                    <p>PhD advisor: Matthew O. Parker, PhD. Dissertation: "The Hope and the Hype in Parkinson's Disease Treatments" &mdash; meta-research, evidence synthesis, and critical appraisal of neuroprotective interventions.</p>
-                </div>
-
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #0066b3;" title="BAU">BAU</div>
-                    <div class="timeline-date">March &ndash; September 2019</div>
-                    <h3>Research Fellow</h3>
-                    <h4>Bah&ccedil;e&scedil;ehir University, Department of Neurological Surgery &middot; Istanbul, Turkey</h4>
-                    <ul>
-                        <li>Evaluated deep brain stimulation outcomes in Parkinson's and Huntington's disease patients</li>
-                        <li>Analyzed clinical and neuropsychological endpoints using advanced statistical methods</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #1a6b3c;" title="ZU">ZU</div>
-                    <div class="timeline-date">2012 &ndash; 2018</div>
-                    <h3>M.B.B.Ch. in Medicine and Surgery (equivalent to MD)</h3>
-                    <h4>Zagazig University Faculty of Medicine &middot; Egypt</h4>
-                </div>
-
-                <div class="timeline-item has-badge">
-                    <div class="inst-badge" style="background: #7a4b1e;" title="ELRIAH">ELRI</div>
-                    <div class="timeline-date">2015</div>
-                    <h3>Clinical Research Assistant</h3>
-                    <h4>Epidemiology Department, Egyptian Liver Research Institute and Hospital &middot; Mansoura, Egypt</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Talks -->
-    <section id="presentations" class="fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Talks</h2>
-                <p>Invited lectures and selected conference presentations</p>
-            </div>
-
-            <div class="conf-photos">
-                <figure class="conf-photo">
-                    <img src="assets/photos/aan-2025-oral.jpg" alt="Ahmed Negida delivering an oral presentation at the AAN 2025 Annual Meeting" loading="lazy">
-                    <figcaption>Oral presentation &middot; AAN Annual Meeting 2025</figcaption>
-                </figure>
-                <figure class="conf-photo">
-                    <img src="assets/photos/mds-2024-poster.jpg" alt="Ahmed Negida presenting a poster on PD-MCI Ch4 subtyping at the MDS Congress 2024" loading="lazy">
-                    <figcaption>Poster &middot; MDS International Congress 2024</figcaption>
-                </figure>
-            </div>
-
-            <h3 class="subsection-title">Invited Lectures (Selected)</h3>
-            <div>
-                <div class="lecture-entry">
-                    <div class="lecture-date">07/2025</div>
-                    <div class="lecture-title">PD-MCI with MRI Evidence of Cholinergic Nucleus 4 Degeneration: A New Subtype?</div>
-                    <div class="lecture-venue">VCU Parkinson's Center Symposium, VA</div>
-                </div>
-                <div class="lecture-entry">
-                    <div class="lecture-date">08/2024</div>
-                    <div class="lecture-title">Using Advanced Data Models to Study Neurodegenerative Diseases</div>
-                    <div class="lecture-venue">VCU Education Conference, VA</div>
-                </div>
-                <div class="lecture-entry">
-                    <div class="lecture-date">12/2023</div>
-                    <div class="lecture-title">T1 MRI Characteristics of Parkinson's Disease Dementia</div>
-                    <div class="lecture-venue">VCU Education Conference, VA</div>
-                </div>
-                <div class="lecture-entry">
-                    <div class="lecture-date">05/2022</div>
-                    <div class="lecture-title">Disease Modification and Neuroprotection in Neurodegenerative Disorders</div>
-                    <div class="lecture-venue">IBRO Neuroscience School, Tunisia</div>
-                </div>
-                <div class="lecture-entry">
-                    <div class="lecture-date">05/2022</div>
-                    <div class="lecture-title">Basic Mechanisms of Neurodegeneration: A Critical Update</div>
-                    <div class="lecture-venue">IBRO Neuroscience School, Tunisia</div>
-                </div>
-            </div>
-
-            <h3 class="subsection-title">Conference Presentations (Selected from 100+)</h3>
-            <div>
-                <div class="presentation-entry">
-                    <span class="conf-name">AAN 2026</span> &mdash; Psychomotor Vigilance in Lewy Body Diseases: Comparative Performance and Associations. <em>Neurology. 2026;106(11 Suppl 1):1610.</em>
-                </div>
-                <div class="presentation-entry">
-                    <span class="conf-name">MDS 2025</span> &mdash; Developing disease-duration specific percentiles for prospective subtyping of diffuse-malignant PD. <em>MDS Congress, October 2025.</em>
-                </div>
-                <div class="presentation-entry">
-                    <span class="conf-name">AAN 2025</span> &mdash; Subtyping PD-MCI with MRI evidence of Cholinergic Nucleus 4 Degeneration. <em>American Academy of Neurology, 2025.</em>
-                </div>
-                <div class="presentation-entry">
-                    <span class="conf-name">AAIC 2024</span> &mdash; Resting-State EEG Features of Cognitive Fluctuations in Lewy Body Dementia. <em>Alzheimer's Association International Conference, 2024.</em>
-                </div>
-                <div class="presentation-entry">
-                    <span class="conf-name">AAN 2024</span> &mdash; Comparing NIH Toolbox-cognition Battery and MoCA in Parkinson's. <em>American Academy of Neurology, 2024.</em>
-                </div>
-            </div>
-            <p style="margin-top: 1rem; font-size: 0.82rem; color: var(--text-muted);">
-                Additional presentations at MDS, AAN, WFNS, WSO, EANS, and other international conferences (2014&ndash;2026).
-            </p>
-        </div>
-    </section>
-
-    <!-- Honors & Service -->
-    <section id="honors" class="fade-in">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2>Honors &amp; Service</h2>
-            </div>
 
             <h3 class="subsection-title" style="margin-top: 0;">Honors and Awards</h3>
             <div>
@@ -1714,46 +2002,44 @@
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
+    <section id="skills">
         <div class="section-inner">
             <div class="section-header">
-                <h2>Contact</h2>
+                <h2>Methods and Technical Skills</h2>
             </div>
-
-            <div class="contact-grid">
-                <div class="contact-block">
-                    <h3>Current Affiliation</h3>
-                    <p>Parkinson's and Movement Disorders Center<br>
-                    Department of Neurology<br>
-                    Virginia Commonwealth University<br>
-                    Richmond, VA, USA</p>
-
-                    <div class="contact-line">Email: <a href="mailto:ahmed.negida@vcuhealth.org">ahmed.negida@vcuhealth.org</a></div>
-                    <div class="contact-line">Email: <a href="mailto:ahmed.said.negida@gmail.com">ahmed.said.negida@gmail.com</a></div>
-                    <div class="contact-line">Status: U.S. Permanent Resident</div>
-                </div>
-
-                <div class="contact-block">
-                    <h3>CV &amp; Profiles</h3>
-                    <p><a href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener" class="btn btn-primary">View CV (PDF)</a></p>
-                    <div class="profile-links">
-                        <a href="https://scholar.google.com/citations?user=HURlCI8AAAAJ" target="_blank">Google Scholar</a>
-                        <a href="https://github.com/negidamd" target="_blank">GitHub</a>
-                        <a href="https://www.researchgate.net/profile/Ahmed-Negida-2" target="_blank">ResearchGate</a>
-                        <a href="https://orcid.org/0000-0001-5363-6369" target="_blank">ORCID</a>
-                        <a href="https://x.com/negidamd" target="_blank">X/Twitter</a>
-                        <a href="https://linkedin.com/in/ahmednegida" target="_blank">LinkedIn</a>
-                    </div>
-
-                    <div style="margin-top: 1.25rem;">
-                        <h3 style="font-family: var(--font-serif); font-size: 0.92rem; font-weight: normal; margin-bottom: 0.3rem;">Languages</h3>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary);">English (Fluent) &middot; Arabic (Native) &middot; French (Intermediate)</p>
-                    </div>
-                </div>
-            </div>
+            <dl class="skills-grid">
+                <dt>Structural MRI</dt><dd>T1-weighted (MPRAGE), T2-weighted, FLAIR; voxel-based morphometry, cortical thickness, ROI-based morphometry, white matter hyperintensity quantification</dd>
+                <dt>Diffusion MRI</dt><dd>Diffusion microstructure (Free Water, DKI, NODDI, multi-tissue multi-compartment and fixel-based analyses); DTI-ALPS; tract-based spatial statistics; tractography</dd>
+                <dt>Functional MRI</dt><dd>Resting-state and task-based (including the Psychomotor Vigilance Task)</dd>
+                <dt>Imaging software</dt><dd>SPM12, CAT12, FreeSurfer, FSL, ANTs, fMRIPrep, CONN, QSIPrep, MRtrix3, DSI Studio</dd>
+                <dt>EEG</dt><dd>EEGLAB (familiar with FieldTrip, MNE-Python, Brainstorm); resting-state and task-based paradigms; spectral power, functional connectivity, event-related potentials</dd>
+                <dt>Statistics</dt><dd>Generalized linear and mixed-effects models; survival analysis (Cox regression, competing risks, Kaplan&ndash;Meier); meta-analysis (standard, network, diagnostic test accuracy); propensity-score methods. With biostatisticians: Bayesian models, longitudinal trajectory modeling</dd>
+                <dt>Programming</dt><dd>Python and MATLAB</dd>
+            </dl>
         </div>
     </section>
+
+    <section id="additional">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Additional Information</h2>
+            </div>
+            <dl class="skills-grid">
+                <dt>Certifications</dt><dd>CITI Program, Research Security (2026); American Board of Artificial Intelligence in Medicine (ABAIM) course and certification (2024); CITI Program, Responsible Conduct of Research, Stage 1 (2024)</dd>
+                <dt>Consulting</dt><dd>Methods and biostatistics consultant (2017&ndash;2025) for contract research organizations and pharmaceutical companies in the Middle East and North Africa: trial design, sample-size calculation, statistical analysis plans, and clinical study reports. Outside activities are disclosed and managed under institutional conflict-of-interest and outside-activity policies</dd>
+                <dt>Languages</dt><dd>English (fluent), Arabic (native), French (intermediate)</dd>
+            </dl>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
 
     </main>
 
@@ -1762,7 +2048,7 @@
         <p>&copy; 2026 Ahmed Negida, MD, PhD &middot; Parkinson's &amp; Movement Disorders Center, Department of Neurology, Virginia Commonwealth University, Richmond, VA</p>
         <p style="margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.7; max-width: 680px; margin-left: auto; margin-right: auto;">A personal academic website &mdash; the tools and views presented here are the author's own and are not official products of, or endorsed by, Virginia Commonwealth University. Outside activities, including Negida Research Academy and the research platforms listed here, are disclosed and managed under institutional conflict-of-interest and outside-activity policies.</p>
         <p style="margin-top: 0.4rem; font-size: 0.78rem; opacity: 0.7;">Last updated <span id="last-updated">September 2026</span></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="https://negidamd.github.io/">Main site</a> &middot; <a href="https://negidamd.github.io/data-driven-pd-subtype-calculator/">Data-driven calculator</a> &middot; <a href="https://negidamd.github.io/ch4-subtyper/">Ch4 calculator</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="https://drive.google.com/file/d/1O1lxGycDNsCRc2ornhTY9dvZwyFXMGCI/view?usp=share_link" target="_blank" rel="noopener">CV (PDF)</a> &middot; <a href="/data-driven-pd-subtype-calculator/">Data-driven PD subtype calculator</a> &middot; <a href="/ch4-subtyper/">Ch4 subtyper</a></p>
     </footer>
 
     <script>
@@ -2207,6 +2493,22 @@
             }));
             dlg.querySelector('.fw-close').addEventListener('click', () => dlg.close());
             dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+        })();
+
+        // ===== Sidebar: highlight the section in view =====
+        (() => {
+            const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+            const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+            const secs = [...map.keys()].map(id => document.getElementById(id)).filter(Boolean);
+            if (!secs.length) return;
+            const spy = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    links.forEach(a => a.classList.remove('active'));
+                    const a = map.get(e.target.id); if (a) a.classList.add('active');
+                });
+            }, { rootMargin: '-35% 0px -60% 0px' });
+            secs.forEach(s => spy.observe(s));
         })();
     </script>
 </body>
