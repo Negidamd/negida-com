@@ -117,7 +117,7 @@
       <label>Observed Ch4 gray-matter volume <span class="unit">(mL)</span></label>
       <input id="ch4" type="number" value="0.215" min="0" max="0.6" step="0.001">
       <input id="ch4R" type="range" class="slider" min="0.05" max="0.40" step="0.005" value="0.215" aria-label="Ch4 volume slider">
-      <div class="hint">Ch4 GMV is typically ~0.10&ndash;0.38 mL. Must be measured with the study pipeline.</div>
+      <div class="hint">Ch4 GMV is typically ~0.15&ndash;0.31 mL (1st&ndash;99th centile in the study). Must be measured with the study pipeline.</div>
       <div class="warnmsg" id="warn"></div>
     </div>
 
@@ -133,7 +133,7 @@
         <div class="chartblock">
           <h3>Position in the clinically normal reference distribution</h3>
           <p class="cap">The bell curve is the calibrated normal reference (W ~ standard normal in controls). The
-             shaded tail is the atrophy zone (W &le; &minus;1.645, the 5th centile). The patient&rsquo;s value is marked.</p>
+             shaded tail is the low-volume zone (W &le; &minus;1.645, the 5th centile). The patient&rsquo;s value is marked.</p>
           <svg id="bell" viewBox="0 0 520 230" role="img" aria-label="Normative distribution"></svg>
         </div>
         <div class="stats">
@@ -156,12 +156,13 @@
       <li><b>Segmentation.</b> Segment the T1-weighted volumetric scan with <span class="tag">CAT12 v12.9
           (r2577)</span> running under <span class="tag">SPM25</span> (MATLAB R2023b), using the default
           preprocessing pipeline <b>including surface estimation</b>.</li>
-      <li><b>Ch4 localization.</b> Localize Ch4 with the histology-derived <b>JulichBrain magnocellular
-          basal-forebrain probabilistic atlas</b>, using its <b>maximum-probability map at a 50%
-          tissue-assignment probability threshold</b>.</li>
-      <li><b>Gray-matter volume.</b> Within the Ch4 region, compute gray-matter volume by <b>partial-volume
-          integration of the CAT12 gray-matter tissue-probability map</b> &mdash; each voxel contributes in
-          proportion to its estimated gray-matter content, not counted as all-or-nothing &mdash; reported in
+      <li><b>Ch4 localization.</b> Use the left and right <b>Ch4 labels of the Jülich-Brain
+          maximum-probability atlas</b> distributed with CAT12, in the space of CAT12&rsquo;s normalization
+          template (MNI152NLin2009cAsym).</li>
+      <li><b>Gray-matter volume.</b> Sum the <b>modulated, spatially normalized gray-matter map</b>
+          (<span class="tag">mwp1</span>) within both labels, sampled on the 1-mm atlas grid, and multiply by
+          the voxel volume &mdash; each voxel contributes in proportion to its estimated gray-matter content.
+          Because the map is modulated, this is a native-space-equivalent volume, reported in
           <b>millilitres (mL)</b>. This is the value entered above.</li>
       <li><b>Head size.</b> Take <b>total intracranial volume (TIV)</b> from the CAT12 subject measures, in mL.</li>
       <li><b>Acquisition site.</b> The model carried a site random intercept; for a scan from a site not in the
@@ -173,30 +174,32 @@
   </div>
 
   <footer>
-    <p><b>Model.</b> Two-stage location&ndash;scale normative model of Ch4 gray-matter volume fitted in 5,501
-       clinically normal participants across 132 acquisition sites. Location: <code>predicted = 0.13987 + 0.00055331&middot;age &minus; 1.1925&times;10&#8315;&#8309;&middot;age&sup2;
-       + 0.0034362&middot;[male] + 9.5170&times;10&#8315;&#8309;&middot;TIV</code>. Scale:
-       <code>&sigma;(age, sex) = 1.88736 &middot; exp(&minus;4.85588 + 0.0060783&middot;age + 0.12570&middot;[male])</code>.
+    <p><b>Model.</b> Two-stage location&ndash;scale normative model of Ch4 gray-matter volume fitted in 5,585
+       clinically normal participants across 135 acquisition sites. Location: <code>predicted = 0.14186 + 8.5274&times;10⁻⁵&middot;age &minus; 7.2914&times;10⁻⁶&middot;age&sup2;
+       + 0.0038649&middot;[male] + 8.8698&times;10⁻⁵&middot;TIV</code>. Scale:
+       <code>&sigma;(age, sex) = 1.88736 &middot; exp(&minus;5.01257 + 0.0053427&middot;age + 0.12925&middot;[male])</code>.
        W = (observed &minus; predicted) / &sigma;(age, sex). For a scanner site not in the training sample, the site
        random intercept is set to zero (as here) and the denominator is not widened to acknowledge that, so a
        W-score computed for a scanner that contributed no reference participants should be treated as
        provisional until that centre&rsquo;s own clinically normal participants have been scored. Holding out entire sites in
-       the study moved the proportion below the threshold from 5.56% to 6.54%. Coefficients are Supplementary
+       the study moved the proportion below the threshold from 5.59% to 6.57%. Coefficients are Supplementary
        Table S3 of the study.</p>
-    <p><b>Citation.</b> Negida A. <i>A Normative Modeling Study of Cholinergic Nucleus 4 Atrophy Across the Lewy
-       Body and Alzheimer Disease Spectra.</i> (in preparation). &nbsp;
+    <p><b>Citation.</b> Negida A. <i>Normative Cholinergic Nucleus 4 Volume and Cognitive Outcomes in Lewy Body and Alzheimer&rsquo;s
+       Diseases.</i> (in preparation). &nbsp;
        ORCID 0000-0001-5363-6369 &middot; <a href="https://negidamd.github.io/">negidamd.github.io</a></p>
   </footer>
 </div>
 
 <script>
 /* ---------- normative model (Supplementary Table S3) ----------
-   Primary reference: 5,501 clinically normal participants across 132 sites.
-   Updated 2026-09-22 to the refitted model the manuscript reports (the earlier fit had not reached
-   the REML optimum; see the study's decision log, D-075). */
-const B={intercept:0.13987225699185307,age:0.0005533136779620059,age2:-1.192518199354653e-05,male:0.00343622838139071,tiv:9.516993462830892e-05};
-const S={intercept:-4.855876215776495,age:0.006078275871057767,male:0.12569706477190162,k:1.8873645212254033};
-const CUT=-1.645, CUT_EMP=-1.691;
+   Primary reference: 5,585 clinically normal participants across 135 sites.
+   Updated 2026-10-16 to the model refitted on the study's third analytical dataset (lock v3: the Ch4
+   exposure re-extracted for every cohort and PPMI participants added; decision log D-091). Coefficients
+   from 03_RESULTS/normative_model/calculator_parameters.json; empirical cut = 5th centile of W in the
+   reference. */
+const B={intercept:0.14185710533703066,age:8.527447525093364e-05,age2:-7.291360675713016e-06,male:0.003864922285624225,tiv:8.869818292818207e-05};
+const S={intercept:-5.012573751211533,age:0.0053426822707262215,male:0.1292473883027047,k:1.8873645212254033};
+const CUT=-1.645, CUT_EMP=-1.681;
 const predict=(age,male,tiv)=>B.intercept+B.age*age+B.age2*age*age+B.male*(male?1:0)+B.tiv*tiv;
 const sigma=(age,male)=>S.k*Math.exp(S.intercept+S.age*age+S.male*(male?1:0));
 const phi=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
@@ -234,7 +237,7 @@ function drawBell(w){
   // threshold marker
   svg.appendChild(el("line",{x1:X(CUT),y1:Y(0),x2:X(CUT),y2:mT,stroke:"#d94801","stroke-width":1.3,"stroke-dasharray":"4 3"}));
   const tt=el("text",{x:X(CUT)-4,y:mT+10,"text-anchor":"end","font-size":10.5,fill:"#b45309","font-weight":700});
-  tt.textContent="atrophy ≤ −1.645";svg.appendChild(tt);
+  tt.textContent="low volume ≤ −1.645";svg.appendChild(tt);
   // patient
   const wc=Math.max(x0,Math.min(x1,w));
   svg.appendChild(el("line",{x1:X(wc),y1:Y(0),x2:X(wc),y2:Y(phi(wc)),stroke:"#111827","stroke-width":2}));
@@ -259,10 +262,10 @@ function calc(){
   const atr=w<=CUT;
   const badge=document.getElementById("badge");
   badge.className="badge "+(atr?"atr":"norm");
-  badge.textContent=atr?"Ch4 atrophy":"within normal range";
+  badge.textContent=atr?"low Ch4 volume":"within normal range";
   document.getElementById("subline").textContent=
     atr?"At or below the a priori 5th-centile cut (W ≤ −1.645)."
-       :"Above the a priori atrophy cut (W ≤ −1.645).";
+       :"Above the a priori low-volume cut (W ≤ −1.645).";
   document.getElementById("pred").textContent=pred.toFixed(3)+" mL";
   document.getElementById("pct").textContent=pct.toFixed(1)+"th";
   document.getElementById("dev").textContent=(w>=0?"+":"")+w.toFixed(2)+" SD";
@@ -272,9 +275,9 @@ function calc(){
     "This Ch4 volume sits at about the <b>"+pct.toFixed(0)+"th percentile</b> of the clinically normal reference "+
     "distribution (i.e., "+(pct<50?(100-pct).toFixed(0)+"% of cognitively healthy adults have a larger Ch4":
     pct.toFixed(0)+"% of cognitively healthy adults have a smaller Ch4")+"). "+
-    (atr?"It meets the a priori atrophy definition":"It does not meet the a priori atrophy definition")+
+    (atr?"It meets the a priori low-volume definition":"It does not meet the a priori low-volume definition")+
     " (empirical cut W ≤ −1.681: "+(emp?"also met":"not met")+"). "+
-    "This is a research estimate of deviation from the normative reference, not a diagnosis.";
+    "This is a research estimate of deviation from the normative reference; it indicates unusually low MRI volume, not established tissue loss, and is not a diagnosis.";
   drawBell(w);
 }
 document.querySelectorAll("#sex button").forEach(b=>b.addEventListener("click",()=>{
