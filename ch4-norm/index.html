@@ -92,7 +92,7 @@
 
 <div class="wrap">
   <div class="disclaimer">
-    <b>Research and educational use only.</b> This is a demonstration of a published normative model. It is
+    <b>Research and educational use only.</b> This is a demonstration of the normative model from a study in preparation. It is
     <b>not a medical device</b>, is not validated for clinical use, and must not be used for diagnosis or patient
     management. A valid W-score requires Ch4 gray-matter volume measured with the <b>same imaging pipeline as the
     study</b> (see <b>Required imaging pipeline</b> below). The model was calibrated by cross-validation and has not
@@ -203,6 +203,8 @@ const phi=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
 function Phi(x){const t=1/(1+0.2316419*Math.abs(x));const d=0.3989422804014327*Math.exp(-x*x/2);
   let p=d*t*(0.319381530+t*(-0.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));return x>0?1-p:p;}
 
+const ord=n=>n+((n%100>=11&&n%100<=13)?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
 const SVGNS="http://www.w3.org/2000/svg";
 const el=(t,a)=>{const e=document.createElementNS(SVGNS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
 
@@ -267,11 +269,11 @@ function calc(){
   document.getElementById("pct").textContent=pct.toFixed(1)+"th";
   document.getElementById("dev").textContent=(w>=0?"+":"")+w.toFixed(2)+" SD";
   // interpretation
-  const emp=w<=CUT_EMP;
+  const emp=w<=CUT_EMP, p0=Math.round(pct), share=Math.round(pct<50?100-pct:pct);
   document.getElementById("interp").innerHTML=
-    "This Ch4 volume sits at about the <b>"+pct.toFixed(0)+"th percentile</b> of the clinically normal reference "+
-    "distribution (i.e., "+(pct<50?(100-pct).toFixed(0)+"% of cognitively healthy adults have a larger Ch4":
-    pct.toFixed(0)+"% of cognitively healthy adults have a smaller Ch4")+"). "+
+    "This Ch4 volume sits "+(p0<1?"<b>below the 1st percentile</b>":p0>99?"<b>above the 99th percentile</b>":"at about the <b>"+ord(p0)+" percentile</b>")+
+    " of the clinically normal reference distribution (i.e., "+(share>99?"more than 99%":share+"%")+
+    " of cognitively healthy adults have a "+(pct<50?"larger":"smaller")+" Ch4). "+
     (low?"It meets the a priori low-volume definition":"It does not meet the a priori low-volume definition")+
     " (empirical cut W ≤ "+CUT_EMP.toFixed(3).replace("-","−")+": "+(emp?"also met":"not met")+"). "+
     "This is a research estimate of deviation from the normative reference; it indicates unusually low MRI volume, not established tissue loss, and is not a diagnosis.";
