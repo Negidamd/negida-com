@@ -8,7 +8,7 @@
   :root{
     --ink:#1a1f2b; --muted:#5b667a; --line:#e6e9f0; --bg:#f5f7fb; --card:#ffffff;
     --accent:#2171b5; --accent2:#08519c; --warn:#b45309; --warnbg:#fef3c7; --warnln:#f6d581;
-    --atrophy:#d94801; --ok:#1b7837;
+    --low:#d94801; --ok:#1b7837;
     --ctrl:#7f7f7f; --pd:#9ecae1; --pdmci:#4292c6; --pdd:#08519c;
     --mcilb:#fdae6b; --dlb:#d94801; --mciad:#f7a8c4; --ad:#ae017e;
   }
@@ -57,7 +57,7 @@
   .hero{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:2px}
   .wnum{font-size:52px;font-weight:800;letter-spacing:-.02em;line-height:1}
   .badge{font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
-  .badge.atr{background:#fde3d3;color:#9a3412}
+  .badge.low{background:#fde3d3;color:#9a3412}
   .badge.norm{background:#dcfce7;color:#166534}
   .subline{color:var(--muted);font-size:14px;margin:6px 0 0}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
@@ -117,7 +117,7 @@
       <label>Observed Ch4 gray-matter volume <span class="unit">(mL)</span></label>
       <input id="ch4" type="number" value="0.215" min="0" max="0.6" step="0.001">
       <input id="ch4R" type="range" class="slider" min="0.05" max="0.40" step="0.005" value="0.215" aria-label="Ch4 volume slider">
-      <div class="hint">Ch4 GMV is typically ~0.15&ndash;0.31 mL (1st&ndash;99th centile in the study). Must be measured with the study pipeline.</div>
+      <div class="hint">Ch4 GMV is typically ~0.17&ndash;0.30 mL (1st&ndash;99th centile in the reference). Must be measured with the study pipeline.</div>
       <div class="warnmsg" id="warn"></div>
     </div>
 
@@ -154,7 +154,7 @@
        misleading result.</p>
     <ol class="steps">
       <li><b>Segmentation.</b> Segment the T1-weighted volumetric scan with <span class="tag">CAT12 v12.9
-          (r2577)</span> running under <span class="tag">SPM25</span> (MATLAB R2023b), using the default
+          (r2577)</span> running under <span class="tag">SPM12</span> (MATLAB R2023b), using the default
           preprocessing pipeline <b>including surface estimation</b>.</li>
       <li><b>Ch4 localization.</b> Use the left and right <b>Ch4 labels of the Jülich-Brain
           maximum-probability atlas</b> distributed with CAT12, in the space of CAT12&rsquo;s normalization
@@ -174,32 +174,29 @@
   </div>
 
   <footer>
-    <p><b>Model.</b> Two-stage location&ndash;scale normative model of Ch4 gray-matter volume fitted in 5,585
-       clinically normal participants across 135 acquisition sites. Location: <code>predicted = 0.14186 + 8.5274&times;10⁻⁵&middot;age &minus; 7.2914&times;10⁻⁶&middot;age&sup2;
-       + 0.0038649&middot;[male] + 8.8698&times;10⁻⁵&middot;TIV</code>. Scale:
-       <code>&sigma;(age, sex) = 1.88736 &middot; exp(&minus;5.01257 + 0.0053427&middot;age + 0.12925&middot;[male])</code>.
+    <p><b>Model.</b> Two-stage location&ndash;scale normative model of Ch4 gray-matter volume fitted in 5,556
+       clinically normal participants across 135 acquisition sites. Location: <code>predicted = 0.14004 + 0.00010236&middot;age &minus; 7.3759&times;10⁻⁶&middot;age&sup2;
+       + 0.0037694&middot;[male] + 8.9502&times;10⁻⁵&middot;TIV</code>. Scale:
+       <code>&sigma;(age, sex) = 1.88736 &middot; exp(&minus;5.04482 + 0.0057872&middot;age + 0.13226&middot;[male])</code>.
        W = (observed &minus; predicted) / &sigma;(age, sex). For a scanner site not in the training sample, the site
        random intercept is set to zero (as here) and the denominator is not widened to acknowledge that, so a
        W-score computed for a scanner that contributed no reference participants should be treated as
        provisional until that centre&rsquo;s own clinically normal participants have been scored. Holding out entire sites in
-       the study moved the proportion below the threshold from 5.59% to 6.57%. Coefficients are Supplementary
+       the study moved the proportion below the threshold from 5.62% to 6.52%. Coefficients are Supplementary
        Table S3 of the study.</p>
-    <p><b>Citation.</b> Negida A. <i>Normative Cholinergic Nucleus 4 Volume and Cognitive Outcomes in Lewy Body and Alzheimer&rsquo;s
-       Diseases.</i> (in preparation). &nbsp;
+    <p><b>Citation.</b> Negida A. <i>Normative Cholinergic Nucleus 4 Volume and Cognitive Outcomes in Lewy Body and Alzheimer’s Diseases.</i> (in preparation). &nbsp;
        ORCID 0000-0001-5363-6369 &middot; <a href="https://negidamd.github.io/">negidamd.github.io</a></p>
   </footer>
 </div>
 
 <script>
 /* ---------- normative model (Supplementary Table S3) ----------
-   Primary reference: 5,585 clinically normal participants across 135 sites.
-   Updated 2026-10-16 to the model refitted on the study's third analytical dataset (lock v3: the Ch4
-   exposure re-extracted for every cohort and PPMI participants added; decision log D-091). Coefficients
-   from 03_RESULTS/normative_model/calculator_parameters.json; empirical cut = 5th centile of W in the
-   reference. */
-const B={intercept:0.14185710533703066,age:8.527447525093364e-05,age2:-7.291360675713016e-06,male:0.003864922285624225,tiv:8.869818292818207e-05};
-const S={intercept:-5.012573751211533,age:0.0053426822707262215,male:0.1292473883027047,k:1.8873645212254033};
-const CUT=-1.645, CUT_EMP=-1.681;
+   Primary reference: 5,556 clinically normal participants across 135 sites.
+   Generated by the study pipeline from the fitted model (calculator_parameters.json, decision log D-126);
+   do not edit by hand. Empirical cut = 5th centile of W in the reference. */
+const B={intercept:0.1400401728605837,age:0.00010236045774096266,age2:-7.375901543085844e-06,male:0.0037694326539273134,tiv:8.950224322538367e-05};
+const S={intercept:-5.044819937593403,age:0.005787207037134732,male:0.13226271646815757,k:1.8873645212254033};
+const CUT=-1.645, CUT_EMP=-1.681, AGE_LO=46, AGE_HI=90;
 const predict=(age,male,tiv)=>B.intercept+B.age*age+B.age2*age*age+B.male*(male?1:0)+B.tiv*tiv;
 const sigma=(age,male)=>S.k*Math.exp(S.intercept+S.age*age+S.male*(male?1:0));
 const phi=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
@@ -215,7 +212,7 @@ function drawBell(w){
   const W=520,H=230,mL=18,mR=18,mT=14,mB=34, x0=-4,x1=4;
   const X=v=>mL+(Math.max(x0,Math.min(x1,v))-x0)/(x1-x0)*(W-mL-mR);
   const ymax=0.42, Y=v=>H-mB-v/ymax*(H-mT-mB);
-  // area under curve (full + atrophy tail) as paths
+  // area under curve (full + low-volume tail) as paths
   const pts=[];for(let i=0;i<=240;i++){const xv=x0+(x1-x0)*i/240;pts.push([xv,phi(xv)]);}
   const line=pts.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)).join(" ");
   // gradient
@@ -224,7 +221,7 @@ function drawBell(w){
   g.appendChild(el("stop",{offset:1,"stop-color":"#4292c6","stop-opacity":.05}));defs.appendChild(g);svg.appendChild(defs);
   // full area
   svg.appendChild(el("path",{d:line+" L"+X(x1)+" "+Y(0)+" L"+X(x0)+" "+Y(0)+" Z",fill:"url(#bg1)"}));
-  // atrophy tail
+  // low-volume tail
   const tail=pts.filter(p=>p[0]<=CUT);
   if(tail.length){const tl=tail.map((p,i)=>(i?"L":"M")+X(p[0]).toFixed(1)+" "+Y(p[1]).toFixed(1)).join(" ");
     svg.appendChild(el("path",{d:tl+" L"+X(CUT)+" "+Y(0)+" L"+X(x0)+" "+Y(0)+" Z",fill:"#d94801","fill-opacity":.28}));}
@@ -252,19 +249,19 @@ function calc(){
   const age=+document.getElementById("age").value, tiv=+document.getElementById("tiv").value,
         ch4=+document.getElementById("ch4").value;
   const warn=document.getElementById("warn");let msgs=[];
-  if(age<40||age>95)msgs.push("Age is outside the range where the model was well sampled (40–95 y).");
+  if(age<AGE_LO||age>AGE_HI)msgs.push("Age is outside the central 98% of the reference ("+AGE_LO+"–"+AGE_HI+" y).");
   if(tiv<1000||tiv>2000)msgs.push("TIV looks unusual; check units are mL.");
   if(ch4<=0||ch4>0.6)msgs.push("Ch4 volume looks out of range; check units are mL.");
   warn.style.display=msgs.length?"block":"none";warn.textContent=msgs.join(" ");
   if(!(age>0&&tiv>0&&ch4>0)){return;}
   const pred=predict(age,male,tiv), sig=sigma(age,male), w=(ch4-pred)/sig, pct=Phi(w)*100;
   document.getElementById("wval").textContent=(w>=0?"+":"")+w.toFixed(2);
-  const atr=w<=CUT;
+  const low=w<=CUT;
   const badge=document.getElementById("badge");
-  badge.className="badge "+(atr?"atr":"norm");
-  badge.textContent=atr?"low Ch4 volume":"within normal range";
+  badge.className="badge "+(low?"low":"norm");
+  badge.textContent=low?"low Ch4 volume":"within normal range";
   document.getElementById("subline").textContent=
-    atr?"At or below the a priori 5th-centile cut (W ≤ −1.645)."
+    low?"At or below the a priori 5th-centile cut (W ≤ −1.645)."
        :"Above the a priori low-volume cut (W ≤ −1.645).";
   document.getElementById("pred").textContent=pred.toFixed(3)+" mL";
   document.getElementById("pct").textContent=pct.toFixed(1)+"th";
@@ -275,8 +272,8 @@ function calc(){
     "This Ch4 volume sits at about the <b>"+pct.toFixed(0)+"th percentile</b> of the clinically normal reference "+
     "distribution (i.e., "+(pct<50?(100-pct).toFixed(0)+"% of cognitively healthy adults have a larger Ch4":
     pct.toFixed(0)+"% of cognitively healthy adults have a smaller Ch4")+"). "+
-    (atr?"It meets the a priori low-volume definition":"It does not meet the a priori low-volume definition")+
-    " (empirical cut W ≤ −1.681: "+(emp?"also met":"not met")+"). "+
+    (low?"It meets the a priori low-volume definition":"It does not meet the a priori low-volume definition")+
+    " (empirical cut W ≤ "+CUT_EMP.toFixed(3).replace("-","−")+": "+(emp?"also met":"not met")+"). "+
     "This is a research estimate of deviation from the normative reference; it indicates unusually low MRI volume, not established tissue loss, and is not a diagnosis.";
   drawBell(w);
 }
